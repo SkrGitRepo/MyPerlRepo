@@ -1,0 +1,674 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Operators And Precedence</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=04//-->
+<!--PAGES=084-088//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="04-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="04-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<P>Will Perl add the 2 and the 3 before multiplying the result by 4? Or will it multiply 3 by 4, and then add 2? The Perl operator precedence rules settle this question. As you can see in Table 4.1, multiplication, <B>*</B>, has a higher precedence than addition, <B>&#43;</B>. Therefore, Perl will multiply 3 by 4, and then add the 2:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2 &#43; 3 * 4;
+
+<I>14</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Of course, you can also use parentheses to set the order of execution yourself:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+print ((2&#43; 3) * 4);
+
+<I>20</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Notice that the above line of code isn&#146;t written like this:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+print (2 &#43; 3) * 4;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>That&#146;s because <B>print</B> can work either as an operator or a function, and if you use parentheses, you&#146;re telling Perl to use it as a function and, in this case, giving it the expression 2 &#43; 3 to print. The <B>print</B> function obliges, and this is what you get:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print (2 &#43; 3) * 4;
+
+<I>5</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This is a tricky point to get used to. When you don&#146;t want Perl to interpret a list operator like <B>print</B> as a function, you can use the unary <B>&#43;</B> operator in front of the parentheses, which has no effect other than telling Perl you don&#146;t mean to use the parentheses to indicate a function call:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print &#43;(2 &#43; 3) * 4;
+
+<I>20</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>As you can see, operator precedence is an important topic. Accordingly, this chapter&#146;s organization is based on Table 4.1&#146;s organization; operators with the highest precedence are discussed first.
+</P>
+<H4><A NAME="Heading3"></A><FONT COLOR="#000077">Highest Precedence: Terms And Leftward List Operators</FONT></H4>
+<P>Terms have the highest precedence in Perl. Terms include variables, quotes, expressions in parentheses, <B>do</B> and <B>eval</B> constructs, anonymous arrays and hashes&#151;which you create with <B>[]</B> and <B>{}</B> (see Chapter 8)&#151;and functions whose arguments are enclosed in parentheses.</P>
+<P>In addition, list operators have very strong <I>leftward</I> precedence. That is, when working with terms to their left, list operators have low <I>rightward</I> precedence. This means that the <B>sort</B> list operator absorbs the values that follow it (after letting the comma operator do its work by creating a list from these values), then acts like a simple term with respect to the rest of the expression:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 1, 2, 3, 4, sort 9, 8, 7, 6, 5;
+
+<I>123456789</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="80%" VALIGN="TOP" ALIGN="LEFT"><I>Related solutions:</I>
+<TH WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="80%" VALIGN="TOP" ALIGN="LEFT">Creating References To Anonymous Arrays
+<TD WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT">177
+<TR>
+<TD WIDTH="80%" VALIGN="TOP" ALIGN="LEFT">Creating References To Anonymous Hashes
+<TD WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT">178
+</TABLE>
+<H4><A NAME="Heading4"></A><FONT COLOR="#000077">Using The Arrow Operator</FONT></H4>
+<P>The arrow operator, <B>-&gt</B>, is the Perl infix dereference operator modeled after C. If it&#146;s used with a <B>[]</B> or <B>{}</B> on the right side, the left side of the arrow operator must be a reference to an array or hash. This is an example that creates a reference to a hash with the <B>\</B> operator and uses the <B>-&gt</B> operator to dereference an element of the hash:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$hash{fruit} = apple;
+$hash{sandwich} = hamburger;
+$hash{drink} = bubbly;
+$hashref = \%hash;
+print $hashref-&gt{sandwich};
+
+<I>hamburger</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>When you&#146;re not using <B>[]</B> or <B>{}</B> on the right side, and the left side of the arrow operator isn&#146;t a reference to an array or hash, the left side must either be an object or a class name, and the right side must be a method like this:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$result = $myobject-&gtmymethod($data);
+</PRE>
+<!-- END CODE SNIP //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="75%" VALIGN="TOP" ALIGN="LEFT"><I>Related solutions:</I>
+<TH WIDTH="25%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="75%" VALIGN="TOP" ALIGN="LEFT">Creating A Reference
+<TD WIDTH="25%" VALIGN="TOP" ALIGN="RIGHT">175
+<TR>
+<TD WIDTH="75%" VALIGN="TOP" ALIGN="LEFT">Creating A Class
+<TD WIDTH="25%" VALIGN="TOP" ALIGN="RIGHT">350
+</TABLE>
+<H4><A NAME="Heading5"></A><FONT COLOR="#000077">Handling Autoincrement And Autodecrement</FONT></H4>
+<P>The autoincrement, <B>&#43;&#43;</B>, and autodecrement, <B>--</B>, operators work as they do in C. When they appear before a variable, they increment or decrement the variable <I>before</I> returning the value. When placed after a variable, they increment or decrement the variable <I>after</I> returning the value.</P>
+<P>For example, if you had two variables, <B>$variable1</B> and <B>$variable2</B></P>
+<!-- CODE SNIP //-->
+<PRE>
+$variable1 = 1;
+$variable2 = 1;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>you could use <B>&#43;&#43;</B> as a prefix operator to increment <B>$variable1</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print &#43;&#43;$variable1 . &#147;\n&#148;;
+
+<I>2</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>On the other hand, when you use <B>&#43;&#43;</B> as a postfix operator on <B>$variable2</B>, <B>&#43;&#43;</B> will increment <B>$variable2</B> after returning its value:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print $variable2&#43;&#43; . &#147;\n&#148;;
+print $variable2 . &#147;\n&#148;;
+
+<I>1</I>
+<I>2</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Notice also that <B>&#43;&#43;</B> works on strings stored in scalar variables (as long as these scalar variables have never been used in a numeric context). This code</P>
+<!-- CODE SNIP //-->
+<PRE>
+$variable = &#146;AAA&#146;;
+print &#43;&#43;$variable . &#147;\n&#148;;
+$variable = &#146;bbb&#146;;
+print &#43;&#43;$variable . &#147;\n&#148;;
+$variable = &#146;zzz&#146;;
+print &#43;&#43;$variable . &#147;\n&#148;;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>provides this result:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+<I>AAB</I>
+<I>bbc</I>
+<I>aaaa</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading6"></A><FONT COLOR="#000077">Handling Exponentiation</FONT></H4>
+<P>The exponentiation operator is <B>**</B>. This is a binary operator that exponentiates the first argument to the second. For example:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2 ** 10;
+
+<I>1024</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading7"></A><FONT COLOR="#000077">Using Symbolic Unary Operators</FONT></H4>
+<P>The four symbolic unary operators are:
+</P>
+<DL>
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>!</B> &#151;Logical negation (not)
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>-</B> &#151;Arithmetic negation
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>~</B> &#151;Bitwise negation (one&#146;s complement)
+<DD><B>&#149;</B>&nbsp;&nbsp;\ &#151;Creates a reference to whatever follows it
+</DL>
+<P>For example, the logical negation of 0 (zero) is 1:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+print !0;
+
+<I>1</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Bitwise negation just flips all the bits in a number. You can use it to get an indication of the capacity of unsigned integers on the host computer by using <B>~0</B> to set all the bits in value to 1:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print ~0;
+
+<I>4294967295</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This yields 4294967295, or 2 ** 32 - 1.
+</P>
+<H4><A NAME="Heading8"></A><FONT COLOR="#000077">Using Binding Operators</FONT></H4>
+<P>The binding operator,<B>=~</B>, <I>binds</I> a scalar expression to a pattern match. String operations like <B>s///</B>, <B>m//</B>, and <B>tr//</B> work with <B>$_</B> by default. The binding operator <B>=~</B> can be used to make these operations work with a scalar variable that you specify. For example, when you place a string in <B>$line</B></P>
+<!-- CODE SNIP //-->
+<PRE>
+$line = &#147;.Hello!&#148;;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>you can use the <B>m//</B> matching string operation with that variable this way:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$line = &#147;.Hello!&#148;;
+
+if ($line =~ m/^\./) {
+    print &#147;Shouldn&#146;t start a sentence with a period!&#148;;
+}
+
+<I>Shouldn&#146;t start a sentence with a period!</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The <B>!~</B> operator is just like <B>=~</B>, except the return value is negated.</P>
+<TABLE WIDTH="100%" BORDER RULES="ROWS"><TR>
+<TH WIDTH="75%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="25%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="75%" VALIGN="TOP" ALIGN="LEFT">Creating Regular Expressions
+<TD WIDTH="25%" VALIGN="TOP" ALIGN="RIGHT">129
+</TABLE>
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="04-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="04-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

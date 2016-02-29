@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Chat</title>
+
+      <title>IM Renderer Page</title>
+
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <base target="_self"/>
+
+        
+        &lt;table class=&quot;msgText&quot;&gt;
+        &lt;tr&gt;
+            &lt;td class=&quot;errorAlertIco&quot;&gt;&lt;img src=&quot;res://instant-message.dll/#10/#2415&quot; /&gt;&lt;/td&gt;
+            &lt;td class=&quot;boxedMessageText&quot;&gt;It appears that you do not have JavaScript enabled, please contact your administrator.&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;            
+    
+
+  <style type="text/css">body{font-family: Segoe UI;font-size: 9pt;} .messageTable{width: 500px;} .buddyName{padding-top: 3px;padding-right: 0px;padding-bottom: 3px;padding-left: 8px;font-weight: bold;word-wrap: break-word;} .timeStamp{white-space: nowrap;color: #AAAAAA;font-weight: normal;vertical-align: top;padding-right: 11px;padding-left: 11px;} .dateRollover{padding-top: 3px;padding-right: 0px;padding-bottom: 3px;padding-left: 8px;font-weight: bold;word-wrap: break-word;vertical-align: middle;text-align: center;color: #1E2126;} .hiddenRow td{height: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;} .partyMsgText{color: #808080;font-style: italic;font-size: 10pt;}</style>
+ </head>
+
+
+ <body bgcolor="#ffffff">
+      <div class="timestampSizeCalulator timestamp" id="calculator"/>
+
+      <div class="messageBox" id="messageBox" style="height: 121px;">
+         <div class="show_more_button_div" id="show_more_button_up_div" style="display: none;">
+            <a class="show_more_button" id="show_more_button_up" href="javascript:;">
+               <span class="btn-left-up" id="showMoreLeft-up"/>
+
+               <span class="btn-middle" id="showMoreMiddle-up"/>
+
+               <span class="btn-right" id="showMoreRight-up"/>
+
+        </a>
+        
+      </div>
+
+         <div class="show_more_button_div" id="show_more_search_button_up_div" style="display: none;">
+            <a class="show_more_button" id="show_more_search_button_up" href="javascript:;">
+               <span class="btn-left-up" id="showMoreLeft-Search-up"/>
+
+               <span class="btn-middle" id="showMoreMiddle-Search-up"/>
+
+               <span class="btn-right" id="showMoreRight-Search-up"/>
+
+        </a>
+        
+      </div>
+
+           <div class="messageNoResult_class" id="messageNoResults_div" style="display: none;">
+                <span id="messageNoResults_text_1"/>
+    <br/>
+
+                <span id="messageNoResults_text_2"/>
+
+        </div>
+
+           <div class="messageTableDiv" id="messageTableDiv">
+    <table class="messageTable" id="messageTable">
+     <colgroup>
+      <col/>
+      <col width="82" id="timeStampCol"/>
+     </colgroup>
+     <tbody id="messageTableBody">
+      <tr class="hiddenRow">
+       <td/>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="firstGroupName">
+       <td class="dateRollover" id="msg_id_43" colspan="2">Tuesday, January 19, 2016</td>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_44" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_42">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Hi Jaydev</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_45">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>*Jayadev</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_47_dividerLine">
+       <td id="msg_id_47" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_47" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_46">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Hi Sumit</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_49_dividerLine">
+       <td id="msg_id_49" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_49" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_48">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Need some help from you</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_51_dividerLine">
+       <td id="msg_id_51" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_51" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_50">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yes please</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_53_dividerLine">
+       <td id="msg_id_53" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_53" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_52">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>I have CEL 6 box on my name..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:54 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_54">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>any idea how to make apache web server running on that ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:55 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_55">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>I see .. on your CEL box EMAN page is coming..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:56 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_56">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>
+          <a href="http://dws-rtp-jsudarsh-l.cisco.com/OPDATA/">http://dws-rtp-jsudarsh-l.cisco.com/OPDATA/</a>
+         </div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:56 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_58_dividerLine">
+       <td id="msg_id_58" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_58" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_57">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yes. Give me few mins</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:56 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_60_dividerLine">
+       <td id="msg_id_60" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_60" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_59">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>sure</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:56 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_62_dividerLine">
+       <td id="msg_id_62" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_62" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_61">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Hi sumit</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:59 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_63">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>I sent you one mail</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:59 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_65_dividerLine">
+       <td id="msg_id_65" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_65" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_64">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yes ..I got it</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:59 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_67_dividerLine">
+       <td id="msg_id_67" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_67" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_66">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>You need to tear down and install those RPMs</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">3:59 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_68">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>And then you need to run the script by passing apache - /apps/SD/apache/local/          <a href="http://configure.pl">configure.pl</a>
+ apache</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:00 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_70_dividerLine">
+       <td id="msg_id_70" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_70" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_69">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Ok .. let me try that</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:00 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_71">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Do i need to start apache ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:18 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_72">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>or this will start ? /apps/SD/apache/local/          <a href="http://configure.pl">configure.pl</a>
+ apache ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:18 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_74_dividerLine">
+       <td id="msg_id_74" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_74" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_73">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>/apps/SD/apache/local/          <a href="http://configure.pl">configure.pl</a>
+ apache  will satrt</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:19 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_76_dividerLine">
+       <td id="msg_id_76" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_76" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_75">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>after installing all the RPM's mentioned in email..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:20 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_77">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>i tired to run this : /apps/SD/apache/local/          <a href="http://configure.pl">configure.pl</a>
+ apache</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:20 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_78">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>but this script /apps/SD/apache/local/          <a href="http://configure.pl">configure.pl</a>
+ was not here</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:21 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_79">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>i also tried .. copy it from other box and then run .. but server did not start ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:22 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_80">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>i get this output :</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:23 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_81">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>
+          <span style="font-style: normal; font-weight: bold; text-decoration: none;">sumkuma2@dws-rtp-sumkuma2-l:/apps/SD/apache/local$ /apps/SD/apache/local/           <a href="http://configure.pl">configure.pl</a>
+ apache           <br/>
+Configuring eir-httpd...           <br/>
+EXEC: ps -ef | grep httpd | grep -v grep           <br/>
+/apps/SD/apache/bin/apachectl</span>
+         </div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:23 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_82">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Should i run this with SUDO permission</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:23 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_83">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:23 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_85_dividerLine">
+       <td id="msg_id_85" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_85" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_84">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yeah.. Apachectl need to be started</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:25 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_87_dividerLine">
+       <td id="msg_id_87" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_87" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_86">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>for some reason .. i dont see any file or 'apachectl' under this : /apps/SD/apache/bin</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:26 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_88">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Did you follow only these steps to bring your CEL6 VM UP ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:31 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_90_dividerLine">
+       <td id="msg_id_90" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_90" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_89">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yes</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:33 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_91">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>That configure script should start the apache process</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:35 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_93_dividerLine">
+       <td id="msg_id_93" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_93" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_92">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>ok</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:35 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_95_dividerLine">
+       <td id="msg_id_95" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_95" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_94">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>[jsudarsh@dws-rtp-jsudarsh-l ~]$ ps -ef | grep httpd          <br/>
+root     27984     1  0 Jan12 ?        00:00:33 /apps/SD/apache/bin/eir-httpd -k start          <br/>
+eman     27985 27984  0 Jan12 ?        00:00:00 /apps/SD/apache/bin/eir-httpd -k start          <br/>
+jsudarsh 29888 29100  0 06:05 pts/0    00:00:00 grep httpd          <br/>
+eman     30437 27984  0 Jan14 ?        00:01:11 /apps/SD/apache/bin/eir-httpd -k start          <br/>
+eman     30466 27984  0 Jan14 ?        00:01:11 /apps/SD/apache/bin/eir-httpd -k start          <br/>
+eman     30467 27984  0 Jan14 ?        00:01:11 /apps/SD/apache/bin/eir-httpd -k start          <br/>
+eman     30526 27984  0 Jan14 ?        00:01:11 /apps/SD/apache/bin/eir-httpd -k start</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:35 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_96">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>These processes should be running</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:36 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_98_dividerLine">
+       <td id="msg_id_98" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_98" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_97">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>can you check , what is the output of this : perl -e 'use MIME::Lite;' on your box ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">4:50 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_103_dividerLine">
+       <td id="msg_id_103" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_103" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_102">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>[jsudarsh@dws-rtp-jsudarsh-l ~]$ perl -e 'use MIME::Lite;'</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:28 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_104">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Sorry Sumit, i was traveling back to flat</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:29 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_106_dividerLine">
+       <td id="msg_id_106" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_106" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_105">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>No issue ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:50 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_107">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Can you check this           <img title=":p" src="file:///C:/Program Files (x86)/Cisco Systems/Cisco Jabber/Emoticons/tongue.png"/>
+erl -e 'use MIME::Lite;'</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:50 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_108">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>perl -e 'use MIME::Lite;'</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:50 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_110_dividerLine">
+       <td id="msg_id_110" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_110" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_109">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>[jsudarsh@dws-rtp-jsudarsh-l ~]$ perl -e 'use MIME::Lite;'          <br/>
+[jsudarsh@dws-rtp-jsudarsh-l ~]$</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:51 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_112_dividerLine">
+       <td id="msg_id_112" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_112" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_111">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>ok ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:51 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_113">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Good ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:51 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_114">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>something not getting setup in my box ...</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:52 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_115">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>which is causing problems</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:52 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_116">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>i did all the thisng mentioned in that email..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:53 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_118_dividerLine">
+       <td id="msg_id_118" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_118" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_117">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Yeah, there is lots of RPM's has dependencies</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:53 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_120_dividerLine">
+       <td id="msg_id_120" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_120" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_119">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Any team who can help ? or we have to resolve this by ourselves ? at least to bring web server on CEL 6 VM's  ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:54 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_121">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>any idea ?</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:54 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_123_dividerLine">
+       <td id="msg_id_123" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_123" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_122">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>I think           <span title=" Sankaranarayanan Thirupudarjunan-X(sthirupu - CAP GEMINI at Cisco) " cisco_contact_mention="sthirupu@cisco.com">
+           <div class="wrapper">
+            <span class="contactMention">@ Sankaranarayanan Thirupudarjunan-X(sthirupu - CAP GEMINI at Cisco) </span>
+           </div>
+          </span>
+ is working on the CEL6 mailer part</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:55 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_124">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Frotz helped him to get this RPM's installed</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:55 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_126_dividerLine">
+       <td id="msg_id_126" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_126" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_125">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>ya .. i know him ..he seats behind me ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:56 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_127">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>OK he is on PTO for 2 days .. anyway i will see ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:56 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_128">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Thanks Jayadev ..for all your help and time            <img title=":-)" src="file:///C:/Program Files (x86)/Cisco Systems/Cisco Jabber/Emoticons/smile.png"/>
+         </div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:56 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_130_dividerLine">
+       <td id="msg_id_130" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_130" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_129">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Sure. I think we can ask Frotz also. Only OPDATA page loads for me</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:57 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_132_dividerLine">
+       <td id="msg_id_132" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_132" style="color: rgb(22, 136, 79);">Sumit Kumar-X(sumkuma2 - CAP GEMINI at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_131">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>Ya ..</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:58 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_133">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>I trying ..if not able to ..then will ask frotz 2morrow</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:58 PM</td>
+      </tr>
+      <tr class="dividerLine" id="msg_id_135_dividerLine">
+       <td id="msg_id_135" colspan="2"/>
+      </tr>
+      <tr class="groupName">
+       <td class="buddyName" id="msg_id_135" style="color: rgb(44, 100, 150);">Jayadev Sudarshan Kumar Jain-X(jsudarsh - WIPRO LIMITED at Cisco)</td>
+       <td class="timeStamp"/>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_134">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>/etc/init.d/eir-command system status</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:58 PM</td>
+      </tr>
+      <tr class="msg">
+       <td class="msgText normalMsgText" id="msg_id_136">
+        <span style="color: rgb(26, 26, 26); font-family: Segoe UI; font-size: 10pt; font-style: normal; font-weight: normal; text-decoration: none;">
+         <div>This should gives around 622 RPM's</div>
+        </span>
+       </td>
+       <td title="Tuesday, January 19, 2016" class="timeStamp">5:59 PM</td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+
+         <div class="show_more_button_div" id="show_more_button_down_div" style="display: none;">
+            <a class="show_more_button" id="show_more_button_down" href="javascript:;">
+               <span class="btn-left-down" id="showMoreLeft-down"/>
+
+               <span class="btn-middle" id="showMoreMiddle-down"/>
+
+               <span class="btn-right" id="showMoreRight-down"/>
+
+        </a>
+        
+      </div>
+
+         <div class="show_more_button_div" id="show_more_search_button_down_div" style="display: none;">
+            <a class="show_more_button" id="show_more_search_button_down" href="javascript:;">
+               <span class="btn-left-down" id="showMoreLeft-Search-down"/>
+
+               <span class="btn-middle" id="showMoreMiddle-Search-down"/>
+
+               <span class="btn-right" id="showMoreRight-Search-down"/>
+
+        </a>
+
+      </div>
+
+         <div class="show_more_button_div" id="show_most_recent_search_button_div" style="display: none;">
+            <a class="show_more_button" id="show_most_recent_search_button" href="javascript:;">
+               <span class="btn-most-recent-left" id="showMostRecentLeft-Search-down"/>
+
+               <span class="btn-middle" id="showMostRecentMiddle-Search-down"/>
+
+               <span class="btn-right" id="showMostRecentRight-Search-down"/>
+
+        </a>
+        
+      </div>
+
+    </div>
+
+
+
+</body>
+</html>

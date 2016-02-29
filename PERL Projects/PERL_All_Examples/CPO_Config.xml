@@ -1,0 +1,26 @@
+<CPO>
+    <INSTANCE type="dev">
+        <NODE1 host="eon-rtp3-1-l">
+            <username>system</username>
+            <password>manager</password>
+        </NODE1>
+        <NODE2 host="eon-rtp3-2-l">
+            <username>system</username>
+            <password>manager</password>
+        </NODE2>
+    </INSTANCE>
+<!--    <INSTANCE type="prod">
+        <NODE1 host="eon-rtp3-1-l">
+            <username>system</username>
+            <password>manager</password>
+        </NODE1>
+        <NODE2 host="eon-rtp3-2-l">
+            <username>system</username>
+            <password>manager</password>
+        </NODE2>
+    </INSTANCE> -->
+</CPO>
+
+
+
+ 

@@ -1,0 +1,79 @@
+ 
+=============
+# Some of the usefull site for to know the setup of CRON Configuration
+------------------------------------------------------------------------
+http://www.adminschoice.com/crontab-quick-reference/
+http://www.cyberciti.biz/faq/where-is-the-crontab-file/
+http://stackoverflow.com/questions/8181949/how-do-set-cron-to-run-my-script-every-40mins-25mins
+http://media.gotdrupal.com/matt/acquia/d6/DrupalCron_d6.mov
+http://www.linuxquestions.org/questions/linux-newbie-8/how-to-start-my-cronjob-manually-711950/
+==============
+===================================================================== 
+# PROCESS OF CREATING A SAMPLE CRON JOB for a SAMPLE SCRIPT ::::
+===================================================================== 
+
+#  Below example will explain is a simple way how to set a cron job on you linux box for a sample script.
+
+Step 1 => Create a sample perl script (or a script in any language)  :(I have created it on my VMWARE Local FEDORA Linux)
+	   => Login to Linux with user "sumkuma2",
+       => Create the below sample script,	   
+
+			 { 
+			  ** Script name=> [sumkuma2@localhost perl_coding]$ vim SamplePerl.pl 
+			  --------------------------------
+			   #!perl -w
+			   use strict;
+			   
+			   my $file = "/home/sumkuma2/perl_coding/TestCron.txt";
+			   my $date = `date`;
+			   print "\n This is sample program created to test the CRON job on date :: $date\n";
+			   
+			   if (-e $file) {
+					`rm $file`;
+					print "\n Existing file \" $file \"  has been removed\n";
+			   
+			   }
+			   
+			   open my $fh ,"> $file";
+			   
+			   print $fh "\n This file created through cron on date :: $date\n";
+			  
+			  ------------------------------------
+			  
+			 }
+		=> Switch to root user : [sumkuma2@localhost perl_coding]$ su - <press enter> (OR) $su root <press enter>
+		=> Provide the root password when asked (****(root)).
+		=> [root@localhost ~]$crontab -e     ## This will open the crontab file to configure the CRON JOB setting for your script.
+		#------CRON CONFIGURATION---------------------------------------------------------
+		{
+			#min hour day month day day_of_week (Significance of each *(wildcard) in terms of cron config).
+			
+			1-59 * * * * perl /home/sumkuma2/perl_coding/SamplePerl.pl >>/tmp/rootcron.log
+		}
+		#-----------------------------------------------------------------
+
+		=> Based on above cron configuration CRON job will run every minute of an hour , to ececute the above script(SamplePerl.pl) and keeps the output log of each excution on the file "/tmp/rootcron.log".
+		
+		=> Everytime when CRON runs using above cron configuration , a file "TestCron.txt" will be created thorugh script "SamplePerl.pl" (Older "TestCron.txt" will be removed if already existing).
+				
+		--------------SIGNIFICANCE OF *(wildcrad) in CRON CONFIGURATION-------------------------------------------------
+		{  
+			*     *     *   *    *        
+			-     -     -   -    -
+			|     |     |   |    |
+			|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+			|     |     |   +------- month (1 - 12)
+			|     |     +--------- day of        month (1 - 31)
+			|     +----------- hour (0 - 23)
+			+------------- min (0 - 59)
+		 
+    	 } 
+		------------------------------------------------------------------------------------------------------------------
+		
+====================================================================================================================================
+Example of EMAN UCFM CRON cofigurations : vkuruva@dws-rch-vkuruva-l:$cat /etc/cron.d/ENS
+=====================================
+#0,5,10,15,20,25,30,35,40,45,50,55 * * * * eman /usr/SD/perl/lib/site_perl/EMAN/Config/Scheduler.pl >> /tmp/scheduler.log 2>&1
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * vkuruva /usr/SD/dist/scripts/dist.ens.config.pl > /tmp/dist.ens.config.log 2>&1
+2,7,12,17,22,27,32,37,42,47,52,57 * * * * vkuruva /usr/SD/perl/lib/site_perl/EMAN/Config/ucfm_local_scheduler.ksh > /tmp/ucfm_local_scheduler.log 2>&1 		
+		

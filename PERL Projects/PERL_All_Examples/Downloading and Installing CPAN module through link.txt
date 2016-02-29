@@ -1,0 +1,24 @@
+step 1:get the perl module link from CPAN site:
+$http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-2.53.tar.gz
+
+http://search.cpan.org/CPAN/authors/id/B/BR/BRIANSKI/Audio-Wav-0.13.tar.gz
+
+step2: Download the tar file from 
+$sudo wget http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-2.53.tar.gz
+
+steps3:Unzip the tar file
+$sudo tar -xzvpf JSON-2.53.tar.gz
+
+step4: after unziping the tar file, get into the folder/dir
+$cd JSON-2.53
+
+step5: $sudo perl Makefile.PL
+
+step6: $sudo make
+
+step7: $sudo make test
+
+step8: $sudo make install
+
+step9: perl -e 'use JSON'
+

@@ -1,0 +1,725 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Conditionals And Loops</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=05//-->
+<!--PAGES=111-116//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="05-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="05-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<H4 ALIGN="LEFT"><A NAME="Heading6"></A><FONT COLOR="#000077">Looping Over Elements With for</FONT></H4>
+<P>You use the <B>for</B> loop to iterate over the statement(s) in the loop&#146;s body, usually using a loop index. Here&#146;s how you use the <B>for</B> loop in general:</P>
+<!-- CODE SNIP //-->
+<PRE>
+LABEL for (EXPR; EXPR; EXPR) BLOCK
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The first expression is executed before the body (that is, <B><I>BLOCK</I></B>) of the loop is executed. The second expression is tested before each loop iteration and, if false, terminates the loop. The third expression is executed after each loop iteration.</P>
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>The body of the loop may not even be executed once if the condition turns out to be false when the loop starts.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>There are a number of ways to use this loop; the classic way is with a simple loop index like this, in which we use a loop variable named <B>$loop_index</B> to print &#147;<B>Hello!\n</B>&#148; five times:</P>
+<!-- CODE //-->
+<PRE>
+for ($loop_index = 1; $loop_index &lt;= 5; $loop_index&#43;&#43;) {
+    print &#147;Hello!\n&#148;;
+}
+
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+</PRE>
+<!-- END CODE //-->
+<P>You can also use more than one loop index:
+</P>
+<!-- CODE //-->
+<PRE>
+for ($loop_index = 0, $double = 0; $loop_index &lt;= 4
+    ; $loop_index&#43;&#43;, $double = 2 * $loop_index) {
+    print &#147;Loop index &#148; . $loop_index . &#147; doubled equals &#148; .
+        $double . &#147;\n&#148;;
+}
+
+Loop index 0 doubled equals 0
+Loop index 1 doubled equals 2
+Loop index 2 doubled equals 4
+Loop index 3 doubled equals 6
+Loop index 4 doubled equals 8
+</PRE>
+<!-- END CODE //-->
+<P>In fact, you can even use the value in the loop index after the loop itself has completed to see how many iterations occurred:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$factorial = 1;
+for ($loop_index = 1; $loop_index &lt;= 6; $loop_index&#43;&#43;) {
+    $factorial *= $loop_index;
+}
+print $loop_index - 1 . &#147;! = $factorial\n&#148;;
+
+6! = 720;
+</PRE>
+<!-- END CODE SNIP //-->
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>WARNING!:&nbsp;&nbsp;</B><B>This isn&#146;t recommended because Perl doesn&#146;t guarantee this will work in future versions.</I></B>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>If you want to make your loop variables unavailable outside the loop, you use a <B>my</B> declaration:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$factorial = 1;
+for (my $loop_index = 1; $loop_index &lt;= 6; $loop_index&#43;&#43;) {
+    $factorial *= $loop_index;
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>In fact, you don&#146;t have to use loop indices at all in a <B>for</B> loop. Here&#146;s an example in which we read lines of text from <B>STDIN</B> and print them until the user types a line that starts with <B>q</B> or <B>Q</B> (as in quit or QUIT). Note that we assign the input to a variable, <B>$line</B>, because the input from <B>&lt;&gt;</B> is only assigned to <B>$_</B> by default in a <B>while</B> loop:</P>
+<!-- CODE SNIP //-->
+<PRE>
+for ($line = &lt;&gt;; $line !~ /^q/i; $line = &lt;&gt;) {
+    print $line;
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>In fact, the <B>for</B> loop and the <B>foreach</B> loop are actually the same in Perl. For example, here&#146;s <B>foreach</B> acting like <B>for</B>, complete with a loop index:</P>
+<!-- CODE //-->
+<PRE>
+foreach ($loop_index = 1; $loop_index &lt;= 5; $loop_index&#43;&#43;) {
+    print &#147;Hello!\n&#148;;
+}
+
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+</PRE>
+<!-- END CODE //-->
+<P>And here&#146;s <B>for</B> acting like <B>foreach</B> (see the next topic for more on <B>foreach</B>):</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = (&#147;Hello &#148;, &#147;there.\n&#148;);
+for (@array) {print;}
+
+Hello there.
+</PRE>
+<!-- END CODE SNIP //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="80%" VALIGN="TOP" ALIGN="LEFT"><I>Related solutions:</I>
+<TH WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD VALIGN="TOP" ALIGN="LEFT">Creating Regular Expressions
+<TD VALIGN="TOP" ALIGN="RIGHT">129
+<TR>
+<TD VALIGN="TOP" ALIGN="LEFT">Setting Scope With <B>my</B>
+<TD VALIGN="TOP" ALIGN="RIGHT">159
+</TABLE>
+<H4 ALIGN="LEFT"><A NAME="Heading7"></A><FONT COLOR="#000077">Looping Over Elements With foreach</FONT></H4>
+<P>The <B>foreach</B> statement is the same thing as a <B>for</B> statement as far as Perl is concerned&#151;<B>for</B> and <B>foreach</B> are synonyms. Even so, programmers often explicitly use <B>foreach</B> when using a variable to iterate through a list (so you can read the loop as &#147;for each element in...&#148;). Here&#146;s how you usually use <B>foreach</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+LABEL foreach VAR (LIST) BLOCK
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This loop iterates over a list, setting the variable <B><I>VAR</I></B> to be each successive element of the list, and executes the code in <B><I>BLOCK</I></B>. Here&#146;s an example in which we iterate over the elements in an array, loading those elements successively into the variable <B>$element</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = (1, 2, 3);
+foreach $element (@array) {
+    $element &#43;= 1;
+}
+print join(&#147;, &#148;, @array);
+
+2, 3, 4
+</PRE>
+<!-- END CODE SNIP //-->
+<P>If you don&#146;t supply a variable name, <B>foreach</B> uses <B>$_</B>, which can be convenient if you&#146;re working with functions that use <B>$_</B> by default, like <B>print</B>. Here&#146;s how to print out the elements of an array while relying on the default variable <B>$_</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = (&#147;Hello &#148;, &#147;there.\n&#148;);
+foreach (@array) {print;}
+
+Hello there.
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can also loop over a hash using the <B>keys</B> or <B>values</B> functions this way:</P>
+<!-- CODE //-->
+<PRE>
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+foreach $key (keys %hash) {
+    print $hash{$key} . &#147;\n&#148;;
+}
+
+lemonade
+club
+orange
+</PRE>
+<!-- END CODE //-->
+<P>Note that once you pass a list to <B>foreach</B>, you shouldn&#146;t restructure that list (for example, by splicing an array) in the body of the loop, or <B>foreach</B> will probably fail.</P>
+<P>Note that the <B>each</B> function is designed to work in a way much like the <B>foreach</B> statement. This function returns successive elements of a hash, as in this example:</P>
+<!-- CODE //-->
+<PRE>
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+while(($key, $value) = each(%hash)) {
+    print "$key =&gt; $value\n&#148;;
+}
+
+drink =&gt; lemonade
+sandwich =&gt; club
+fruit =&gt; orange
+</PRE>
+<!-- END CODE //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="80%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD VALIGN="TOP" ALIGN="LEFT">Looping Over Hashes
+<TD VALIGN="TOP" ALIGN="RIGHT">74
+</TABLE>
+<H4 ALIGN="LEFT"><A NAME="Heading8"></A><FONT COLOR="#000077">Looping Over Elements With while</FONT></H4>
+<P>The <B>while</B> loop is very important in Perl. Here&#146;s how you use it:</P>
+<!-- CODE SNIP //-->
+<PRE>
+LABEL while (EXPR) BLOCK
+LABEL while (EXPR) BLOCK continue BLOCK
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This loop executes the code in <B><I>BLOCK</I></B> as long as <B><I>EXPR</I></B> is true.</P>
+<P>It&#146;s an easy loop to use. The following is an example in which you keep adding up the user&#146;s savings until he or she has made a million:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$savings = 0;
+while ($savings &lt; 1_000_000) {
+    print &#147;Enter the amount you earned today: &#148;;
+    $savings &#43;= &lt;&gt;;
+}
+
+print &#147;Congratulations, millionaire.\n&#148;;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Here&#146;s another example in which we use <B>while</B> to loop over key/value pairs in a hash as returned by the <B>each</B> function. Notice that this loop keeps going until the <B>each</B> function exhausts the hash and returns a value of false:</P>
+<!-- CODE //-->
+<PRE>
+$hash{fruit} = orange;
+$hash{sandwich} = club;
+$hash{drink} = lemonade;
+while (($key, $value) = each %hash ) {
+    print &#147;$key: $value\n&#148;;
+}
+
+drink: lemonade
+sandwich: club
+fruit: orange
+</PRE>
+<!-- END CODE //-->
+<P>The <B>while</B> (<B>&lt;&gt;</B>) loop has a built-in property that many programmers find useful: It fills the <B>$_</B> default variable with the input data automatically. That means you can use the many functions that make use of <B>$_</B> in the body of the loop, as in this case, in which the code prints the input the user types at the console:</P>
+<!-- CODE SNIP //-->
+<PRE>
+while (&lt;&gt;) {
+    print;
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The code in a <B>while</B> loop&#146;s <B>continue</B> block, if there is one, is executed every time the loop executes fully, or if you use a <B>loop</B> command that explicitly goes to the next iteration of the loop (see &#147;Skipping To The Next Loop Iteration With <B>next</B>&#148; later in this chapter). Using the <B>continue</B> block, you can make a <B>while</B> loop act just like a <B>for</B> loop:</P>
+<!-- CODE //-->
+<PRE>
+$loop_index = 1;
+while ($loop_index &lt;= 5) {
+    print &#147;Hello!\n&#148;;
+} continue {
+    $loop_index&#43;&#43;;
+}
+
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+</PRE>
+<!-- END CODE //-->
+<P>Note that <B>while</B> tests its condition first, so the loop body may not even be executed once. That&#146;s useful if executing the body of the loop would cause problems in case the condition is false, as in this example.You shouldn&#146;t print lines from a file if that file&#146;s handle, <B>FileHandle</B>, is invalid:</P>
+<!-- CODE SNIP //-->
+<PRE>
+while (&lt;FileHandle&gt;) {
+    print;
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading9"></A><FONT COLOR="#000077">Looping Over Elements With until</FONT></H4>
+<P>The <B>until</B> loop is the same as the <B>while</B> loop, except that it tests its condition in the reverse logical sense (in other words, executes the code in its body while the condition is false). Here&#146;s how you use this loop:</P>
+<!-- CODE SNIP //-->
+<PRE>
+LABEL until (EXPR) BLOCK
+LABEL until (EXPR) BLOCK continue BLOCK
+</PRE>
+<!-- END CODE SNIP //-->
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="05-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="05-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

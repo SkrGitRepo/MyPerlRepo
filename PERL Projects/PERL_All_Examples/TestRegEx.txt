@@ -1,0 +1,53 @@
+#!perl -w
+use strict;
+
+
+print "\n \t*******  Examples to work arround PERL Reg Expression ****** \n ";
+
+print "\n * RegEx Example 1: \n";
+
+my $myString= "Hello Sumit!";
+
+if($myString =~ m/Sumit!/) {
+
+    print "\n \t String matched with the RegEx pattern \n";
+
+}
+else {
+    print "\n \t String do not matched with the RegEx pattern \n";
+}
+
+
+
+print "\n * RegEx Example 2: \n";
+
+# The pattern modifier i immediately after the trailing / ,changes the match to be 'case-insensitive'. 
+
+if($myString =~ m/SUMIT!/i) {
+
+    print "\n \t String matched with the RegEx pattern \n";
+
+}
+else {
+    print "\n \t String do not matched with the RegEx pattern \n";
+}
+
+print "\n * RegEx Example 3: \n";
+
+# The substitution operator s/// replaces the pattern between the s/ and the middle /, 
+# with the pattern between the middle / and last /. 
+
+if($myString =~ s/SUMIT/Jack/i) {
+
+    print "\n \t String substituted with the RegEx pattern \n";
+    print "\n \t New String is : $myString\n";
+
+}
+else {
+    print "\n \t String do not matched with the RegEx pattern \n";
+}
+
+
+
+
+

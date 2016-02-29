@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: white;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+
+.POD_HEAD1
+{
+  margin-top: 1em;
+  margin-left: 60px;
+  font-size: medium;
+  color: rgb(70,130,180);
+  clear: both;
+}
+
+.POD_HEAD2
+{
+  margin-top: 1em;
+  margin-left: 60px;
+  font-size: 13px;
+  color: rgb(70,130,180);
+}
+
+.POD_TEXT
+{
+  margin-top: 0em;
+  margin-left: 60px;
+  margin-right: 15em;
+  font-size: 13px;
+  //padding: 5px;
+  position: relative;
+}
+
+.TEXT
+{
+  margin-top: 0em;
+  margin-left: 100px;
+  width: 70%;
+  font-size: 13px;
+  position: relative;
+}
+
+.POD_VERBATIM
+{
+ margin-top: 1em;
+ margin-left: 100px;
+ background-color: rgb(95%,95%,95%);
+ border: 1px dotted rgb(70,130,180);
+ padding: 5px;
+ font-size: 13px;
+ position: relative;
+ width: 54em;
+}
+
+.POD_OUTPUT
+{
+  margin-top: 1em;
+  margin-left: 100px;
+  border: 1px dotted rgb(70,130,180);
+  font-size: 13px;
+  padding: 5px;
+  position: relative;
+ width: 54em;
+}
+
+.POD_LIST
+{
+  margin-top: 0em;
+  margin-left: 88px;
+  margin-right: 15em;
+  font-size: 13px;
+}
+
+li.POD_ITEM {
+  padding-bottom: 0.8em;
+}
+
+li.POD_ITEM a p {
+  display: inline;
+}
+
+#trailMenu {
+  position:relative; 
+  left:2px; top:2px;
+  height: 1em;
+}
+
+.POD_NAVLINK {
+  font-size: 13px;
+}
+
+.reviewed {
+    font-size: 8pt;
+    width: 98%;
+    text-align: right;
+    color: #A8A8A8;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.footerbox {
+    border: #A8A8A8 1pt solid;
+    padding-left: .5em;
+    padding-right: .5em;
+    margin-left: .5em;
+}

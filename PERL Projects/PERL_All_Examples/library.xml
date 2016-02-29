@@ -1,0 +1,10 @@
+<library>
+    <book>
+      <title>Perl Best Practices</title>
+      <author_1>Damian Conway</author>
+    </book>
+    <book>
+      <title>Perl Cookbook, Second Edition</title>
+      <author_1>Tom Christiansen</author>
+    </book>
+</library>

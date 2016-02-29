@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>PERL - Special Variables</TITLE>
+   <META NAME="Author" CONTENT="G. Sherwood">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b5aGold (Win95; I) [Netscape]">
+   <META NAME="Description" CONTENT="Acknowledgements to Berkeley Decision/Systems, 803 Pine St.,Santa Cruz, CA 95062, (408) 458-9708">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="ivory" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+<p><p>
+<center><font size=+3>Special Variables</font></center>
+<a name=toc></a>
+<h3>Table of Contents</h3>
+<ul>
+<li><a href=#filehandle>Per-filehandle Special Variables</a>
+<li><a href=#local>Local Special Variables</a>
+<li><a href=#global>Global Special Variables</a>
+</ul>
+Please bear with me while I try to complete these pages.  I'll get to them
+when I can.
+<br>
+Cheers...
+<p><hr size=5>
+<p>
+<a name=filehandle></a>
+<center><table border=5 width=600 cellspacing=5 cellpadding=2>
+<tr><th colspan=3>Per-filehandle Special Variables</td></tr>
+<tr><td colspan=3>These variables never need to be mentioned in a <b>local</b>()because they always refer to some value pertaining to the currently selected output filehandle - each filehandle keeps its own set of values.</td></tr>
+<tr><th width=50>Variable</th><th width=275>Contents</th><th width=275>Mnemonic</tr>
+<tr valign=top><td>$|</td><td>If set to nonzero, forces a flush after every write or print</td><td>When you want your pipes to be piping hot</td></tr>
+<tr><td>$%</td><td>Current page number</td><td>% is page number in <i>nroff</i></td></tr>
+<tr><td>$=</td><td>Current page length</td><td>= has horizontal lines</td></tr>
+<tr><td>$-</td><td>Number of lines left on the page</td><td>lines_on_page - lines_printed</td></tr>
+<tr><td>$~</td><td>Name of the current report format</td><td>Closely related to $^</td></tr>
+<tr><td>$^</td><td>Name of the current top-of-page format</td><td>Points to top of page</tr>
+</table></center>
+<p><a href=#toc>Return to Top</a>
+<hr size=5>
+<p>
+<a name=local></a>
+<center><table border=5 width=600 cellspacing=5 cellpadding=2>
+<tr><th colspan=3>Local Special Variables</td></tr>
+<tr><td colspan=3>These variables that are always local to the current block,
+so you never need to mention them in a <b>local</b>().  All of them are 
+associated with the last successful pattern match.</td></tr>
+<tr><th width=50>Variable</th><th width=275>Contents</th><th width=275>Mnemonic</tr>
+<tr valign=top>
+<td>$1..$9</td>
+<td>Contains the subpattern from the corresponding set 
+of parentheses in the last pattern matched</td><td>like \1..\9</td></tr>
+<tr valign=top>
+<td>$&</td>
+<td>Contains the string matched by the last pattern match</td>
+<td>like & in some editors</td></tr>
+<tr valign=top>
+<td>$`</td>
+<td>The string preceding whatever was matched by the last
+pattern match, not counting patterns matched in nested blocks that have
+been exited already.</td>
+<td>` often precedes a quoted string in normal 
+text</td></tr>
+<tr valign=top>
+<td>$'</td>
+<td>The string following whatever was matched by the last
+pattern match, not counting patterns matched in nested blockes that have 
+been exited already.  For example:
+<p>&nbsp;&nbsp;&nbsp;<b>$_ = 'abcdefghi';<br>&nbsp;&nbsp;&nbsp;/def/;
+<br>&nbsp;&nbsp;&nbsp;print "$`:$&:$'\n";&nbsp;&nbsp;&nbsp;
+# prints abc:def:ghi</b></td>
+<td>' often follows a quoted string in normal text</td></tr>
+<tr valign=top>
+<td>$+</td>
+<td>the last bracket matched by the last search pattern. 
+This is useful if you don't know which of a set of alternative patterns
+matched.  For example:
+<p>&nbsp;&nbsp;&nbsp;
+<b>/Version: (.*)|Revision: (.*)/ && ($rev = $+);</b></td>
+<td>be positive and forward looking</td></tr>
+</table></center>
+<hr size=5>
+<p>
+<a name=global></a>
+<center><table border=5 width=600 cellspacing=5 cellpadding=2>
+<tr><th colspan=3>Global Special Variables</td></tr>
+<tr><td colspan=3>There are quite a few variables that are global in the fullest sense -- they mean the same thing in every package.  If you want a private copy of one of them, you must localize it in the current block.</td></tr>
+<tr><th width=50>Variable</th><th width=275>Contents</th><th width=275>Mnemonic</tr>
+<tr valign=top>
+<td>$_</td>
+<td>The default input and pattern-searching space.  The following pairs are
+equivalent:<p>
+<p>&nbsp;&nbsp;&nbsp;
+<b>while (<>) {... &nbsp;&nbsp;&nbsp; # equivalent only in while!
+<br>&nbsp;&nbsp;&nbsp;
+while ($_ =<>) {...
+<p>&nbsp;&nbsp;&nbsp;
+/^Subject:/
+<br>&nbsp;&nbsp;&nbsp;
+$_ =~ /^Subject:/
+<p>&nbsp;&nbsp;&nbsp;
+y/a-z/A-Z/
+<br>&nbsp;&nbsp;&nbsp;
+$_ =~ y/a-z/A-Z/
+<p>&nbsp;&nbsp;&nbsp;
+chop
+<br>&nbsp;&nbsp;&nbsp;
+chop($_)</b></td>
+<td>underline is understood to be underlying certain undertakings</td></tr>
+<tr valign=top>
+<td>$.</td>
+<td>The current input line number of the last filehandle that was read.  
+Rember that only an explicit close on the filehandle resets the line number.
+</td>
+<td>many programs use <b>.</b> to mean the current line number</td>
+</tr>
+<tr valign=top>
+<td>$/</td>
+<td>
+The input record separator, newline by default.  $/ may be set to a value
+longer than one character in order to match a multi-character delimiter.  If
+$/ is undefined, no record separator is matched, and <b>&lt;FILEHANDLE&gt;</b>
+will read everything to the end of the current file.
+</td>
+<td>/ is used to delimit line boundries when quoting poetry.  Or, if you 
+prefer, think of mad slashers cutting things to ribbons.</td>
+</tr>
+<tr valign=top>
+<td>$\</td>
+<td>
+The output record separator for the <b>print</b> operator.
+</td>
+<td>
+You set <b>$\</b> instead of adding <b>\n</b> at the end of the <b>print</b>.
+</tr>
+<tr valign=top>
+<td>$,</td>
+<td>
+The output field separator for the <b>print</b> operator.
+</td>
+<td>
+What is printed when there is a <b>,</b> in your <b>print</b> statement
+</tr>
+<tr valign=top>
+<td>$"</td>
+<td>
+This is similar to <b>$,</b> except that it applies to array values interpolated
+into a double-quoted string (or similar interpreted string).  Default is space.
+</td>
+<td>
+Obvious, I think
+</tr>
+<tr valign=top>
+<td>$#</td>
+<td>
+The output format for numbers display via the <b>print</b> operator
+</td>
+<td>
+<b>#</b> is the number sign
+</tr>
+<tr valign=top>
+<td>$$</td>
+<td>
+The process number of the Perl running this script
+</td>
+<td>
+Same as shells
+</tr>
+<tr valign=top>
+<td>$?</td>
+<td>
+The status returned by the last pipe close, backtick(``) command or 
+<b>system</b> operator.  Note that this is the status word returned by the 
+<b>wait</b>() system call, so the exit value of the subprocess is actually
+<b>($? >>*)</b>. <b>$? & 255</b> gives which signal, if any, the process
+died from, and whether there was a core dump.
+</td>
+<td>
+Similar to <i>sh</i> and <i>ksh</i>
+</tr>
+<tr valign=top>
+<td>$*</td>
+<td>
+Set to 1 to do multi-line matching within a string, 0 to tell Perl that it
+can assume that strings contain a single line, for the purpose of 
+optimizing pattern matches.  Default is 0
+</td>
+<td>
+* matches multiple things
+</tr>
+<tr valign=top>
+<td>$0</td>
+<td>
+Contains the name of the file containing the Perl script being executed.
+Depending on your OS, it may or may not include the full pathname.
+</td>
+<td>
+Same as <i>sh</i> and <i>ksh</i>
+</tr>
+<tr valign=top>
+<td>$[</td>
+<td>
+The index of the first element in an array, and of the first character in a
+substring.
+</td>
+<td>
+[ begins subscripts
+</tr>
+<tr valign=top>
+<td>$]</td>
+<td>
+The first part of the string printed out when you say <b>perl -v</b>.  It 
+can be used to determine at the beginning of a script whether the Perl
+interpreter executing the script is in the right range of versions.  If used
+in a numeric context, <b>$]</b> returns version + patchlevel /1000.
+</td>
+<td>
+Is this version of Perl in the "<i>right</i>bracket"?
+</tr>
+<tr valign=top>
+<td>$;</td>
+<td>
+The subscript separator for multi-dimensional array emulation.  If you refer
+to an associative array element as:
+<p>&nbsp;&nbsp;&nbsp;$foo{$a,$b,$c}
+<br>it really means:
+<br>&nbsp;&nbsp;&nbsp;$foo{join($;, $a, $b, $c)}
+<br>but don't put
+<br>&nbsp;&nbsp;&nbsp;@foo{$a,$b,$c}
+<br>which means
+<br>&nbsp;&nbsp;&nbsp;($foo{$a},$foo{$b},$foo{$c})
+</td>
+<td>
+Comma (the syntactic subscript separator) is a semi-semicolon.  Yeah, it's 
+pretty lame, but <b>$,</b> is already taken for something more important.
+</tr>
+<tr valign=top>
+<td>$!</td>
+<td>
+If used in a numeric context, yields the current value of <b>errno</b>, with 
+all the usual caveats.  (This means that you shouldn't depend on the value of
+<b>$!</b> to be anything in particular unless you've gotten a specific error
+return indicating a system error.)  If used in a string context, yields the 
+corresponding sysem error string.
+</td>
+<td>
+What just went <i>bang</i>?
+</tr>
+<tr valign=top>
+<td>$@</td>
+<td>
+The Perl syntax error or routine error message from the last <b>eval, do-FILE,
+</b>or <b>require</b> command.  If set, either the compilation failed, or the
+<b>die</b> function was executed within the code of the <b>eval</b>.
+</td>
+<td>
+Where was the syntax error <i>at</i>?
+</tr>
+</table>
+<p><a href=#toc>Return to Top</a>
+<hr size=5>
+<p>
+<center><a href="index.html"><img src="../images/back.gif"></a></center>
+<p><p>
+</BODY>
+</HTML>
+<!-- text below generated by server. PLEASE REMOVE --><!-- Counter/Statistics data collection code --><script language="JavaScript" src="http://l.yimg.com/d/lib/smb/js/hosting/cp/js_source/whv2_001.js"></script><script language="javascript">geovisit();</script><noscript><img src="http://visit.webhosting.yahoo.com/visit.gif?us1365761788" alt="setstats" border="0" width="1" height="1"></noscript>

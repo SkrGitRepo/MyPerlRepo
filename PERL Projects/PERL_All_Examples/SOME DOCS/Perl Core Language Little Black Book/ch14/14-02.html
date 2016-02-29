@@ -1,0 +1,806 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Data Structures</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=14//-->
+<!--PAGES=314-321//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="14-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="14-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<H4 ALIGN="LEFT"><A NAME="Heading4"></A><FONT COLOR="#000077">Declaring Arrays Of Arrays</FONT></H4>
+<P>You use an array of arrays (or an array of arrays of arrays, and so on) to create multiple dimensional arrays. Such arrays are invaluable if you need to index your data with more than one index (such as an array of students indexed by ID and by exam number). Here&#146;s the most common technique to declare an array of arrays all at once; note that we use the anonymous array composer to create each one-dimensional array:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = (
+    [&#147;apples&#148;, &#147;oranges&#148;],
+    [&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;],
+    [&#147;ham&#148;, &#147;chicken&#148;],
+);
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading5"></A><FONT COLOR="#000077">Creating Arrays Of Arrays On The Fly</FONT></H4>
+<P>To create an array of arrays piece by piece, you can use the anonymous array composer, <B>[]</B>, to fill an array with references to other, one-dimensional arrays:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$array[0] = [&#147;apples&#148;, &#147;oranges&#148;];
+$array[1] = [&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;];
+$array[2] = [&#147;ham&#148;, &#147;chicken&#148;];
+print $array[1][1];
+
+<I>corn</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can do the same thing by having Perl create the references automatically (see the discussion at the beginning of this chapter):
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+@{$array[0]} = (&#147;apples&#148;, &#147;oranges&#148;);
+@{$array[1]} = (&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;);
+@{$array[2]} = (&#147;ham&#148;, &#147;chicken&#148;);
+print $array[1][1];
+
+<I>corn</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Of course, you can also create and fill an array of arrays element by element:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+for $outerloop (0..4) {
+    for $innerloop (0..4) {
+        $array[$outerloop][$innerloop] = 1;
+    }
+}
+print $array[0][0];
+
+<I>1</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can also push array references onto an array of arrays:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+for $loopindex (0..4) {
+    push @array, [1, 1, 1, 1];
+}
+print $array[0][0];
+
+<I>1</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Here&#146;s another example in which we use a list returned from a subroutine and the anonymous array composer to create an array of arrays:
+</P>
+<!-- CODE //-->
+<PRE>
+for $loopindex (0..4) {
+    $array[$loopindex] = [&ampzerolist];
+}
+sub zerolist
+{
+    return (0, 0, 0, 0);
+}
+print $array[1][1];
+
+<I>0</I>
+</PRE>
+<!-- END CODE //-->
+<P>You can always add another row to an array of arrays like this:
+</P>
+<!-- CODE //-->
+<PRE>
+@array = (
+    [&#147;apples&#148;, &#147;oranges&#148;],
+    [&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;],
+    [&#147;ham&#148;, &#147;chicken&#148;],
+);
+$array[3] = [&#147;chicken noodle&#148;, &#147;chili&#148;];
+print $array[3][0];
+
+<I>chicken noodle</I>
+</PRE>
+<!-- END CODE //-->
+<P>Or, if you prefer, you can push elements into a preexisting row like this:
+</P>
+<!-- CODE //-->
+<PRE>
+@array = (
+    [&#147;apples&#148;, &#147;oranges&#148;],
+    [&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;],
+    [&#147;ham&#148;, &#147;chicken&#148;],
+);
+push @{$array[0]}, &#147;banana&#148;;
+print $array[0][2];
+
+<I>banana</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading6"></A><FONT COLOR="#000077">Accessing Arrays Of Arrays</FONT></H4>
+<P>You can access an array of arrays element by element:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+for $outerloop (0..4) {
+    for $innerloop (0..4) {
+        $array[$outerloop][$innerloop] = 1;
+    }
+}
+print $array[0][0];
+
+<I>1</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Or you can use some of the one-dimensional array handling power of Perl to make things a little easier as in this example, which you saw at the beginning of the chapter, in which you used <B>join</B> to make strings from the rows in the array:</P>
+<!-- CODE //-->
+<PRE>
+@array = (
+    [&#147;apples&#148;, &#147;oranges&#148;],
+    [&#147;asparagus&#148;, &#147;corn&#148;, &#147;peas&#148;],
+    [&#147;ham&#148;, &#147;chicken&#148;],
+);
+for $arrayref (@array) {
+    print join (&#147;, &#148;, @{$arrayref}), &#147;\n&#148;;
+}
+
+<I>apples, oranges
+asparagus, corn, peas
+ham, chicken</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading7"></A><FONT COLOR="#000077">Declaring Hashes Of Hashes</FONT></H4>
+<P>You use hashes of hashes when you have a text-oriented, multilevel information system, like an expert system. In these cases, you use text strings to key into the successive levels of the data structure. To create a hash of hashes all at once, you can use this kind of declaration:
+</P>
+<!-- CODE //-->
+<PRE>
+%hash = (
+       fruits =&gt {
+               favorite =&gt &#147;apples&#148;,
+               &#145;second favorite&#146; =&gt &#147;oranges&#148;,
+       },
+       vegetables =&gt {
+               favorite =&gt &#147;corn&#148;,
+               &#145;second favorite&#146; =&gt &#147;peas&#148;,
+               &#145;least favorite&#146; =&gt &#147;turnip&#148;,
+       },
+       meats =&gt {
+               favorite      =&gt &#147;chicken&#148;,
+               &#145;second favorite&#146; =&gt &#147;beef&#148;,
+       },
+);
+print $hash{fruits}{favorite};
+
+<I>apples</I>
+</PRE>
+<!-- END CODE //-->
+<P>Note that you&#146;re assigning a key/value list to a hash, in which the values themselves are hashes.
+</P>
+<H4 ALIGN="LEFT"><A NAME="Heading8"></A><FONT COLOR="#000077">Creating Hashes Of Hashes On The Fly</FONT></H4>
+<P>To create a hash of hashes piece by piece, you can always add more hashes under different keys like this:
+</P>
+<!-- CODE //-->
+<PRE>
+$hash{fruits} = {
+    favorite =&gt &#147;apples&#148;,
+    &#145;second favorite&#146; =&gt &#147;oranges&#148;,
+};
+$hash{vegetables} = {
+    favorite =&gt &#147;corn&#148;,
+    &#145;second favorite&#146; =&gt &#147;peas&#148;,
+    &#145;least favorite&#146; =&gt &#147;turnip&#148;,
+};
+$hash{meats} =  {
+    favorite      =&gt &#147;chicken&#148;,
+    &#145;second favorite&#146; =&gt &#147;beef&#148;,
+};
+print $hash{fruits}{favorite};
+
+<I>apples</I>
+</PRE>
+<!-- END CODE //-->
+<P>Here&#146;s how to create hashes using the anonymous hash composer, <B>{ }</B>, and a list of key/value pairs returned by a subroutine:</P>
+<!-- CODE //-->
+<PRE>
+for $key (&#147;hash1&#148;, &#147;hash2&#148;, &#147;hash3&#148; ) {
+    $hash{$key} = {&ampreturnlist};
+}
+sub returnlist
+{
+    return (key1 =&gt value1, key2 =&gt value2);
+}
+print $hash{hash1}{key2};
+
+<I>value2</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading9"></A><FONT COLOR="#000077">Accessing Hashes Of Hashes</FONT></H4>
+<P>To access values in a hash of hashes, you can explicitly reference them like this:
+</P>
+<!-- CODE //-->
+<PRE>
+%hash = (
+       fruits =&gt {
+               favorite =&gt &#147;apples&#148;,
+               &#145;second favorite&#146; =&gt &#147;oranges&#148;,
+       },
+       vegetables =&gt {
+               favorite =&gt &#147;corn&#148;,
+               &#145;second favorite&#146; =&gt &#147;peas&#148;,
+               &#145;least favorite&#146; =&gt &#147;turnip&#148;,
+       },
+);
+print $hash{fruits}{&#145;second favorite&#146;};
+
+<I>oranges</I>
+</PRE>
+<!-- END CODE //-->
+<P>Using standard techniques for handling hashes, here&#146;s how to loop over all the elements in a hash of hashes:
+</P>
+<!-- CODE //-->
+<PRE>
+%hash = (
+       fruits =&gt {
+               favorite =&gt &#147;apples&#148;,
+               &#145;second favorite&#146; =&gt &#147;oranges&#148;,
+       },
+       vegs =&gt {
+               favorite =&gt &#147;corn&#148;,
+               &#145;second favorite&#146; =&gt &#147;peas&#148;,
+       },
+);
+for $food (keys %hash) {
+    print &#147;$food\t {&#148;;
+    for $key (keys %{$hash{$food}}) {
+        print &#147;&#145;$key&#146; =&gt &#145;$hash{$food}{$key}&#146;&#148;;
+    }
+    print &#147;}\n&#148;;
+}
+
+<I>vegs   {&#145;favorite&#146; =&gt &#145;corn&#146;&#145;second favorite&#146; =&gt &#145;peas&#146;}</I>
+<I>fruits {&#145;favorite&#146; =&gt &#145;apples&#146;&#145;second favorite&#146; =&gt &#145;oranges&#146;}</I>
+</PRE>
+<!-- END CODE //-->
+<P>To sort the primary hashes, you can use an expression like this:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$food (sort keys %hash):
+
+<I>fruits {&#145;favorite&#146; =&gt &#145;apples&#146;&#145;second favorite&#146; =&gt &#145;oranges&#146;}</I>
+<I>vegs   {&#145;favorite&#146; =&gt &#145;corn&#146;&#145;second favorite&#146; =&gt &#145;peas&#146;}</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading10"></A><FONT COLOR="#000077">Declaring Arrays Of Hashes</FONT></H4>
+<P>You use an array of hashes when you want to index text-keyed records numerically. (We&#146;ll see an example of this in the last topic in the chapter when we create a ring buffer.) Here&#146;s how to create an array of hashes all at once with a declaration:
+</P>
+<!-- CODE //-->
+<PRE>
+@array = (
+    {
+        favorite =&gt &#147;apples&#148;,
+        &#145;second favorite&#146; =&gt &#147;oranges&#148;,
+    },
+    {
+        favorite =&gt &#147;corn&#148;,
+        &#145;second favorite&#146; =&gt &#147;peas&#148;,
+        &#145;least favorite&#146; =&gt &#147;turnip&#148;,
+    },
+    {
+        favorite      =&gt &#147;chicken&#148;,
+        &#145;second favorite&#146; =&gt &#147;beef&#148;,
+    },
+);
+print $array[0]{favorite};
+
+<I>apples</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading11"></A><FONT COLOR="#000077">Creating Arrays Of Hashes On The Fly</FONT></H4>
+<P>You can create an array of hashes piece by piece by assigning hashes to array elements:
+</P>
+<!-- CODE //-->
+<PRE>
+$array[0] = {favorite =&gt &#147;apples&#148;, &#145;second favorite&#146;
+    =&gt &#147;oranges&#148;};
+$array[1] = {favorite =&gt &#147;corn&#148;, &#145;second favorite&#146;
+    =&gt &#147;peas&#148;, &#145;least favorite&#146; =&gt &#147;turnip&#148;};
+$array[2] = {favorite =&gt &#147;chicken&#148;, &#145;second favorite&#146;
+    =&gt &#147;beef&#148;};
+print $array[0]{favorite};
+
+<I>apples</I>
+</PRE>
+<!-- END CODE //-->
+<P>As with any array, you can also use <B>push</B>:</P>
+<!-- CODE //-->
+<PRE>
+push @array, {favorite =&gt &#147;apples&#148;, &#145;second favorite&#146;
+    =&gt &#147;oranges&#148;};
+push @array, {favorite =&gt &#147;corn&#148;, &#145;second favorite&#146;
+    =&gt &#147;peas&#148;, &#145;least favorite&#146; =&gt &#147;turnip&#148;};
+push @array, {favorite =&gt &#147;chicken&#148;, &#145;second favorite&#146;
+    =&gt &#147;beef&#148;};
+print $array[0]{favorite};
+
+<I>apples</I>
+</PRE>
+<!-- END CODE //-->
+<P>Here&#146;s an example in which we read key/value data and split it into an array of hashes:
+</P>
+<!-- CODE //-->
+<PRE>
+$data[0] = &#147;favorite:apples,second favorite:oranges&#148;;
+$data[1] = &#147;favorite:apples,second favorite:oranges,
+    least favorite=turnips&#148;;
+$data[2] = &#147;favorite:chicken,second favorite:beef&#148;;
+for $loopindex (0..$#data) {
+    for $element (split &#145;,&#146;, $data[$loopindex]) {
+        ($key, $value) = split &#145;:&#146;, $element;
+        $array[$loopindex]{$key} = $value;
+    }
+}
+print $array[0]{&#145;second favorite&#146;};
+
+<I>oranges</I>
+</PRE>
+<!-- END CODE //-->
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="14-01.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="14-03.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

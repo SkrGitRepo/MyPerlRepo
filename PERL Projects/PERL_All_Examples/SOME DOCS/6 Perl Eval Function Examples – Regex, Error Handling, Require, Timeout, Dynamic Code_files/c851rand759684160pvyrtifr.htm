@@ -1,0 +1,59 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body leftmargin="0" topmargin="0" style="background-color: transparent; width: 100%; text-align: center;" marginheight="0" marginwidth="0">
+<div><div><img src="c851rand759684160pvyrtifr_data/getuid.gif" height="1" width="1"></div><img src="c851rand759684160pvyrtifr_data/tpcna_id.gif" height="1" width="1"><div><iframe src="c851rand759684160pvyrtifr_data/a.gif" frameborder="0" height="1" scrolling="no" width="1"></iframe></div><img src="c851rand759684160pvyrtifr_data/50392011bb2e555a170ec2a9426c9331.gif" height="1" width="1"><iframe id="asmp" name="asmp" src="c851rand759684160pvyrtifr_data/a.htm" frameborder="0" height="1" scrolling="no" width="1"></iframe><img src="c851rand759684160pvyrtifr_data/set_partner_uid.gif" height="1" width="1"><div><iframe src="c851rand759684160pvyrtifr_data/pixel.gif" frameborder="0" height="1" scrolling="no" width="1"></iframe></div><script id="LOTCC_368" src="c851rand759684160pvyrtifr_data/cc_002.js"></script>
+<script id="LOTCC_796" src="c851rand759684160pvyrtifr_data/cc.js"></script>
+<script>
+function processTargusData(json)
+{
+   if (json != null) {
+	   if (json.targus != null) {
+			var fireIt = false;
+		    if (json.targus.segment != null && json.targus.segment != "000") {
+				lot368.add("genp","tiaas-" + json.targus.segment);
+				fireIt = true;
+			}
+			if (json.targus.age != null && json.targus.age != "") {
+				lot368.add("age", new Date().getFullYear() - json.targus.age);
+				fireIt = true;
+			}
+			if (json.targus.gender != null && json.targus.gender != "") {
+				lot368.add("gen", json.targus.gender);
+				fireIt = true;
+			}
+if (json.targus.sk != null && json.targus.sk != "") {
+				lot368.add("tp", "TARG");
+				lot368.add("tpid", json.targus.sk);
+				fireIt = true;
+			}
+
+			if (fireIt) {
+			    // hack around page view tracking 
+				lot368.bcpdpv();	
+			}
+		}
+		if (json.Client1 != null) {
+			var fireIt = false;
+		    if (json.Client1.segment != null && json.Client1.segment != "000") {
+		    	if (json.Client1.segment instanceof Array) {
+		    		for(var i =0; i < json.Client1.segment.length; i++) {
+		    			lot796.add("genp","tialnt-" + json.Client1.segment[i]);	
+		    			fireIt = true;
+		    		}		    		
+		    	} else {
+					lot796.add("genp","tialnt-" + json.Client1.segment);
+					fireIt = true;
+				}				
+			}
+
+			if (fireIt) {
+				// hack around page view tracking 
+				lot796.bcpdpv();	
+			}	
+		}		
+   }   
+
+}
+</script>
+<script src="c851rand759684160pvyrtifr_data/g.json"></script><iframe src="c851rand759684160pvyrtifr_data/px.htm" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+</body></html>

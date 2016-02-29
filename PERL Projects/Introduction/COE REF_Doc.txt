@@ -1,0 +1,10 @@
+Setting UP Perl Environment:
+---------------------------
+http://www.tutorialspoint.com/perl/perl_environment.htm
+Perl Data Types:
+http://www.tutorialspoint.com/perl/perl_data_types.htm
+Perl Oerators :
+http://www.tutorialspoint.com/perl/perl_operators.htm
+PERL Variable SCOPING:
+http://www.opengurukul.com/vlc/mod/page/view.php?id=2814
+http://stackoverflow.com/questions/19100106/local-and-global-variables-in-perl

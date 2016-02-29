@@ -1,0 +1,693 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Regular Expressions</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=06//-->
+<!--PAGES=135-140//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="06-02.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="06-04.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<H4 ALIGN="LEFT"><A NAME="Heading9"></A><FONT COLOR="#000077">Using Assertions In Regular Expressions</FONT></H4>
+<P>You can use assertions to match certain conditions in a string. These are the assertions&#151;note that they&#146;re zero width (that is, they don&#146;t extend the length of the matched string):
+</P>
+<DL>
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>^</B>&#151;Match the beginning of the line.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>$</B>&#151;Match the end of the line (or before newline at the end).
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\b</B>&#151;Match a word boundary.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\B</B>&#151;Match a non-word boundary.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\A</B>&#151;Match only at beginning of string.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\Z</B>&#151;Match only at end of string, or before newline at the end.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\z</B>&#151;Match only at end of string.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>\G</B>&#151;Match only where previous <B>m//g</B> left off (works only with <B>/g</B>).
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?= <I>EXPR</I>)</B>&#151;Matches if <I><B>EXPR</B></I> would match next.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?! <I>EXPR</I>)</B>&#151;Matches if <B><I>EXPR</I></B> wouldn&#146;t match next.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?&lt=<I>EXPR</I>)</B>&#151;Matches if <B><I>EXPR</I></B> would match previously.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?&lt!<I>EXPR</I>)</B>&#151;Matches if <B><I>EXPR</I></B> wouldn&#146;t match previously.
+</DL>
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>For more information on the assertions that begin with a <B>?</B>, like <B>(?= EXPR)</B>, see &#147;Using Regular Expression Extensions&#148; later in this chapter.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>For example, here&#146;s how we match a word using word boundaries:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Here is some text.&#148;;
+$text =~ s/\b([A-Za-z]&#43;)\b/There/;
+print $text;
+
+<I>Here is some text.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Here&#146;s an example where we print a message if the user has typed &#147;yes&#148;&#151;and only &#147;yes&#148;&#151;on a line by matching the beginning and end of the line:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+while(&lt&gt) {
+    if(m/^(yes)$/) {print &#147;Thank you for being agreeable.&#148;}
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading10"></A><FONT COLOR="#000077">Using Regular Expression Backreferences To Refer To Previous Matches</FONT></H4>
+<P>Sometimes it&#146;s valuable to be able to refer to a previous match in the same regular expression. For example, say you want to work with HTML and need to make sure you&#146;re matching text from an opening tag to the corresponding closing tag, such as <B>&ltA&gt</B> to <B>&lt/A&gt</B>. You can refer to previous matches in the same pattern by number with a backslash (for example, <B>\1</B>, <B>\2</B>, <B>\3</B>, and so on). Here&#146;s code that puts that to work matching both <B>&ltA&gt</B> and <B>&ltIMG&gt</B> tags, which we saw at the beginning of this chapter:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;&ltA&gtHere is an anchor.&lt/A&gt&#148;;
+if ($text =~ /&lt([IMG|A])&gt[\w\s\.]&#43;&lt\/\1&gt/i)
+    {print &#147;Found an image or anchor tag.&#148;;}
+
+<I>Found an image or anchor tag.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can also designate a match for later reference by enclosing its subpattern in parentheses (called the <I>grouping</I> or <I>bracketing</I> operator). You can then refer to that match outside the pattern by number prefaced with <B>$</B> (for example, <B>$1</B>, <B>$2</B>, <B>$3</B>, and so on). Here&#146;s an example of a reference to a match using <B>$1</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;I have 4 apples.&#148;;
+if ($text =~ /(\d&#43;)/) {print &#147;Here&#146;s the number of apples: $1.\n&#148;;}
+
+<I>Here&#146;s the number of apples: 4.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Here&#146;s another example in which we reverse the order of three words in a text string using <B>s///</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;I see you&#148;;
+$text =~ s/^(\w&#43;) *(\w&#43;) *(\w&#43;)/$3 $2 $1/;
+print $text;
+
+<I>you see I</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>Note that besides backreferences, you can also use the Perl special variables <B>$&amp</B>, which refers to the previous match; <B>&amp&#146;</B>, which refers to the string behind the previous match; and <B>&amp&#146;</B>, which refers to the string ahead of the previous match.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<H4 ALIGN="LEFT"><A NAME="Heading11"></A><FONT COLOR="#000077">Using Regular Expression Extensions</FONT></H4>
+<P>Perl has an extension syntax for regular expressions that uses parentheses with a question mark. These extensions are already defined:
+</P>
+<DL>
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?#text)</B>&#151;A comment. The text in this expression is ignored.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?:pattern)</B> or <B>(?imsx-imsx:pattern)</B>&#151;Groups subexpressions as with <B>(</B> and <B>)</B>, but doesn&#146;t make backreferences as <B>(</B> and <B>)</B> would.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?=<I>EXPR</I>)</B>&#151;Positive look-ahead assertion, matches if <I><B>EXPR</B></I> would match next.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?!<I>EXPR</I>)</B>&#151;Negative look-ahead assertion, matches if <B><I>EXPR</I></B> wouldn&#146;t match next.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?&lt=<I>EXPR</I>)</B>&#151;Positive look-behind assertion, matches if <I><B>EXPR</B></I> would match previously.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?&lt!<I>EXPR</I>)</B>&#151;Negative look-behind assertion, matches if <B><I>EXPR</I></B> wouldn&#146;t match previously.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?{ <I>code</I> })</B>&#151;Evaluates Perl code zero-width assertion. Only available when the <B>use re &#145;eval&#146;</B> pragma is used.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?<I>gtpattern</I>)</B>&#151;Matches the substring that a standalone pattern would match if anchored at the given position.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?(<I>condition</I>)yes-pattern|no-pattern)</B> or <B>(?(<I>condition</I>)yes-pattern)</B>&#151;Conditional expression.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>(?<I>imsx</I>-<I>imsx</I>)</B>&#151;Specifies one or more embedded pattern-match modifiers.
+</DL>
+<P>See the topic &#147;Using Assertions To Look Ahead And Behind&#148; at the end of this chapter for examples of working with regular expression extensions.
+</P>
+<H4 ALIGN="LEFT"><A NAME="Heading12"></A><FONT COLOR="#000077">Using Modifiers With m// And s///</FONT></H4>
+<P>Perl supports a number of modifiers that can be used with <B>m//</B> and <B>s///</B>:</P>
+<DL>
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>i</B>&#151;Ignore alphabetic case.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>x</B>&#151;Ignore white space in pattern and allow comments.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>g</B>&#151;Globally perform all possible operations.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>gc</B>&#151;Don&#146;t reset search position after a failed match.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>s</B>&#151;Let <B>.</B> character match newlines.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>m</B>&#151;Let <B>^</B> and <B>$</B> match embedded <B>\n</B> characters.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>o</B>&#151;Compile the pattern only once.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>e</B>&#151;Indicates that right-hand side of a <B>s///</B> is code to evaluate.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>ee</B>&#151;Indicates that right-hand side of a <B>s///</B> is a string to evaluate and run as code, then evaluate its return value again.
+</DL>
+<P>Here&#146;s an example that uses the <B>g</B> modifier with <B>m//</B> to search for all the occurrences of &#147;x&#148; in a string:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Here is the texxxxxt.&#148;;
+while ($text =~ m/x/g) {print &#147;Found another x.\n&#148;;}
+
+<I>Found another x.</I>
+<I>Found another x.</I>
+<I>Found another x.</I>
+<I>Found another x.</I>
+<I>Found another x.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>In this example the user is allowed to end a program by typing &#147;Stop&#148;, &#147;stop&#148;, &#147;STOP&#148;, &#147;StOp&#148;, and so on in a case-insensitive way:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+while(&lt&gt) {
+    if(m/^stop$/i) {exit;}
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading13"></A><FONT COLOR="#000077">Translating Strings With tr///</FONT></H4>
+<P>Besides the <B>m//</B> and <B>s///</B> operators, you can also manipulate strings with the <B>tr///</B> operator, which is also called <B>y///</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+tr/<I>LIST</I>/<I>LIST</I>/
+y/<I>LIST</I>/<I>LIST</I>/
+</PRE>
+<!-- END CODE SNIP //-->
+<P>This operator is used to make text translations, replacing all the characters found in the first list with the corresponding character in the second list, as in this case that replaces all the &#147;i&#148;s in a string with &#147;o&#148;s:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;My name&#146;s Tim.&#148;;
+$text =~ tr/i/o/;
+print $text;
+
+<I>My name&#146;s Tom.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Like <B>m//</B> and <B>s///</B>, <B>tr///</B> works on <B>$_</B> by default:</P>
+<!-- CODE SNIP //-->
+<PRE>
+while (&lt&gt) {
+    tr/i/o/;
+    print;
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can also specify ranges of characters to work on, as in this example that converts a string to uppercase:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Here is the text.&#148;;
+$text =~ tr/a-z/A-Z/;
+print $text;
+
+<I>HERE IS THE TEXT.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The <B>tr///</B> operator returns the number of translations, which means you sometimes see code like this that counts the number of &#147;x&#148;s in <B>$_</B> without affecting that string:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Here is the text.&#148;;
+$xcount = ($text =~ tr/x/x/);
+print $xcount;
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading14"></A><FONT COLOR="#000077">Using Modifiers With tr///</FONT></H4>
+<P>Perl supports a number of modifiers you can use with <B>tr///</B>:</P>
+<DL>
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>c</B>&#151;Complement the search list.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>d</B>&#151;Delete unreplaced characters.
+<DD><B>&#149;</B>&nbsp;&nbsp;<B>s</B>&#151;Delete duplicate replaced characters.
+</DL>
+<H4 ALIGN="LEFT"><A NAME="Heading15"></A><FONT COLOR="#000077">Matching Words</FONT></H4>
+<P>You can match a word by using <B>\S</B>, which matches nonwhite-space characters:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Now is the time.&#148;;
+$text =~ /(\S&#43;)/;
+print $1;
+
+<I>Now</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Notice, however, that <B>\S</B> can match all kinds of nonalphanumeric characters, which you can avoid if you use <B>\w</B>, which matches alphanumeric characters and &#147;_&#148;:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Now is the time.&#148;;
+$text =~ /(\w&#43;)/;
+print $1;
+
+<I>Now</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>If you want to include only letters in the words you match, use a character class:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Now is the time.&#148;;
+$text =~ /([A-Za-z]&#43;)/;
+print $1;
+
+<I>Now</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>A safer technique is to also match word boundaries, as in this example with <B>\b</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+$text = &#147;Now is the time.&#148;;
+$text =~ /(\b[A-Za-z]&#43;\b)/;
+print $1;
+
+<I>Now</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="06-02.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="06-04.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

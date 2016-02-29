@@ -1,0 +1,26 @@
+#!/usr/local/bin/perl -w
+
+my @a1 = (10, 20, 30, 40);
+my @a2 = (50, 60, 70);
+
+sub1(@a1, @a2);
+sub2(\@a1, \@a2);
+
+print "a2: ", join(', ', @a2), "\n";
+
+sub sub1 {
+  my(@a1, @a2) = @_;
+
+  print "a1 has " . @a1 . " elements\n";
+  print "a2 has " . @a2 . " elements\n";
+}
+
+sub sub2 {
+  my($ra1, $ra2) = @_;
+
+  print "ra1 has " . @$ra1 . " elements\n";
+  print "ra2 has " . @$ra2 . " elements\n";
+  print "ra1->[0]: $ra1->[0]\n";
+  print "ra2->[0]: $ra2->[0]\n";
+  push @$ra2, 80;
+}

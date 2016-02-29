@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html id="ctl00_Html1" __expr-val-dir="ltr" dir="ltr">
+<head id="ctl00_Head1"><meta name="GENERATOR" content="Microsoft SharePoint" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="Expires" content="0" /> 
+
+<meta name="description" content="" />
+<meta name="keywords" content="" /><title>
+	
+	Sparebanken Narvik
+
+</title><link rel="stylesheet" type="text/css" href="/_layouts/1044/styles/controls.css?rev=c8EsJkRSPLEuYK0KHj0nVg%3D%3D"/>
+<link rel="stylesheet" type="text/css" href="/Style%20Library/en-us/Core%20Styles/PageLayouts.css"/>
+<link rel="stylesheet" type="text/css" href="/_layouts/1044/styles/core.css?rev=tKW2ldNGmae%2BG7QVPPZ%2Btg%3D%3D"/>
+<link rel="stylesheet" type="text/css" href="/_layouts/1044/styles/TerraBank/color/blue.css"/>
+<link rel="stylesheet" type="text/css" href="/Style%20Library/terrabank_blue.css" />
+	<!--Styles used for positioning, font and spacing definitions-->
+	
+	
+	<script src="/_layouts/1044/init.js?rev=kIEhQsfqFE%2FIkKfKZBZgiQ%3D%3D"></script>
+<script type="text/javascript" language="javascript" src="/_layouts/1044/non_ie.js?rev=yfNry4hY0Gwa%2FPDNGrqXVg%3D%3D"></script>
+
+	
+	<!--Placeholder for additional overrides-->
+	<script type="text/javascript" src="~/_layouts/Terra/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="~/_layouts/Terra/js/jquery.jshowoff.min.js"></script>
+	<script type="text/javascript" src="~/_layouts/Terra/js/jquery.fancybox-1.3.1.pack.js"></script>
+	<script type="text/javascript" src="~/_layouts/Terra/js/jquery.pajinate.js"></script>
+	<script type="text/javascript" src="~/_layouts/Terra/js/validateinput.js"></script>
+	<script type="text/javascript" src="~/_layouts/Terra/js/jcarousellite_1.0.1.min.js"></script>
+	<script type="text/javascript" src="~/_layouts/1044/js/terra-js.js"></script>
+	<!-- Her skal scripter som skal brukes for kampanje element-->
+	
+	<script type="text/javascript" src="~/_layouts/Terra/js/customscripts.js"></script>
+	
+<script type="text/javascript">
+function openNewWindow(url){
+var t=window.open(url,"_blank");return false;
+}
+$(document).ready(function(){
+$('a[rel="dynlink"]').click(function(){
+var url = dynamiclink(this);
+if($(this).attr("target") !="")
+{
+window.open(url);
+}
+else
+{
+window.open(url,"_self");
+}
+return false;
+});
+});
+function dynamiclink(el)
+{
+var l=$(el).attr("href");
+if(l.indexOf('[TerraUrl]')>=0)
+{
+l = l.replace("[TerraUrl]","www.terra.no");
+}
+if(l.indexOf('[BankReg]')>=0)
+{
+l = l.replace("[BankReg]","4520");
+}
+if(l.indexOf('[BankNavn]')>=0)
+{
+l = l.replace("[BankNavn]","sparebankennarvik");
+}
+if(l.indexOf('[BankUrl]')>=0)
+{
+l = l.replace("[BankUrl]","http://www.sparebankennarvik.no");
+}
+return l;}
+function dynamiclinkbuttonlink(el)
+{
+if(el.indexOf('[TerraUrl]')>=0)
+{
+el = el.replace("[TerraUrl]","www.terra.no");
+}
+if(el.indexOf('[BankReg]')>=0)
+{
+el = el.replace("[BankReg]","4520");
+}
+if(el.indexOf('[BankNavn]')>=0)
+{
+el = el.replace("[BankNavn]","sparebankennarvik");
+}
+if(el.indexOf('[BankUrl]')>=0)
+{
+el = el.replace("[BankUrl]","http://www.sparebankennarvik.no");
+}
+return el;
+}
+</script>
+<link rel="stylesheet" href="../_layouts/Terra/css/jquery.fancybox-1.3.1.css" media="screen" />
+
+    <!-- Tilbakemelding -->
+    <style type='text/css'>@import url('http://tilbakemeldingen.no/arkiv/Source/css/terra.css');</style>
+    <script src='http://tilbakemeldingen.no/arkiv/Source/js/terra.js' type='text/javascript'></script>
+  
+	
+    <link REL="SHORTCUT ICON" HREF="http://www.sparebankennarvik.no/SiteCollectionImages/Favicon/Narvik.ico" />
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7041614-1']);
+  _gaq.push(['_setDomainName', 'sparebankennarvik.no']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+	<style type="text/css">
+		.ms-pagetitleareaframe table, .ms-titleareaframe
+		{
+			background: none;
+			height: 10px;
+			overflow:hidden;
+		}
+		.ms-pagetitle, .ms-titlearea
+		{
+			display:none;
+		}
+	</style>
+	
+
+<!-- Adform Tracking Code BEGIN -->
+<!-- Point: "Forside (Landing Page)" -->
+<!-- URL: www.lillestrombanken.no -->
+
+<!-- Adform Tracking Code END --></head>
+<body onload="javascript:_spBodyOnLoadWrapper();">
+    
+	
+	<form name="aspnetForm" method="post" action="Forside.aspx" id="aspnetForm">
+<input type="hidden" name="__SPSCEditMenu" id="__SPSCEditMenu" value="true" />
+<input type="hidden" name="MSOWebPartPage_PostbackSource" id="MSOWebPartPage_PostbackSource" value="" />
+<input type="hidden" name="MSOTlPn_SelectedWpId" id="MSOTlPn_SelectedWpId" value="" />
+<input type="hidden" name="MSOTlPn_View" id="MSOTlPn_View" value="0" />
+<input type="hidden" name="MSOTlPn_ShowSettings" id="MSOTlPn_ShowSettings" value="False" />
+<input type="hidden" name="MSOGallery_SelectedLibrary" id="MSOGallery_SelectedLibrary" value="" />
+<input type="hidden" name="MSOGallery_FilterString" id="MSOGallery_FilterString" value="" />
+<input type="hidden" name="MSOTlPn_Button" id="MSOTlPn_Button" value="none" />
+<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0" />
+<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0" />
+<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value="0x2390F51452A2E1E1818656DB02AB4B77DA3ACCF3198CAC5A19A811B2622C340F2F2D9F5D851A6F3A9290C2E85CB78061BB4B530EB909A8B81DD2E81F93DB3847,12 Oct 2012 09:28:02 -0000" />
+<input type="hidden" name="MSOAuthoringConsole_FormContext" id="MSOAuthoringConsole_FormContext" value="" />
+<input type="hidden" name="MSOAC_EditDuringWorkflow" id="MSOAC_EditDuringWorkflow" value="" />
+<input type="hidden" name="MSOSPWebPartManager_DisplayModeName" id="MSOSPWebPartManager_DisplayModeName" value="Browse" />
+<input type="hidden" name="MSOWebPartPage_Shared" id="MSOWebPartPage_Shared" value="" />
+<input type="hidden" name="MSOLayout_LayoutChanges" id="MSOLayout_LayoutChanges" value="" />
+<input type="hidden" name="MSOLayout_InDesignMode" id="MSOLayout_InDesignMode" value="" />
+<input type="hidden" name="MSOSPWebPartManager_OldDisplayModeName" id="MSOSPWebPartManager_OldDisplayModeName" value="Browse" />
+<input type="hidden" name="MSOSPWebPartManager_StartWebPartEditingName" id="MSOSPWebPartManager_StartWebPartEditingName" value="false" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMzIyNDQwMTYxD2QWAmYPZBYCAgEPZBYGAgEPZBYEAgYPZBYCZg9kFgICAQ8WAh4TUHJldmlvdXNDb250cm9sTW9kZQspiAFNaWNyb3NvZnQuU2hhcmVQb2ludC5XZWJDb250cm9scy5TUENvbnRyb2xNb2RlLCBNaWNyb3NvZnQuU2hhcmVQb2ludCwgVmVyc2lvbj0xMi4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03MWU5YmNlMTExZTk0MjljAWQCDQ9kFgJmDxYCHgRUZXh0BdgICjxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij4KZnVuY3Rpb24gb3Blbk5ld1dpbmRvdyh1cmwpewp2YXIgdD13aW5kb3cub3Blbih1cmwsIl9ibGFuayIpO3JldHVybiBmYWxzZTsKfQokKGRvY3VtZW50KS5yZWFkeShmdW5jdGlvbigpewokKCdhW3JlbD0iZHlubGluayJdJykuY2xpY2soZnVuY3Rpb24oKXsKdmFyIHVybCA9IGR5bmFtaWNsaW5rKHRoaXMpOwppZigkKHRoaXMpLmF0dHIoInRhcmdldCIpICE9IiIpCnsKd2luZG93Lm9wZW4odXJsKTsKfQplbHNlCnsKd2luZG93Lm9wZW4odXJsLCJfc2VsZiIpOwp9CnJldHVybiBmYWxzZTsKfSk7Cn0pOwpmdW5jdGlvbiBkeW5hbWljbGluayhlbCkKewp2YXIgbD0kKGVsKS5hdHRyKCJocmVmIik7CmlmKGwuaW5kZXhPZignW1RlcnJhVXJsXScpPj0wKQp7CmwgPSBsLnJlcGxhY2UoIltUZXJyYVVybF0iLCJ3d3cudGVycmEubm8iKTsKfQppZihsLmluZGV4T2YoJ1tCYW5rUmVnXScpPj0wKQp7CmwgPSBsLnJlcGxhY2UoIltCYW5rUmVnXSIsIjQ1MjAiKTsKfQppZihsLmluZGV4T2YoJ1tCYW5rTmF2bl0nKT49MCkKewpsID0gbC5yZXBsYWNlKCJbQmFua05hdm5dIiwic3BhcmViYW5rZW5uYXJ2aWsiKTsKfQppZihsLmluZGV4T2YoJ1tCYW5rVXJsXScpPj0wKQp7CmwgPSBsLnJlcGxhY2UoIltCYW5rVXJsXSIsImh0dHA6Ly93d3cuc3BhcmViYW5rZW5uYXJ2aWsubm8iKTsKfQpyZXR1cm4gbDt9CmZ1bmN0aW9uIGR5bmFtaWNsaW5rYnV0dG9ubGluayhlbCkKewppZihlbC5pbmRleE9mKCdbVGVycmFVcmxdJyk+PTApCnsKZWwgPSBlbC5yZXBsYWNlKCJbVGVycmFVcmxdIiwid3d3LnRlcnJhLm5vIik7Cn0KaWYoZWwuaW5kZXhPZignW0JhbmtSZWddJyk+PTApCnsKZWwgPSBlbC5yZXBsYWNlKCJbQmFua1JlZ10iLCI0NTIwIik7Cn0KaWYoZWwuaW5kZXhPZignW0JhbmtOYXZuXScpPj0wKQp7CmVsID0gZWwucmVwbGFjZSgiW0JhbmtOYXZuXSIsInNwYXJlYmFua2VubmFydmlrIik7Cn0KaWYoZWwuaW5kZXhPZignW0JhbmtVcmxdJyk+PTApCnsKZWwgPSBlbC5yZXBsYWNlKCJbQmFua1VybF0iLCJodHRwOi8vd3d3LnNwYXJlYmFua2VubmFydmlrLm5vIik7Cn0KcmV0dXJuIGVsOwp9Cjwvc2NyaXB0PgpkAgUPZBYGBSZnX2UyZTAwMGYzXzZmNTZfNDFiMV85ODI0XzIxNThmOWI2NmQ1ZA8PZGRkBSZnXzhkMTdjMzMyXzk0YWFfNGFhM19iNzVhXzNmYzI5YWExZDdmOA8PZGRkBSZnXzc0YTQ3Y2Q4Xzg5MzJfNDZiMF9hOGJlXzMzZmM2YjllNDY5ZQ8PZGRkAgcPZBYMAgoPPCsADQIADxYCHgtfIURhdGFCb3VuZGdkDBQrAAYFEzA6MCwwOjEsMDoyLDA6MywwOjQUKwACFg4fAQUWU3BhcmluZyBvZyBpbnZlc3RlcmluZx4FVmFsdWUFFlNwYXJpbmcgb2cgaW52ZXN0ZXJpbmceC05hdmlnYXRlVXJsBSgvc3BhcmluZy9TaWRlci9TcGFyaW5nb2dpbnZlc3RlcmluZy5hc3B4HgdFbmFibGVkZx4KU2VsZWN0YWJsZWceCERhdGFQYXRoBQgvc3BhcmluZx4JRGF0YUJvdW5kZ2QUKwACFg4fAQUUTMOlbiBvZyBmaW5hbnNpZXJpbmcfAwUUTMOlbiBvZyBmaW5hbnNpZXJpbmcfBAUlL2ZpbmFuc2llcmluZy9TaWRlci9maW5hbnNpZXJpbmcuYXNweB8FZx8GZx8HBQ0vZmluYW5zaWVyaW5nHwhnZBQrAAIWDh8BBQhCZXRhbGluZx8DBQhCZXRhbGluZx8EBR0vYmV0YWxpbmcvU2lkZXIvQmV0YWxpbmcuYXNweB8FZx8GZx8HBQkvYmV0YWxpbmcfCGdkFCsAAhYOHwEFCkZvcnNpa3JpbmcfAwUKRm9yc2lrcmluZx8EBSEvZm9yc2lrcmluZy9TaWRlci9NZWxsb21zaWRlLmFzcHgfBWcfBmcfBwULL2ZvcnNpa3JpbmcfCGdkFCsAAhYOHwEFB07DpnJpbmcfAwUHTsOmcmluZx8EBRovbmFyaW5nL1NpZGVyL2RlZmF1bHQuYXNweB8FZx8GZx8HBQcvbmFyaW5nHwhnZGQCDg9kFgICAQ9kFgJmDw9kFgIeB29uY2xpY2sFKWphdmFzY3JpcHQ6bG9nb3V0TmV0dEJhbmsoKTtyZXR1cm4gZmFsc2U7ZAISD2QWAgIDD2QWAgIBDw8WAh4HVmlzaWJsZWdkFgQCAQ8PFgIfCmhkFhwCAQ8PFgIfCmhkZAIDDxYCHwpoZAIFDw8WAh8KaGRkAgcPFgIfCmhkAgkPDxYCHwpoZGQCCw8PFgIfCmhkZAINDw8WAh8KaGRkAg8PDxYEHwVoHwpoZGQCEQ8PFgIfCmhkZAITDw8WBB8FaB8KaGRkAhUPDxYCHwpoZGQCFw8WAh8KaGQCGQ8WAh8KaGQCGw8PFgIfCmdkZAIDDw8WAh8KZ2QWBgIBDw8WAh8KZ2RkAgMPDxYGHhhwZXJzaXN0ZWRFcnJvckFjdGlvblRyZWVkHhtwZXJzaXN0ZWRFcnJvckFjdGlvblRyZWVJZHNkHwpnZGQCBQ8PFgIfCmdkZAIUD2QWFAIBD2QWAmYPDxYCHwpoZGQCAw9kFgJmDw8WAh8KaGRkAgUPZBYCZg8PFgIfCmhkZAIHD2QWAmYPDxYCHwpoZGQCCQ9kFgJmDw8WAh8KaGRkAgsPZBYCZg8PFgIfCmhkZAIND2QWAmYPDxYCHwpoZGQCDw9kFgJmDw8WAh8KaGRkAhEPZBYCZg8PFgIfCmhkZAITD2QWBGYPFgIfAAsrBAFkAgIPFgIfAAsrBAFkAhgPZBYCAgEPFgIfCmgWAmYPZBYEAgIPZBYGAgEPFgIfCmhkAgMPFgIfCmhkAgUPFgIfCmhkAgMPDxYCHglBY2Nlc3NLZXkFAS9kZAIaD2QWAgIXD2QWAgIDD2QWAgIBDw8WAh8KZ2QWBAIBDw8WAh8KaGQWHAIBDw8WAh8KaGRkAgMPFgIfCmhkAgUPDxYCHwpoZGQCBw8WAh8KaGQCCQ8PFgIfCmhkZAILDw8WAh8KaGRkAg0PDxYCHwpoZGQCDw8PFgQfBWgfCmhkZAIRDw8WAh8KaGRkAhMPDxYEHwVoHwpoZGQCFQ8PFgIfCmhkZAIXDxYCHwpoZAIZDxYCHwpoZAIbDw8WAh8KZ2RkAgMPDxYCHwpnZBYGAgEPDxYCHwpnZGQCAw8PFgIfCmdkZAIFDw8WAh8KZ2RkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBTBjdGwwMCRMb2dJbkNvbnRlbnRQbGFjZUhvbGRlciRjdGwwMCRsb2dvdXRidXR0b27zPYt+qWVzepnOcD6yfTFSdCXOzw==" />
+
+<script> var MSOWebPartPageFormName = 'aspnetForm';</script>
+<script type="text/javascript">
+//<![CDATA[
+
+                function DoCallBack(filterText)
+                {
+                    WebForm_DoCallback('ctl00$SPWebPartManager1$g_e2e000f3_6f56_41b1_9824_2158f9b66d5d',filterText,UpdateFilterCallback,0,CallBackError,true);
+                }
+                function CallBackError(result, clientsideString)
+                {                
+                }
+            //]]>
+</script>
+
+<script src="/WebResource.axd?d=uU9CMJjAt7wL-KfvICuGfq-mc9e6U2EkBOwKGy3mH0mU1e4xT-pGW8ichm76Csmtdpi2czSM59yp2VWVrwSKIbFQci41&amp;t=634605546709717464" type="text/javascript"></script>
+	<div id="page">	
+		
+		<div id="pagetop">
+			<!--Company Logo linking back to the Home page-->
+			<div id="logo_menu">
+			<div style="height:75px;">
+				<div id="logo">
+					<a href="http://www.sparebankennarvik.no"><img src="/SiteCollectionImages/Sparebanken Narvik/Ny forside/sn_logo3_nyforside jpg.jpg" alt="" /></a>
+					
+					
+
+					<!--End of Logo area-->
+				</div><!--logo-->
+				
+				
+
+<div id="contact_about_search">	
+ <div id="contact_about">
+	<ul>
+	    <li id="first">
+		<a href="/omoss" title="Om oss">Om oss</a>
+	     </li>
+	     <li>
+		<a href="/omoss/kontaktoss" title="Kontakt oss">Kontakt oss</a>
+	     </li>
+        </ul>
+ </div>
+					
+ <span id="search">
+	<input name="k" value="" accesskey="s" maxlength="200" title="Skriv inn s&oslash;keord" type="text" id="terra-search-query" onkeydown="return submitTerraBankSearchOnEnter(event);" />
+       
+        <input class ="btnsearch" type="button" onclick="return submitTerraBankSearch();return false;" value="S&oslash;k" />
+</span>
+</div>								
+				
+				<!-- End of Search -->
+			</div>
+				
+				<div id="menu">
+					<!-- Horizontal Top Navigation Bar -->
+					<a href="#zz1_GlobalNav_SkipLink"><img alt="Dropp navigasjonskoblinger" src="/WebResource.axd?d=PKMc5WW4ekK5Izui1QFA_8VYv14DmEQVpp0cVa1xZPO4k5HKfKwiTmhLqblew_W-5VamNaPXcKnp2XIonKH_6DvXDRY1&amp;t=634605546709717464" width="0" height="0" border="0" /></a><table id="zz1_GlobalNav" class="topNav" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(event)" id="zz1_GlobalNavn0"><table class="topNavItem" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"><a class="topNavItem" href="/sparing/Sider/Sparingoginvestering.aspx">Sparing og investering</a></td>
+			</tr>
+		</table></td><td width="0"></td><td width="0"></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(event)" id="zz1_GlobalNavn1"><table class="topNavItem" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"><a class="topNavItem" href="/finansiering/Sider/finansiering.aspx">Lån og finansiering</a></td>
+			</tr>
+		</table></td><td width="0"></td><td width="0"></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(event)" id="zz1_GlobalNavn2"><table class="topNavItem" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"><a class="topNavItem" href="/betaling/Sider/Betaling.aspx">Betaling</a></td>
+			</tr>
+		</table></td><td width="0"></td><td width="0"></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(event)" id="zz1_GlobalNavn3"><table class="topNavItem" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"><a class="topNavItem" href="/forsikring/Sider/Mellomside.aspx">Forsikring</a></td>
+			</tr>
+		</table></td><td width="0"></td><td width="0"></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(event)" id="zz1_GlobalNavn4"><table class="topNavItem" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td nowrap="nowrap"><a class="topNavItem" href="/naring/Sider/default.aspx">Næring</a></td>
+			</tr>
+		</table></td><td width="0"></td>
+	</tr>
+</table><a id="zz1_GlobalNav_SkipLink"></a>
+					
+					<!--End of Horizontal Top Navigation Bar-->
+				</div>	
+			</div><!--logo_menu-->
+			<!-- Nettbank-->
+			
+			    
+   <div id="netbank">
+				<div class="terra-top-right-header" style="">Nettbank</div>
+			    <div class="terra-top-right-content">
+					<div class="frontpage-nettbank-content-left">
+					    <input type="hidden" name="n_bank" value="4520"><input type="hidden" name="cid" value=""><input class="terra-frontpage-nettbank-login-click-button btn" type="button" onclick="javascript:loginNettBank()" value="Logg inn" /><div id="nettbank_links">
+                        <ul><li><a href="/Sider/KravtilNettbank.aspx" title="Krav til nettbanken">Krav til 
+							nettbank</a></li><li><a href="/betaling/nettbank/hjelpmednettbank/Sider/hjelpmednettbank.aspx" title="Hjelp">Hjelp</a><span>(+47 
+							915)03850</span></li></ul>
+                        
+                        </div>
+                        
+                    </div>
+
+			    </div>
+
+			    </div>
+			
+			
+			    <!-- End nettbank-->
+	</div><!--pagetop-->
+	
+
+            	<div class="console">
+							
+<!-- Console -->
+<span id="ctl00_ctl07_publishingContext1"></span>
+
+<!-- Console -->
+
+				</div>
+
+	
+	<div id="pagecontent">
+	
+	<!--Page Content-->
+	
+	<div id="firstrow">
+	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ10" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="d3a86508-edbe-4f12-9daa-a67d7a1c2ebc" HasPers="false" id="WebPartWPQ10" width="100%" class="ms-WPBody" allowDelete="false" style="" ><div id="ctl00_SPWebPartManager1_g_d3a86508_edbe_4f12_9daa_a67d7a1c2ebc">
+
+				</div><div id="redbanner-container"><div id="redbanner" style="background-image: url('/SiteCollectionImages/Sparebanken Narvik/Ny forside/Redaksjonelle bannere/nytt telefonsystem.jpg');"><div id="redbanner-leftside"><h3>Nye telefonnummer!</h3><p>Vi bytter telefonsystem, og i den forbindelse får alle ansatte nye direktenummer. Hovednummeret til banken er fortsatt 769 11 100</p><input type="button" class="btn" value="Finn nytt direktenummer her" onclick="javascript:window.open('http://www.sparebankennarvik.no/omoss/kontaktoss/r%C3%A5dgiverenarvik/Sider/R%C3%A5dgivereNarvik.aspx','_self') "/></div><div id="redbanner-rightside"><p></p></div></div></div></div></td>
+			</tr>
+		</table><div class="ms-PartSpacingVertical"></div></td>
+	</tr><tr>
+		<td id="MSOZoneCell_WebPartWPQ8" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="29ab08d8-4a51-482d-9ef2-b5013a2e45a7" HasPers="false" id="WebPartWPQ8" width="100%" class="ms-WPBody" allowDelete="false" style="" ><table id="cbqwp" cellspacing="0" cellpadding="0" class="cbq-layout-main"><tr><td><div id="features"><div title="BSU" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><img src="/SiteCollectionImages/Sparebanken%20Narvik/Ny%20forside/Forsideikoner%20SN/bsu.jpg" alt=""><h2>Kortere vei til egen bolig</h2><p>BSU er bankens beste sparetilbud for deg under 34 år. Spar egenkapital til bolig, og få skattefradrag på inntil kr 4.000,- pr. år i tillegg. Har du ikke BSU konto enda? Snakk med oss så fikser vi det til deg. </p><p><input type="button" style="float:left" value="Les mer om BSU" onclick="javascript:window.open(dynamiclinkbuttonlink(&quot;http://www.sparebankennarvik.no/sparing/banksparing/bsu/Sider/default.aspx&quot;),&quot;_self&quot;)"><span style="float:left;font-size:1em!important;"></span></p></div><div title="BSU Xtra" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><img src="/SiteCollectionImages/Sparebanken%20Narvik/Ny%20forside/Forsideikoner%20SN/bsu-xtra.jpg" alt=""><h2>Kortest vei til egen bolig</h2><p>Med BSU Xtra kan du spare 150.000,- Xtra til egen bolig. Den høye BSU-renten gjelder fra første krone. Snakk med din rådgiver, så fikser vi en BSU Xtra konto til deg. </p><p><input type="button" style="float:left" value="Les mer om BSU Xtra" onclick="javascript:window.open(dynamiclinkbuttonlink(&quot;http://www.sparebankennarvik.no/sparing/banksparing/bsuekstra/Sider/BSUXtra.aspx&quot;),&quot;_self&quot;)"><span style="float:left;font-size:1em!important;"></span></p></div><div title="Pensjon" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><img src="/SiteCollectionImages/Sparebanken%20Narvik/Ny%20forside/Forsideikoner%20SN/pensjon.jpg" alt=""><h2>Hva skal du gjøre som pensjonist?</h2><p>Start sparing til pensjon så tidlig som mulig - så har du mer å rutte med når du blir pensjonist. Vi kan tilby en rekke ulike spareformer, snakk med din rådgiver og kom igang med sparingen i dag.  </p><p><input type="button" style="float:left" value="Les mer om sparing " onclick="javascript:window.open(dynamiclinkbuttonlink(&quot;http://www.sparebankennarvik.no/sparing/banksparing/Sider/Banksparing1.aspx&quot;),&quot;_self&quot;)"><span style="float:left;font-size:1em!important;"></span></p></div><div title="Pensjonskalkulator" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><img src="/SiteCollectionImages/Sparebanken%20Narvik/Ny%20forside/Forsideikoner%20SN/pensjonskalkulator.jpg" alt=""><h2>Beregn din pensjon</h2><p>Lurer du på hvor mye du får utbetalt i pensjon? Bruk vår pensjonskalkulator og beregn selv. </p><p><input type="button" style="float:left" value="Pensjonskalkulataor " onclick="javascript:window.open(dynamiclinkbuttonlink(&quot;http://www.sparebankennarvik.no/sparing/pensjon/sider/pensjonskalkulator.aspx&quot;),&quot;_self&quot;)"><span style="float:left;font-size:1em!important;"></span></p></div></div><script type="text/javascript">
+                $(document).ready(function(){ $('#features').jshowoff({speed:5000}); });
+              </script></td></tr></table></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+	</div>	
+	 <div id="secondrow">
+	 <div  style="width:245px;float:left;">
+	 	<div class="column236">
+	 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ5" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="ffa372e3-d362-47f1-b4ff-ca3cea0667d4" HasPers="false" id="WebPartWPQ5" width="100%" class="ms-WPBody" allowDelete="false" style="" ><div id="ctl00_SPWebPartManager1_g_ffa372e3_d362_47f1_b4ff_ca3cea0667d4">
+
+				</div><div class="secondrow_banner"><h2>Søk lån på nett</h2><a href="https://www.terra.no/laan/sparebankennarvik" title="Søk her"><img src="/SiteCollectionImages/Sparebanken Narvik/Ny forside/bil.png" alt="Søk lån på nett" /></a><div class="banner_link"><a href="https://www.terra.no/laan/sparebankennarvik">Søk her</a></div></div></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 	</div>
+	 	
+	 	<div  style="width:245px;float:left;">
+	 	<div class="column236" style="margin-left:3px;">
+	 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ1" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="a404a625-cc16-4f2a-8931-723babc03784" HasPers="false" id="WebPartWPQ1" width="100%" class="ms-WPBody" allowDelete="false" style="" ><div id="ctl00_SPWebPartManager1_g_a404a625_cc16_4f2a_8931_723babc03784">
+
+				</div><div class="secondrow_banner"><h2>Design ditt eget kort</h2><a href="https://www2.portalbank.no/cc/do/cust/Design?n_bank=4520" title="Bestill kort her"><img src="/SiteCollectionImages/Sparebanken Narvik/Ny forside/Omdømme_schnakkes/ponni_valgfri.png" alt="Design ditt eget kort" /></a><div class="banner_link"><a href="https://www2.portalbank.no/cc/do/cust/Design?n_bank=4520">Bestill kort her</a></div></div></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 	</div>
+	 	
+	 	<div  style="width:245px;float:left;">
+		<div class="column236" style="margin-left:6px;" >
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ2" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="581de220-715f-46f1-be29-0cbf621b679f" HasPers="false" id="WebPartWPQ2" width="100%" class="ms-WPBody" allowDelete="false" style="" ><div id="ctl00_SPWebPartManager1_g_581de220_715f_46f1_be29_0cbf621b679f">
+
+				</div><div class="secondrow_banner"><h2>Søk kredittkort på nett</h2><a href="http://www.sparebankennarvik.no/Finansiering/kredittkort/terragold/Sider/kredittkortsoknad.aspx" title="Søk her"><img src="/SiteCollectionImages/Forsideikoner/Kredittkort_200x100.png" alt="Søk kredittkort på nett" /></a><div class="banner_link"><a href="http://www.sparebankennarvik.no/Finansiering/kredittkort/terragold/Sider/kredittkortsoknad.aspx">Søk her</a></div></div></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 	</div>
+	 	
+	 	<div  style="width:245px;float:left;">
+	 	<div class="column236" style="margin-left:9px";>
+	 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ11" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="bc182a5e-d166-4b2c-959e-bbec2427cde5" HasPers="false" id="WebPartWPQ11" width="100%" class="ms-WPBody" allowDelete="false" style="" ><div id="ctl00_SPWebPartManager1_g_bc182a5e_d166_4b2c_959e_bbec2427cde5">
+
+				</div><div class="graybanner"><h2><a href="http://www.sparebankennarvik.no/betaling/mobil/Sider/default.aspx" title="Mobile tjenester">Mobile tjenester</a></h2><a href="http://www.sparebankennarvik.no/betaling/mobil/Sider/default.aspx" title="Mobile tjenester"><img src="/SiteCollectionImages/Sparebanken Narvik/Ny forside/MobilSMS.PNG" alt="Mobile tjenester" /></a><div class="banner_links"><div id="banner_links_left"><ul><li><a href="http://www.sparebankennarvik.no/betaling/mobil/app/Sider/default.aspx" title="App">App</a></li><li><a href="http://www.sparebankennarvik.no/betaling/mobil/SMS-varsling/Sider/default.aspx" title="SMS varsling">SMS varsling</a></li></ul></div><div id="banner_links_right"><ul><li><a href="http://www.sparebankennarvik.no/betaling/mobil/mobilbank/Sider/default.aspx" title="Mobilbank">Mobilbank</a></li><li><a href="http://www.sparebankennarvik.no/betaling/mobil/bankid-mobil/Sider/default.aspx" title="BankID på mobil">BankID på mobil</a></li></ul></div></div></div></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 	</div>
+	 </div>
+	 <div id="thirdrow">
+	 <div class="column230" id="thirdone">
+	 <table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ3" vAlign="top"><table TOPLEVEL border="1" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr class="ms-WPHeader">
+						<td title="Kontakt oss - Brukes for formatert tekst, tabeller og bilder." id="WebPartTitleWPQ3" width="100%"><h3 class="ms-standardheader ms-WPTitle">&nbsp;<span>Kontakt oss</span><span id="WebPartCaptionWPQ3"></span></h3></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td class="" valign="top"><div WebPartID="f79ad71d-708d-4511-b158-ec2079ee8fc0" HasPers="false" id="WebPartWPQ3" width="100%" class="ms-WPBody" allowDelete="false" style="" ><P><FONT size=4>769 11 100<BR></FONT><A href="mailto:post@sn.no"><FONT color=#0061a1 size=3>post@sn.no</FONT></A><BR><BR><FONT color=#000000>Swift code NARVNO21XXX</FONT></P></div></td>
+			</tr>
+		</table><div class="ms-PartSpacingVertical"></div></td>
+	</tr><tr>
+		<td id="MSOZoneCell_WebPartWPQ4" vAlign="top"><table TOPLEVEL border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td valign="top"><div WebPartID="e2e000f3-6f56-41b1-9824-2158f9b66d5d" HasPers="false" id="WebPartWPQ4" width="100%" class="ms-WPBody" allowDelete="false" style="" ><script type="text/javascript" language="javascript">
+        var slwp;
+        if (slwp == null) slwp = new Array();
+        slwp['ctl00_SPWebPartManager1_g_e2e000f3_6f56_41b1_9824_2158f9b66d5d'] = "WebForm_DoPostBackWithOptions\u0028new WebForm_PostBackOptions\u0028\u0022ctl00$SPWebPartManager1$g_e2e000f3_6f56_41b1_9824_2158f9b66d5d\u0022, \u0022SLWPToken\u0022, false, \u0022\u0022, \u0022\u0022, true, true\u0029\u0029";
+      </script><table id="slwp_ctl00_SPWebPartManager1_g_e2e000f3_6f56_41b1_9824_2158f9b66d5d" cellspacing="0" cellpadding="0" class="slm-layout-main"><tr><td id="column" width="100%" valign="top"><div id="group" class="slm-layout-main"><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/omoss/kontaktoss/Sider/Kontaktoss3.aspx" target="" title="">Åpningstider og adresser</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/SiteCollectionDocuments/Sparebanken Narvik/Bardu-d%C3%B8rskilt okt2012.pdf" target="_blank" title="Bardu">Åpningstider Bardu</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/omoss/Investorrelations/Sider/Regnskap.aspx" target="" title="">Investor relations</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="http://bank24-7.spama.no/no/Bank/Sparebanken-Narvik/Bankens-personvernregler/Personvernregler" target="" title="Personvern">Personvern</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="image-area-left"><a href="http://www.facebook.com/Sparebanken.Narvik" target=""><img class="image" src="/PublishingImages/facebook_knapp_ikon.png" alt=""></a></div><div class="link-item"><a href="http://www.facebook.com/Sparebanken.Narvik" target="" title="">Følg oss på Facebook</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="image-area-left"><a href="/BETALING/MOBIL/APP/Sider/default.aspx" target=""><img class="image" src="/SiteCollectionImages/Sparebanken Narvik/Ny forside/Android_32x32pix.PNG" alt=""></a></div><div class="link-item"><a href="/BETALING/MOBIL/APP/Sider/default.aspx" target="" title="">Apps</a><div class="description"></div></div></div><div id="footer"></div></td ></tr></table></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 	
+	 	<div class="column230" id="thirdtwo">
+	 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ6" vAlign="top"><table TOPLEVEL border="1" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr class="ms-WPHeader">
+						<td title="Nyheter - Bruk for å vise en dynamisk visning av innhold fra området omoss/nyheter" id="WebPartTitleWPQ6" width="100%"><h3 class="ms-standardheader ms-WPTitle">&nbsp;<span>Nyheter</span><span id="WebPartCaptionWPQ6"></span></h3></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td class="" valign="top"><div WebPartID="d2e94a34-1405-4873-87c7-b8ed532406dc" HasPers="false" id="WebPartWPQ6" width="100%" class="ms-WPBody" allowMinimize="false" allowRemove="false" allowDelete="false" allowExport="false" style="" ><table id="cbqwp" cellspacing="0" cellpadding="0" class="cbq-layout-main"><tr><td id="column" width="100%" valign="top"><ul class="nyhetsliste" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><li><div class="news-item"><span class="date">10.10.2012</span><br><a href="http://www.sparebankennarvik.no/omoss/nyheter/Sider/Kundeunders%C3%B8kelseibedriftsmarkedet.aspx" target="" title="">Kundeundersøkelse i bedriftsmarkedet</a></div></li></ul><ul class="nyhetsliste" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><li><div class="news-item"><span class="date">18.09.2012</span><br><a href="http://www.sparebankennarvik.no/omoss/nyheter/Sider/Maskinskadedekninginkludertikasko.aspx" target="" title="">Maskinskadedekning inkludert i kasko</a></div></li></ul><ul class="nyhetsliste" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><li><div class="news-item"><span class="date">10.08.2012</span><br><a href="http://www.sparebankennarvik.no/omoss/nyheter/Sider/NorneSecuritiesovertaraksjehandelsl%C3%B8sningentilTerraMarkets.aspx" target="" title="">Norne Securities overtar aksjehandelsløsningen til Terra Markets </a></div></li></ul><ul class="nyhetsliste" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><li><div class="news-item"><span class="date">31.05.2012</span><br><a href="http://www.sparebankennarvik.no/omoss/nyheter/Sider/TerraGoldsaldoogtransaksjonerp%C3%A5mobilen.aspx" target="" title="">Terra Gold saldo og transaksjoner på mobilen  </a></div></li></ul><div id="footer"></div></td ></tr></table></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+		
+	 	<div class="column230" id="thirdthree">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ7" vAlign="top"><table TOPLEVEL border="1" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr class="ms-WPHeader">
+						<td title="Snarveier - Brukes til å vise koblinger på websiden som kan grupperes og tilordnes en stil, og som kan organiseres ved å dras og slippes" id="WebPartTitleWPQ7" width="100%"><h3 class="ms-standardheader ms-WPTitle">&nbsp;<span>Snarveier</span><span id="WebPartCaptionWPQ7"></span></h3></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td class="" valign="top"><div WebPartID="8d17c332-94aa-4aa3-b75a-3fc29aa1d7f8" HasPers="false" id="WebPartWPQ7" width="100%" class="ms-WPBody" allowDelete="false" style="" ><script type="text/javascript" language="javascript">
+        var slwp;
+        if (slwp == null) slwp = new Array();
+        slwp['ctl00_SPWebPartManager1_g_8d17c332_94aa_4aa3_b75a_3fc29aa1d7f8'] = "WebForm_DoPostBackWithOptions\u0028new WebForm_PostBackOptions\u0028\u0022ctl00$SPWebPartManager1$g_8d17c332_94aa_4aa3_b75a_3fc29aa1d7f8\u0022, \u0022SLWPToken\u0022, false, \u0022\u0022, \u0022\u0022, true, true\u0029\u0029";
+      </script><table id="slwp_ctl00_SPWebPartManager1_g_8d17c332_94aa_4aa3_b75a_3fc29aa1d7f8" cellspacing="0" cellpadding="0" class="slm-layout-main"><tr><td id="column" width="100%" valign="top"><div id="group" class="slm-layout-main"><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="http://www.nettvett.no/ikbViewer/page/nettvett/tema?tema=63026" target="_blank" title="Nettvett">Nettvett</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/betaling/mobil/Sider/default.aspx" target="" title="">Mobile tjenester</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/forsikring/skademelding/Sider/default.aspx" target="" title="">Skademeldingsskjema</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/betaling/bankkort/Sider/Bankkort2.aspx" target="" title="">Sperring av kort</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/sparing/banksparing/fastrenteinnskudd/Sider/Fastrenteinnskudd.aspx" target="" title="">Fastrenteinnskudd</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="/betaling/prisliste/Sider/Prisliste2.aspx" target="" title="">Prislister</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="link-item"><a href="http://vilkar.spama.no/Templates/vilkaar/pages/page.aspx?id=1678&amp;epslanguage=no%23#" target="_blank" title="personvernregler">Personvernregler</a><div class="description"></div></div></div><div id="footer"></div></td ></tr></table></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+		
+	 	<div class="column230" id="thirdfour">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td id="MSOZoneCell_WebPartWPQ9" vAlign="top"><table TOPLEVEL border="1" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr class="ms-WPHeader">
+						<td title="Kalkulatorer - Brukes til å vise koblinger på websiden som kan grupperes og tilordnes en stil, og som kan organiseres ved å dras og slippes" id="WebPartTitleWPQ9" width="100%"><h3 class="ms-standardheader ms-WPTitle">&nbsp;<span>Kalkulatorer</span><span id="WebPartCaptionWPQ9"></span></h3></td>
+					</tr>
+				</table></td>
+			</tr><tr>
+				<td class="" valign="top"><div WebPartID="74a47cd8-8932-46b0-a8be-33fc6b9e469e" HasPers="false" id="WebPartWPQ9" width="100%" class="ms-WPBody" allowDelete="false" style="" ><script type="text/javascript" language="javascript">
+        var slwp;
+        if (slwp == null) slwp = new Array();
+        slwp['ctl00_SPWebPartManager1_g_74a47cd8_8932_46b0_a8be_33fc6b9e469e'] = "WebForm_DoPostBackWithOptions\u0028new WebForm_PostBackOptions\u0028\u0022ctl00$SPWebPartManager1$g_74a47cd8_8932_46b0_a8be_33fc6b9e469e\u0022, \u0022SLWPToken\u0022, false, \u0022\u0022, \u0022\u0022, true, true\u0029\u0029";
+      </script><table id="slwp_ctl00_SPWebPartManager1_g_74a47cd8_8932_46b0_a8be_33fc6b9e469e" cellspacing="0" cellpadding="0" class="slm-layout-main"><tr><td id="column" width="100%" valign="top"><div id="group" class="slm-layout-main"><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="image-area-left"><a href="/sparing/Sider/Sparekalkulator.aspx" target=""><img class="image" src="/SiteCollectionImages/Forsideikoner/Bank_32x32.png" alt=""></a></div><div class="link-item"><a href="/sparing/Sider/Sparekalkulator.aspx" target="" title="">Hvor mye kan jeg spare?</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="image-area-left"><a href="/sparing/pensjon/sider/pensjonskalkulator.aspx" target=""><img class="image" src="/SiteCollectionImages/Forsideikoner/Fond_32x32.png" alt=""></a></div><div class="link-item"><a href="/sparing/pensjon/sider/pensjonskalkulator.aspx" target="" title="">Hva får jeg i pensjon?</a><div class="description"></div></div></div><div id="linkitem" class="item" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"><div class="image-area-left"><a href="/finansiering/Sider/Lanekalkulator.aspx" target=""><img class="image" src="/SiteCollectionImages/Forsideikoner/Kalkulator ordin%C3%A6r_32x32.png" alt=""></a></div><div class="link-item"><a href="/finansiering/Sider/Lanekalkulator.aspx" target="" title="">Hvor mye kan jeg låne?</a><div class="description"></div></div></div><div id="footer"></div></td ></tr></table></div></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+
+	 	</div>
+	 </div>
+
+	 
+ 	
+
+	</div><!--pagecontent-->
+	<div id="pagefooter">
+	
+	<div class="footer_left">Copyright &#169; Sparebanken Narvik-
+Uten ansvar for mulig feil! - <a href="/omoss/nettstedskart/Sider/nettstedskart.aspx" title="Nettstedskart">Nettstedskart</a></div><div class="footer_right">Medeier i <a href="http://www.terra.no"><img src="/SiteCollectionImages/terra_footer.gif" alt="Terra logo" /></a></div>
+	
+		<table style="width:100%">
+		
+			<tr>
+			<td><!--Site Actions Menu -->
+				
+<!-- Begin Action Menu Markup -->
+<table height=100% class="ms-siteaction" cellpadding=0 cellspacing=0>
+	<tr>
+					   <td class="ms-siteactionsmenu" id="siteactiontd">
+					   
+					</td>
+	</tr>
+</table>
+<!-- End Action Menu Markup -->
+</td>
+				<!-- Authentication for Authors only -->
+			
+				
+			</tr>
+		</table>
+	</div><!--pagefooter-->
+	
+	
+	<!--Hidden Placeholders-->
+	
+	<!---  End of Hidden Placeholders  --->
+	</div><!--page-->
+	
+
+<script type="text/javascript">
+//<![CDATA[
+var __wpmExportWarning='This Web Part Page has been personalized. As a result, one or more Web Part properties may contain confidential information. Make sure the properties contain information that is safe for others to read. After exporting this Web Part, view properties in the Web Part description file (.WebPart) by using a text editor such as Microsoft Notepad.';var __wpmCloseProviderWarning='You are about to close this Web Part.  It is currently providing data to other Web Parts, and these connections will be deleted if this Web Part is closed.  To close this Web Part, click OK.  To keep this Web Part, click Cancel.';var __wpmDeleteWarning='You are about to permanently delete this Web Part.  Are you sure you want to do this?  To delete this Web Part, click OK.  To keep this Web Part, click Cancel.';var zz1_GlobalNav_Data = new Object();
+zz1_GlobalNav_Data.disappearAfter = 500;
+zz1_GlobalNav_Data.horizontalOffset = 0;
+zz1_GlobalNav_Data.verticalOffset = 0;
+zz1_GlobalNav_Data.hoverClass = 'topNavFlyOutsHover';
+if (typeof(overrideMenu_HoverStatic) == 'function' && typeof(Menu_HoverStatic) == 'function')
+{
+_spBodyOnLoadFunctionNames.push('enableFlyoutsAfterDelay');
+Menu_HoverStatic = overrideMenu_HoverStatic;
+}
+var flyoutsAllowed = false;
+function enableFlyoutsAfterDelay()
+{
+setTimeout('flyoutsAllowed = true;', 50);
+}
+function overrideMenu_HoverStatic(item)
+{
+if (!flyoutsAllowed || (document.readyState != null && document.readyState != 'complete'))
+{
+setTimeout(delayMenu_HoverStatic(item), 50);
+}
+else
+{
+// this code is the default ASP.NET implementation of Menu_HoverStatic
+var node = Menu_HoverRoot(item);
+var data = Menu_GetData(item);
+if (!data) return;
+__disappearAfter = data.disappearAfter;
+Menu_Expand(node, data.horizontalOffset, data.verticalOffset);
+}
+}
+function delayMenu_HoverStatic(item)
+{
+return (function()
+{
+overrideMenu_HoverStatic(item);
+});
+}
+//]]>
+</script>
+<script type="text/javascript" language="javascript" src="/_layouts/1044/core.js?rev=CPukDCtyz0wGAIxwL3ViBw%3D%3D"></script>
+</form>
+	
+				
+ </body>
+</html>
+
+

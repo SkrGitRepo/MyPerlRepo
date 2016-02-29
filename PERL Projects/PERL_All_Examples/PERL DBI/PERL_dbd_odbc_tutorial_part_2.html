@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head> <title>Introduction to retrieving data from your database - Perl DBI/DBD::ODBC Tutorial Part 2</title> <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> <meta name="description" content="Read this tutorial for example Perl scripts that show you how to execute a SQL statement, fetch, and display the results. The tutorial discusses the performance advantages of using parameters in prepared SQL statements. It also describes the various methods Perl DBI provides for retrieving data."> <meta name="keywords" content="odbc,sth,sql,dbi,column,row,execute,table,perl,null,select,print,dbd,col2,driver"> <meta http-equiv="Content-Style-Type" content="text/css"> <link rel="stylesheet" type="text/css" href="PERL_dbd_odbc_tutorial_part_2_files/style.css"> <link rel="icon" href="http://www.easysoft.com/favicon.ico" type="image/x-icon"> <script src="PERL_dbd_odbc_tutorial_part_2_files/ga.js" async="" type="text/javascript"></script><script language="JavaScript" src="PERL_dbd_odbc_tutorial_part_2_files/jscripts.js" type="text/javascript"></script></head> <body onload="e_onLoadEvent();"> <div class="screen"> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr> <td class="menu"> <table border="0" cellpadding="0" cellspacing="0"> <tbody><tr> <td><a href="http://www.easysoft.com/index.html"><img src="PERL_dbd_odbc_tutorial_part_2_files/logo.png" alt="Easysoft" border="0" height="90" width="227"></a></td> <td><img src="PERL_dbd_odbc_tutorial_part_2_files/curve.png" alt="" border="0" height="90" width="196"></td></tr></tbody></table></td> <td class="menu"> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr> <td> <script type="text/javascript" language="javascript"> 
+<!--
+ e_dynamic_login_html(); 
+//-->
+</script><div id="show-login" style="display: inline;">  <a class="nounderline" href="http://www.easysoft.com/cgi-bin/account/login.cgi">login</a> / <a class="nounderline" href="http://www.easysoft.com/cgi-bin/account/register.cgi">register</a></div><div id="show-logout" style="display:none;">  <a class="nounderline" href="http://www.easysoft.com/cgi-bin/account/logout.cgi">logout</a> / <a class="nounderline" href="http://www.easysoft.com/cgi-bin/account/profile_admin.cgi">your account</a>  <div style="display: none;" id="show-cart">/ <a class="nounderline" href="http://www.easysoft.com/cgi-bin/cart/view.cgi">show cart</a></div></div> <noscript> <iframe src="/cgi-bin/account/login_frame.cgi" width="200" HEIGHT="40" scrolling="NO" marginheight="0" frameborder="0"> <a href="/cgi-bin/account/login.cgi"></a> | <a href="/cgi-bin/account/logout.cgi"></a> | <a href="/cgi-bin/account/register.cgi"></a></iframe></noscript></td> <td height="60" align="right"> <form method="POST" action="/cgi-bin/search/search.cgi"> <input name="search" size="30" type="text"> <input class="search-submit-button" value="Search" type="submit"> <br> <small> Easysoft.com<input class="check" name="c_s" checked="checked" type="checkbox"> Documentation<input class="check" name="c_d" type="checkbox"> Knowledge Base<input class="check" name="c_k" type="checkbox"></small></form></td></tr> <tr> <td colspan="2" align="right"> <table border="0" cellpadding="0" cellspacing="0"> <tbody><tr> <td><a class="nounderline" href="http://www.easysoft.com/products/data_access/index.html">Products</a></td> <td>&nbsp;|&nbsp;</td> <td><a class="nounderline" href="http://www.easysoft.com/cgi-bin/solution/wizard.cgi">Solutions</a></td> <td>&nbsp;|&nbsp;</td> <td><a class="nounderline" href="http://www.easysoft.com/support/index.html">Support</a></td> <td>&nbsp;|&nbsp;</td> <td><a class="nounderline" href="http://www.easysoft.com/applications/index.html">Applications</a></td> <td>&nbsp;|&nbsp;</td> <td><a class="nounderline" href="http://www.easysoft.com/developer/index.html">Developer</a></td> <td>&nbsp;|&nbsp;</td> <td><a class="nounderline" href="http://www.easysoft.com/company/index.html">Company</a></td> <td>&nbsp;&nbsp;</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></div> <div class="print" align="right"> <img src="PERL_dbd_odbc_tutorial_part_2_files/easysoft_logo.png" alt="Easysoft" border="0" height="30" width="143"> <hr></div> <div class="bannerad"> <a href="http://www.easysoft.com/products/data_access/index.html?advert=odbc&amp;referring_page=Introduction%20to%20retrieving%20data%20from%20your%20database%20-%20Perl%20DBI/DBD::ODBC%20Tutorial%20Part%202&amp;location=header"> <img src="PERL_dbd_odbc_tutorial_part_2_files/banner-odbc.gif" alt="ODBC Drivers for Oracle, SQL Server, Firebird, ISAM, InterBase, Sybase, MS Access &amp; more." border="0" height="60" width="468"></a></div> <table border="0" cellpadding="0" cellspacing="0" width="100%"> <tbody><tr> <td valign="top"> <table border="0"> <tbody><tr> <td valign="top"> <div id="promo"></div> <h1>Introduction to retrieving data from your database - Perl DBI/DBD::ODBC Tutorial Part 2</h1><h1>Contents</h1><ul><li> <a href="#introduction">Introduction</a></li><li> <a href="#pre_req">Pre-requisites</a></li><li> <a href="#assumptions">Assumptions</a></li><li> <a href="#simple">Simple methods of retrieving data</a> <ul><li> <a href="#what_you_want">Specifying what you want</a></li><li> <a href="#prepare_execute">Simple prepare/execute</a></li><li> <a href="#metadata">Obtaining metadata from the result-set</a></li><li> <a href="#using_parameters">Using parameters</a></li><li> <a href="#using_bound_columns">Using bound columns</a></li></ul></li><li> <a href="#hash_ref">Hash and Reference methods of retrieving data</a></li><li> <a href="#special_cases">Special cases</a> <ul><li> <a href="#chopblanks">SQL_CHAR types and trialing spaces</a></li><li> <a href="#long_data">Long columns</a></li><li> <a href="#nulls">Handling NULL data</a> <ul><li> <a href="#in_sql">NULL in SQL</a></li><li> <a href="#in_perl">NULL in Perl</a></li></ul></li></ul></li><li> <a href="#app_a">Appendix A: Resources</a></li></ul><h1> <a name="introduction"></a>Introduction</h1><p> This is part 2 of a series of <a href="http://www.easysoft.com/">Easysoft</a> tutorials on using <span class="glossary" title="Practical Extraction and Report Language">Perl</span> DBI with DBD::ODBC.</p><h1><a name="pre_req"></a> Pre-requisites</h1><p>Before you start part 2 of this tutorial you need to ensure you have satisfy all the pre-requisites:</p><ol><li> <b><span class="glossary" title="Practical Extraction and Report Language">Perl</span></b> <p> We used <span class="glossary" title="Practical Extraction and Report Language">Perl</span> 5.8 but you only need the minimum required by the <span class="glossary" title="DataBase Interface">DBI</span> and DBD::ODBC modules which is currently 5.6. Use <i><span class="glossary" title="Practical Extraction and Report Language">perl</span> --version</i> to see what version of <span class="glossary" title="Practical Extraction and Report Language">Perl</span> you have installed.</p></li><li> <b><span class="glossary" title="DataBase Interface">DBI</span> module</b> <p> We used <span class="glossary" title="DataBase Interface">DBI</span> 1.45 but this tutorial should work with anything after 1.40. To see if you have a recent enough version of <span class="glossary" title="DataBase Interface">DBI</span> installed run:<br></p> 
+<pre>perl -e 'use DBI 1.40;'</pre>
+ <p> If you get an error like <i>"DBI version 1.40 required--this is only version 1.30 at -e line 1."</i> you need to upgrade <span class="glossary" title="DataBase Interface">DBI</span>.</p> <p> If you get an error saying <span class="glossary" title="DataBase Interface">DBI</span> cannot be found in @INC you've probably not got <span class="glossary" title="DataBase Interface">DBI</span> installed.</p> <p> Go to <a target="_new" href="http://search.cpan.org/">CPAN</a> to get an up to date version of the <span class="glossary" title="DataBase Interface">DBI</span> module.</p></li><li> <b>DBD::ODBC</b> <p>We
+ used DBD::ODBC 1.11. You can use similar methods as above to determine 
+if DBD::ODBC is installed and to see what version you have:</p> <p>To check you have the DBD::ODBC module installed:</p> 
+<pre>perl -e 'use DBD::ODBC;'</pre>
+ <p>If you have not got DBD::ODBC installed you should see <a href="http://www.easysoft.com/developer/languages/perl/dbi_dbd_odbc.html"> Enabling ODBC support in Perl with Perl DBI and DBD::ODBC</a> for instructions.</p> <p> To show the DBD::ODBC version:</p> 
+<pre>perl -MDBD::ODBC -e 'print $DBD::ODBC::VERSION;'</pre>
+ <p> To show all drivers <span class="glossary" title="DataBase Interface">DBI</span> knows about and their versions:</p> 
+<pre>perl -MDBI -e 'DBI-&gt;installed_versions;'</pre>
+ <p> Go to <a target="_new" href="http://search.cpan.org/">CPAN</a> to get an up to date version of the DBD::ODBC module.</p></li><li> <b><a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver and driver manager</b> <p> Unsurprisingly you will need an <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver for most of this tutorial and we recommend you use an <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver manager under DBD::ODBC (see <a href="http://www.easysoft.com/developer/languages/perl/dbi_dbd_odbc.html"> Enabling ODBC support in Perl with Perl DBI and DBD::ODBC</a>. <a href="http://www.easysoft.com/">Easysoft</a> can supply <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> drivers for many databases and operating systems and all <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> drivers come with the <a target="_new" href="http://www.unixodbc.org/">unixODBC</a> driver manager.</p> <p> You probably have the <a class="glossary" title="unixODBC Project" href="http://www.unixodbc.org/" target="_blank">unixODBC</a> driver manager installed if you have the odbcinst command (for <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> drivers from <a href="http://www.easysoft.com/">Easysoft</a>, the <a class="glossary" title="unixODBC Project" href="http://www.unixodbc.org/" target="_blank">unixODBC</a> driver manager is located in /usr/local/easysoft/unixODBC and the odbcinst command in the bin sub directory of that path.</p> <p> We used <a class="glossary" title="unixODBC Project" href="http://www.unixodbc.org/" target="_blank">unixODBC</a> 2.2.9 in this tutorial. You can find out the <a class="glossary" title="unixODBC Project" href="http://www.unixodbc.org/" target="_blank">unixODBC</a> version you are using with:</p> 
+<pre>odbcinst --version</pre>
+ <p> We also used the <a href="http://www.easysoft.com/products/data_access/odbc_odbc_bridge/index.html"> Easysoft ODBC-ODBC Bridge</a> as the <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver to access a remote MS <span class="glossary" title="Structured Query Language">SQL</span> Server database from UNIX.</p></li></ol><h1> <a name="assumptions"></a>Assumptions</h1><p> <b>Previous tutorials in this series</b></p><p> This tutorial assumes you have read or understand all the concepts in the previous tutorial <a href="http://www.easysoft.com/developer/languages/perl/dbd_odbc_tutorial_part_1.html">DBD::ODBC Tutorial Part 1 - Drivers, Data Sources and Connection</a>.</p><p> <b>Operating System</b></p><p> This tutorial was designed on UNIX and we have assumed you are using UNIX too. However, all the <span class="glossary" title="Practical Extraction and Report Language">Perl</span> examples should work equally well on Windows so long as minor alterations for the command line are made.</p><p> <b><a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> Driver Manager</b></p><p> We have assumed you are using the <a target="_new" href="http://www.unixodbc.org/">unixODBC</a> driver manager. All discussion in this document relating to the location and definition of <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> data sources is for <a class="glossary" title="unixODBC Project" href="http://www.unixodbc.org/" target="_blank">unixODBC</a>.</p><h1> <a name="dbi_dbd_odbc"></a>DBI and ODBC drivers</h1><h2> <a name="dbi_arch"></a>DBI, DBD::ODBC Architecture</h2>
+<pre>Perl script using DBI methods
+            |
+            v
+           API
+            |
+            v
+           DBI
+            |
+            v
+         DBD::ODBC
+            |
+            v
+    ODBC Driver Manager (e.g. unixODBC)
+            |
+            v
+        ODBC Driver</pre>
+<p><a name="simple"></a><a href="http://www.easysoft.com/products/data_access/index.html?advert=download_odbc&amp;referring_page=Introduction%20to%20retrieving%20data%20from%20your%20database%20-%20Perl%20DBI/DBD::ODBC%20Tutorial%20Part%202&amp;location=retrieving_data"><img src="PERL_dbd_odbc_tutorial_part_2_files/banner-odbc-download.gif" alt="Download ODBC Drivers for Oracle, SQL Server, Firebird, ISAM, InterBase, Sybase, MS Access and more." border="0" height="60" width="468"></a></p><h2> Simple methods of retrieving data</h2><h3> <a name="what_you_want"></a>Specifying what you want</h3><p> You specify the data you want to retrieve from the database using <span class="glossary" title="Structured Query Language">SQL</span> select statements. This is not a <span class="glossary" title="Structured Query Language">SQL</span> tutorial and we have attempted to keep the <span class="glossary" title="Structured Query Language">SQL</span> simple. The basic form of a <span class="glossary" title="Structured Query Language">SQL</span> select statement we use here is:</p>
+<pre>select &lt;column_list&gt; from &lt;table&gt;</pre>
+<p> where:</p><ul><li> &lt;column_list&gt; is a comma separated list of 
+columns, or * (for all columns). In fact it can be many more things; 
+consult a <span class="glossary" title="Structured Query Language">SQL</span> reference manual.</li><li> &lt;table&gt; is a table or view in the database.</li></ul><p> You can qualify the rows you want back by adding a where clause like:</p>
+<pre>where &lt;column&gt; = 'text'</pre>
+<p> Your <span class="glossary" title="Structured Query Language">SQL</span> select statement is passed to the <span class="glossary" title="DataBase Interface">DBI</span> prepare method which in <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> terms ends up in a call to the <code>SQLPrepare</code> or <code>SQLExecDirect</code> <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> APIs.</p><p> Be careful when creating <span class="glossary" title="Structured Query Language">SQL</span> from <span class="glossary" title="Practical Extraction and Report Language">Perl</span> variables as you can include characters which invalidate the <span class="glossary" title="Structured Query Language">SQL</span>. e.g.</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$name</span> <span class="sym">=</span> <span class="str">"can't"</span><span class="sym">;</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table where column <span class="sym">=</span> <span class="str">'$name'</span>/<span class="sym">;</span>
+</pre>
+<p> $sql is now invalid because it is:</p>
+<pre>select * from table where column = 'can't'</pre>
+<p> Most databases would require the second ' to be doubled up. You can use the <span class="glossary" title="DataBase Interface">DBI</span> quote method to do this for you with:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$name</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>quote<span class="sym">(</span><span class="str">"can't"</span><span class="sym">);</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table where column <span class="sym">=</span> <span class="kwb">$name</span>/<span class="sym">;</span>
+</pre>
+<p> The other way (recommended) is to use bound parameters (see <a href="#using_parameters">Using parameters</a>).</p><h3> <a name="prepare_execute"></a>Simple prepare/execute</h3><p> The most simple way of obtaining all the rows in a table and displaying them is like this:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>               <span class="slc"># connect</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table/<span class="sym">;</span>      <span class="slc"># the query to execute</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>          <span class="slc"># prepare the query</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">();</span>                        <span class="slc"># execute the query</span>
+<span class="kwc">my</span> @row<span class="sym">;</span>
+<span class="kwa">while</span> <span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span>  <span class="slc"># retrieve one row</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> Here we prepare the <span class="glossary" title="Structured Query Language">SQL</span>, execute it, then use the <code>fetchrow_array</code> method to return an array of column values for each row. Repeatedly calling the <code>fetchrow_array</code> method until <code>fetchrow_array</code> returns undef, returns all the rows in the result-set.</p><p> <b>NOTE</b> that NULL fields are returned as undef in the array returned by <code>fetchrow_array</code> (more about NULL values later).</p><p> <b>NOTE</b>. Don't use <code>fetchrow_array</code>
+ in a scalar context unless you really know what you are doing as it can
+ return the first or last column (dependent on the driver) which could 
+be a NULL value and hence undef. Also <code>fetchrow_array</code> can return undef if there are no more rows or if an error occurs.</p><p> There are other methods or obtaining the result-set - see later.</p><h3> <a name="metadata"></a>Obtaining metadata from the result-set</h3><p> <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a>
+ can describe the result-set for you listing the number of columns and 
+the names of the columns. You can obtain this information with the 
+statement attributes <code>NUM_OF_FIELDS</code>, <code>NAME, NAME_uc</code>, <code>NAME_lc</code>, <code>NAME_hash</code>, <code>NAME_lc_hash</code> and <code>NAME_uc_HASH</code>.</p><p> Assuming you have the table 'fred' with columns 'a' (integer), 'b' (char(10)) and 'c' (float):</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span>select <span class="sym">*</span> from fred<span class="sym">);</span>
+
+<span class="kwb">$sth</span><span class="sym">-&gt;{</span>NUM_OF_FIELDS<span class="sym">}</span> returns <span class="num">3</span>.
+<span class="kwb">$sth</span><span class="sym">-&gt;{</span>NAME<span class="sym">}-&gt;[</span><span class="num">0</span><span class="sym">]</span> returns <span class="str">'a'</span> although it could <span class="kwa">return</span> <span class="str">'A'</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;{</span>NAME_uc<span class="sym">}-&gt;[</span><span class="num">0</span><span class="sym">]</span> returns <span class="str">'A'</span>.
+<span class="kwb">$sth</span><span class="sym">-&gt;{</span>NAME_lc<span class="sym">}-&gt;[</span><span class="num">0</span><span class="sym">]</span> returns <span class="str">'a'</span>.
+</pre>
+<p> <b>NOTE</b> the <code>NAME</code> attribute can return lowercase or 
+uppercase column names depending on the database. Some database will 
+always uppercase column names in create statements if they are unquoted 
+and some databases retain the case of column names if they are enclosed 
+in the identifier quote character. <b>TIP:</b> For this reason it is best to use <code>NAME_uc</code> or <code>NAME_lc</code>.</p><p> <b>NOTE</b>.
+ Some drivers may be unable to return a column name at all e.g. if the 
+column was an expression like 1 or a function. e.g. "select 1 from 
+table" in MS <span class="glossary" title="Structured Query Language">SQL</span> Server returns an empty string for $sth-{NAME}-&gt;[0]. <b>TIP:</b> You can get around this using column aliases as in "select 1 as col1 from table".</p><p> <code>NAME_hash</code>, <code>NAME_lc_hash</code> and <code>NAME_uc_hash</code> are like <code>NAME</code>, <code>NAME_lc</code> and <code>NAME_uc</code>
+ except the result is a hash instead of an array with the keys being the
+ column names and the values being the column index starting at 0.</p><p> Similarly, the TYPE attribute returns an array reference of column types. For the 'fred' table above:</p>
+<pre>print join(", ", @{$sth-&gt;{TYPE}}), "\n";</pre>
+<p> returns 4, 1, 6. The column types are defined by international standards (see the <span class="glossary" title="DataBase Interface">DBI</span> manual).</p><h3> <a name="using_parameters"></a>Using parameters</h3><p> The main reasons for using parameters are:</p><ol><li> You can prepare the <span class="glossary" title="Structured Query Language">SQL</span> once then execute many times with different parameters thus saving the prepare parsing.</li><li> With bound parameters you don't need to bother about quoting issues.</li></ol><p> Expanding the simple example in <a href="#prepare_execute">Simple prepare/execute</a> to include a where statement we have:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>              <span class="slc"># connect</span>
+<span class="kwc">my</span> <span class="kwb">$var</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>quote<span class="sym">(</span><span class="str">"value to search for"</span><span class="sym">);</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table where column <span class="sym">=</span> <span class="kwb">$var</span>/<span class="sym">;</span>
+                                        <span class="slc"># the query to execute</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>         <span class="slc"># prepare the query</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">();</span>                       <span class="slc"># execute the query</span>
+<span class="kwc">my</span> @row<span class="sym">;</span>
+<span class="kwa">while</span> <span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> This is fine but what if we want to execute the query multiple times
+ with different values for $var. We can repeat the $sql assignement with
+ different $var and re-run $dbh-&gt;prepare but this is inefficient 
+because it causes the <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver and database to re-parse the <span class="glossary" title="Structured Query Language">SQL</span> each time and is unnecessary.</p><p> A better solution is the following:</p>
+<pre class="perl"><span class="kwc">my</span> @row<span class="sym">;</span>                                <span class="slc"># row data</span>
+<span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>              <span class="slc"># connect</span>
+<span class="kwc">my</span> <span class="kwb">$var</span> <span class="sym">=</span> <span class="str">"value to search for"</span><span class="sym">;</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table where column <span class="sym">=</span> ?/<span class="sym">;</span>
+                                        <span class="slc"># the query to execute with parameter</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>         <span class="slc"># prepare the query</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">((</span><span class="kwb">$var</span><span class="sym">));</span>                 <span class="slc"># execute the query with parameter</span>
+<span class="kwa">while</span> <span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+<span class="kwb">$var</span> <span class="sym">=</span> <span class="str">"another value to search for"</span><span class="sym">;</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">((</span><span class="kwb">$var</span><span class="sym">));</span>                 <span class="slc"># execute the query (no need to re-prepare)</span>
+<span class="kwa">while</span> <span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> Here the <span class="glossary" title="Structured Query Language">SQL</span> contains a parameter marker (the '?') indicating to the driver that we will provide this later. The <span class="glossary" title="Structured Query Language">SQL</span> is passed to the <code>prepare</code> method where the database will parse the <span class="glossary" title="Structured Query Language">SQL</span>
+ and note a parameter is required. When the execute method is called we 
+pass the parameters required. You can use multiple parameter markers 
+e.g.</p>
+<pre class="perl"><span class="kwb">$sql</span> <span class="sym">=</span> <span class="com">q/select * from table where col1 = ? and col2 = ?/</span><span class="sym">;</span>
+.
+.
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">((</span><span class="kwb">$param1</span><span class="sym">,</span> <span class="kwb">$param2</span><span class="sym">));</span>
+</pre>
+<p> <b>Note</b> You must pass the array of parameters in the order which you want them to match the parameter markers in the <span class="glossary" title="Structured Query Language">SQL</span>.
+ i.e. in the above example $param1 will substitute the first parameter 
+marker in "col1 = ?" and $param2 will substitute the parameter marker in
+ "col2 = ?".</p><p> <b>Note</b> You cannot use parameter markers in place of column names e.g. <i>select ? from table</i> or <i>select * from table where ? = 'A'</i>.</p><p> When passing the parameters to the <code>execute</code>
+ method a default binding type is used. DBD::ODBC attempts to find out 
+what the parameter markers represent and bind the parameters as the same
+ type. If your <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> driver does not have the <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> <span class="glossary" title="Application Program Interface">API</span> <code>SQLDescribeParam</code>
+ then a string binding is used (SQL_VARCHAR). You can also bind the 
+parameters yourself before the execute call and in this way you can 
+specify how the parameters should be bound:</p>
+<pre class="perl"><span class="slc"># import SQL types for use in bind_param method:</span>
+<span class="kwa">use</span> DBI qw<span class="sym">(:</span>sql_types<span class="sym">);</span>
+
+<span class="kwb">$sql</span> <span class="sym">=</span> <span class="com">q/select * from table where col1 = ?/</span><span class="sym">;</span>
+<span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>
+
+<span class="slc"># uses default bind type:</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_param<span class="sym">(</span><span class="num">1</span><span class="sym">,</span> <span class="kwb">$param1</span><span class="sym">);</span>
+<span class="slc"># Specify the parameter should be bound as an SQL_INTEGER</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_param<span class="sym">(</span><span class="num">1</span><span class="sym">,</span> <span class="kwb">$param1</span><span class="sym">, {</span>TYPE <span class="sym">=&gt;</span> SQL_INTEGER<span class="sym">});</span>
+</pre>
+<p> <b>Note</b> Once the parameters are bound you cannot change the type they are bound as although you can obviously change the bound values.</p><h3> <a name="using_bound_columns"></a>Using bound columns</h3><p> In previous examples in this tutorial we have used the <code>fetchrow_array</code> method to retrieve the result-set. <span class="glossary" title="DataBase Interface">DBI</span> also provides a method to bind the returned column data to <span class="glossary" title="Practical Extraction and Report Language">perl</span> variables using the <code>bind_col</code> and <code>bind_columns</code> methods:</p><p> Going back to the first example we had:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>             <span class="slc"># connect</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table/<span class="sym">;</span>     <span class="slc"># the query to execute</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>         <span class="slc"># prepare the query</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">();</span>                       <span class="slc"># execute the query</span>
+<span class="kwc">my</span> @row<span class="sym">;</span>
+<span class="kwa">while</span> <span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> which can be rewritten to use bound columns as follows:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>             <span class="slc"># connect</span>
+<span class="kwc">my</span> <span class="kwb">$sql</span> <span class="sym">=</span> qq/select <span class="sym">*</span> from table/<span class="sym">;</span>    <span class="slc"># the query to execute</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>        <span class="slc"># prepare the query</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">();</span>                      <span class="slc"># execute the query</span>
+<span class="kwc">my</span> <span class="sym">(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">,</span> <span class="kwb">$col3</span><span class="sym">);</span>
+<span class="slc"># Note columns start at 1 (not 0).</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">1</span><span class="sym">,</span> <span class="esc">\$</span>col1<span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">2</span><span class="sym">,</span> <span class="esc">\$</span>col2<span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">3</span><span class="sym">,</span> <span class="esc">\$</span>col3<span class="sym">);</span>
+<span class="kwa">while</span> <span class="sym">(</span><span class="kwb">$sth</span><span class="sym">-&gt;</span>fetch<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print <span class="str">"$col1, $col2, $col3</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> Binding columns and using the <code>fetch</code> method is usually faster than using methods like <code>fetchrow_array</code>. As with <code>bind_param</code> you can specify the type the column is bound as.</p>
+<pre class="perl"><span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">1</span><span class="sym">,</span> <span class="esc">\$</span>col1<span class="sym">, {</span>TYPE <span class="sym">=&gt;</span> SQL_INTEGER<span class="sym">});</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">2</span><span class="sym">,</span> <span class="esc">\$</span>col2<span class="sym">, {</span>TYPE <span class="sym">=&gt;</span> SQL_CHAR<span class="sym">});</span><span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_col<span class="sym">(</span><span class="num">3</span><span class="sym">,</span> <span class="esc">\$</span>col3<span class="sym">, {</span>TYPE <span class="sym">=&gt;</span> SQL_FLOAT<span class="sym">});</span>
+</pre>
+<p> In <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> there is usually no need to specify the type.</p><p> Instead of separate calls to <code>bind_col</code> you can bind all the columns in the above example in one go with:</p>
+<pre class="perl"><span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_columns<span class="sym">(</span><span class="esc">\$</span>col1<span class="sym">,</span> <span class="esc">\$</span>col2<span class="sym">,</span> <span class="esc">\$</span>col3<span class="sym">);</span>
+</pre>
+<p> or</p>
+<pre class="perl"><span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_columns<span class="sym">(</span><span class="esc">\(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">,</span> <span class="kwb">$col3</span><span class="sym">));</span>
+</pre>
+<h2> <a name="hash_ref"></a>Hash and Reference methods of retrieving data</h2><p> <span class="glossary" title="DataBase Interface">DBI</span>
+ supports a number of methods returning the result-set (or part of it) 
+in hash or array references. All the following examples assume you have 
+already prepared and executed a select on a table containing two rows of
+ two columns named a and b which look like:</p>
+<pre>column a | Column b
+---------+---------
+       1 |      one
+       2 |      two</pre>
+<p> <b>fetchrow_arrayref</b></p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$ref</span><span class="sym">;</span>
+<span class="kwa">while</span><span class="sym">(</span><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_arrayref<span class="sym">) {</span>
+    print join <span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">}),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+
+<pre>1, one  
+2, two</pre>
+<p> <b>fetchrow_hashref</b></p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$ref</span><span class="sym">;</span>
+<span class="kwa">while</span><span class="sym">(</span><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_hashref<span class="sym">) {</span>
+        print join <span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> keys %<span class="kwb">$ref</span><span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+        print join <span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> values %<span class="kwb">$ref</span><span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+
+</pre>
+
+<pre>a, b
+1, one
+a, b
+2, two</pre>
+<p> <b>fetchall_arrayref</b></p>
+<pre class="perl"><span class="slc">#</span>
+<span class="slc"># You must set RaiseError or check $sth-&gt;err because</span>
+<span class="slc"># fetchall_arrayref returns the data fetched so far.</span>
+<span class="slc">#</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;{</span>RaiseError<span class="sym">} =</span> <span class="num">1</span><span class="sym">;</span>
+<span class="kwc">my</span> <span class="kwb">$ref</span><span class="sym">;</span>
+<span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">;</span>
+print <span class="str">"Number of rows returned is "</span><span class="sym">,</span> <span class="num">0</span> <span class="sym">+</span> @<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">},</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="kwa">foreach</span> <span class="kwb">$r</span> <span class="sym">(</span>@<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">})</span>
+<span class="sym">{</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @<span class="sym">{</span><span class="kwb">$r</span><span class="sym">}),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+
+<pre>1, one
+2, two</pre>
+<p> You can add a slice to <code>fetchall_arrayref</code> to specify which columns to return:</p><ul><li> To return all columns as above: 
+<pre class="perl"><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">([]);</span>
+</pre>
+ 
+<pre>1, one
+2, two</pre>
+</li><li> To return only the first column 
+<pre class="perl"><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">([</span><span class="num">0</span><span class="sym">]);</span>
+</pre>
+ 
+<pre>1
+2</pre>
+</li><li> To return only the last column 
+<pre class="perl"><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">([-</span><span class="num">1</span><span class="sym">]);</span>
+</pre>
+ 
+<pre>one
+two</pre>
+</li><li> To return each row as a hashref 
+<pre class="perl"><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">({});</span>
+print <span class="str">"Number of rows returned is "</span><span class="sym">,</span> <span class="num">0</span> <span class="sym">+</span> @<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">},</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+print join <span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> keys %<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">-&gt;[</span><span class="num">0</span><span class="sym">]}),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="kwa">foreach</span> <span class="kwb">$r</span> <span class="sym">(</span>@<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">})</span>
+<span class="sym">{</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">, (</span>values %<span class="kwb">$r</span><span class="sym">)),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+print <span class="str">"Number of rows returned is "</span><span class="sym">,</span> <span class="num">0</span> <span class="sym">+</span> @<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">},</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+print join <span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> keys %<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">-&gt;[</span><span class="num">0</span><span class="sym">]}),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="kwa">foreach</span> <span class="kwb">$r</span> <span class="sym">(</span>@<span class="sym">{</span><span class="kwb">$ref</span><span class="sym">})</span>
+<span class="sym">{</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">, (</span>values %<span class="kwb">$r</span><span class="sym">)),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+ 
+<pre>Number of rows returned is 2
+a
+1
+2</pre>
+ <b>Note</b> When specifing the names of the columns to return in this 
+way the case of keys for the returned hashes always matches the case 
+used in the parameter to <code>fetchall_hashref</code> regardless of what <code>FetchKeyHashName</code> is set to.</li></ul><p> You can add a max_rows argument to <code>fetchall_arrayref</code> to restrict the number of rows:</p>
+<pre class="perl"><span class="kwb">$ref</span> <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">([],</span> <span class="num">1</span><span class="sym">);</span>
+</pre>
+
+<pre>1, one</pre>
+<p> This method is particularly useful if your database engine does not support the "top n" <span class="glossary" title="Structured Query Language">SQL</span> syntax or if you want the increased performance of <code>fetchall_arrayref</code>, want to keep memory down but also need to process all the rows because <code>fetchall_arrayref</code> can be called repeatedly on the same result-set to get rows in chunks.</p><p> The rather elegant way of doing this in the <span class="glossary" title="DataBase Interface">DBI</span> documentation is:</p>
+<pre class="perl"><span class="kwb">$sth</span><span class="sym">-&gt;{</span>RaiseError<span class="sym">} =</span> <span class="num">1</span><span class="sym">;</span>
+<span class="kwc">my</span> <span class="kwb">$rows</span> <span class="sym">= [];</span> <span class="slc"># cache for batches of rows</span>
+<span class="kwa">while</span><span class="sym">(</span><span class="kwc">my</span> <span class="kwb">$row</span> <span class="sym">= (</span>shift<span class="sym">(</span>@<span class="kwb">$rows</span><span class="sym">) ||</span> <span class="slc"># get row from cache, or reload cache:</span>
+                 shift<span class="sym">(</span>@<span class="sym">{</span><span class="kwb">$rows</span><span class="sym">=</span><span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchall_arrayref<span class="sym">(</span>undef<span class="sym">,</span><span class="num">1</span><span class="sym">)||[]}))) {</span>
+    print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @<span class="sym">{</span><span class="kwb">$row</span><span class="sym">}),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+
+<pre>1, one       
+2, two</pre>
+<h2> <a name="special_cases"></a>Special cases</h2><h3> <a name="chopblanks"></a>SQL_CHAR types and trialing spaces</h3><p>
+ Databases store char(n) columns as exactly n characters so if you have a
+ char(10) column which you insert 'FRED' into when you retrieve it you 
+will get 'FRED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'. This often leads to
+ confusion, especially in tests like $var eq 'FRED'. e.g. With the 
+following table definition and inserts:</p>
+<pre>create table tut2_8 (a int, b char(10))
+insert into tut2_8 values (1, 'one')
+insert into tut2_8 values (2, 'two')</pre>
+<p> the following code never prints out "Found 'two'".</p>
+<pre class="perl"><span class="kwc">my</span> <span class="sym">(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_columns<span class="sym">(</span><span class="esc">\(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">));</span>
+<span class="kwa">while</span> <span class="sym">(</span><span class="kwb">$sth</span><span class="sym">-&gt;</span>fetch<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print <span class="str">"$col1, $col2</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+    print <span class="str">"Found 'two'"</span> <span class="kwa">if</span> <span class="sym">(</span><span class="kwb">$col2</span> <span class="kwa">eq</span> <span class="str">'two'</span><span class="sym">);</span>
+<span class="sym">}</span>
+</pre>
+<p> The <code>ChopBlanks</code> attribute is provided to help you here. <code>ChopBlanks</code> may be set on the connection or statement handle and is inherited from connections. The default is for <code>ChopBlanks</code> to be false. If you insert "$sth-&gt;{ChopBlanks} = 1;" before the call to execute method call then the above test now works.</p><p> <b>Note</b> <code>ChopBlanks</code> only works on fixed-length CHAR columns.</p><h3> <a name="long_data"></a>Long columns</h3><p> Suppose you have the table created with the following code:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$dbh</span> <span class="sym">=</span> DBI<span class="sym">-&gt;</span>connect<span class="sym">();</span>             <span class="slc"># connect</span>
+<span class="kwb">$dbh</span><span class="sym">-&gt;</span><span class="kwa">do</span><span class="sym">(</span><span class="com">q/create table tut2_9 (a int, b text)/</span><span class="sym">);</span>
+<span class="kwc">my</span> <span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="com">q/insert into tut2_9 values (1, ?)/</span><span class="sym">);</span>
+<span class="kwc">my</span> <span class="kwb">$p</span> <span class="sym">=</span> <span class="str">'x'</span> x <span class="num">500</span><span class="sym">;</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">(</span><span class="kwb">$p</span><span class="sym">);</span>
+</pre>
+<p> The 'text' column type here is a MS <span class="glossary" title="Structured Query Language">SQL</span> Server long data type. Other databases have memo, blob etc.</p><p>The following retrieval code:</p>
+<pre class="perl"><span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="com">q/select * from tut2_9/</span><span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">;</span>
+<span class="kwc">my</span> <span class="sym">(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>bind_columns<span class="sym">(</span><span class="esc">\(</span><span class="kwb">$col1</span><span class="sym">,</span> <span class="kwb">$col2</span><span class="sym">));</span>
+<span class="kwa">while</span> <span class="sym">(</span><span class="kwb">$sth</span><span class="sym">-&gt;</span>fetch<span class="sym">) {</span> <span class="slc"># retrieve one row</span>
+    print <span class="str">"$col1, $col2</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+<p> fails with</p>
+<pre>DBD::ODBC::st fetch failed: [unixODBC][][Microsoft]
+[ODBC SQL Server Driver]
+String data, right truncation (SQL-01004)
+(DBD: st_fetch/SQLFetch 
+(long truncated DBI attribute LongTruncOk not set 
+and/or LongReadLen too small) err=-1) at ./tut2_9.pl line 19.</pre>
+<p> The attributes <code>LongReadLen</code> and <code>LongTruncOk</code> control how long columns are retrieved. By default, DBD::ODBC has <code>LongReadLen</code> set to 80 and <code>LongTruncOk</code> is false. You can find the current settings with:</p>
+<pre>print "LongReadLen is '", $h-&gt;{LongReadLen}, "'\n";
+print "LongTruncOk is ", $h-&gt;{LongTruncOk}, "\n";</pre>
+<p> When <code>LongTruncOk</code> is false (as above), if you attempt to retrieve more than <code>LongReadLen</code> bytes from a column you will get an error like above. If you are not bothered about the column data being truncated then set <code>LongTrunkOk</code> to 1. If you need more than 80 bytes from the column then you need to set <code>LongReadLen</code>. If you want long columns ignored (i.e. no data fetched from them but undef returned instead) then you need to set <code>LongReadLen</code> to 0 and LongTruncOk to true.</p><h3> <a name="nulls"></a>Handling NULL data</h3><h4> <a name="in_sql"></a>NULL in SQL</h4><p>
+ Columns which have the NULL value are special. NULL is not the same as 
+an empty string. You need to be careful using comparisons on columns 
+which are nullable. For instance:</p><p> Given the table:</p><p> <i>create table fred (a int, b char(1) null)</i></p>
+<pre>Col1 | Col2
+-----+-----
+   1 |    Y
+   2 |    N
+   3 | NULL</pre>
+<p> <i>select * from fred where col2 = 'Y'</i> returns:</p>
+<pre>col1 | col2
+-----+-----
+   1 |    Y</pre>
+<p> and <i>select * from fred where col2 &lt;&gt; 'Y'</i> returns:</p>
+<pre>col1 | col2
+-----+-----
+   1 |    N</pre>
+<p> Some people expect to see the result of the second query including 
+row 3 with the NULL col2 because they think "col2 &lt;&gt; 'Y'" includes
+ NULL; it doesn't. In relational operations, unlike normal binary, there
+ are THREE states that a operation can result in, TRUE, FALSE, and 
+UNKNOWN. The last state, is the one that needs a closer look.</p><p> The
+ UNKNOWN state occurs for any logical operation where the result cannot 
+be evaluated as either TRUE or FALSE, and is connected with the NULL 
+concept.</p><p> A NULL in a <span class="glossary" title="Structured Query Language">SQL</span>
+ table, can be regarded as a placeholder for missing information, its 
+not a VALUE as such, just a marker to indicate the lack of information. 
+So in the query for all rows where col2 is not equal to 'Y' the rows 
+containing a NULL are not returned, as the answer to the question "Does 
+the col2 column contain values not equal to Y" returns false, as the 
+column contains the unknown NULL and not a value that could or could not
+ be equal to 'Y'.</p><p> The normal way to select NULL columns in <span class="glossary" title="Structured Query Language">SQL</span>
+ syntax is using "column is null" (the opposite being "column is not 
+null"). So to find all the rows in table Fred where col2 has a NULL 
+value you use:</p><p> <i>select * from fred where col2 is null</i></p><h4> <a name="in_perl"></a>NULL in Perl</h4><p> In <span class="glossary" title="Practical Extraction and Report Language">perl</span> DBI, NULL column values are represented by undef (the undefined value). As a result, the following <span class="glossary" title="Practical Extraction and Report Language">Perl</span> run against the table above:</p>
+<pre class="perl"><span class="kwb">$sth</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="com">q/select * from tut2_19/</span><span class="sym">);</span>
+<span class="kwb">$sth</span><span class="sym">-&gt;</span>execute<span class="sym">;</span>
+
+<span class="kwc">my</span> @row<span class="sym">;</span>
+<span class="kwa">while</span><span class="sym">(</span>@row <span class="sym">=</span> <span class="kwb">$sth</span><span class="sym">-&gt;</span>fetchrow_array<span class="sym">) {</span>
+        print join<span class="sym">(</span><span class="str">", "</span><span class="sym">,</span> @row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+<span class="sym">}</span>
+</pre>
+
+<pre>1, Y
+2, N
+3,</pre>
+<p> and if you have warnings enabled (and you should) then you will see 
+"Use of uninitialised value in join or string at XXX.pl line NNN". You 
+can use either of the following examples to avoid this:</p>
+<pre class="perl"><span class="slc"># print out row</span>
+print DBI<span class="sym">::</span>neat_list<span class="sym">(</span><span class="esc">\@</span>row<span class="sym">),</span> <span class="str">"</span><span class="esc">\n</span><span class="str">"</span><span class="sym">;</span>
+
+<span class="kwa">or</span>
+
+<span class="slc"># change all NULLs to empty strings</span>
+<span class="kwa">foreach</span> <span class="sym">(</span>@row<span class="sym">) {</span><span class="kwb">$_</span> <span class="sym">=</span> <span class="str">''</span> <span class="kwa">unless</span> defined<span class="sym">};</span>
+</pre>
+<p> If you are using a parameterised query you may expect to do:</p>
+<pre class="perl"><span class="kwb">$sql</span> <span class="sym">=</span> <span class="com">q/select * from table where a = ?/</span><span class="sym">;</span>
+<span class="kwb">$stmt</span> <span class="sym">=</span> <span class="kwb">$dbh</span><span class="sym">-&gt;</span>prepare<span class="sym">(</span><span class="kwb">$sql</span><span class="sym">);</span>
+<span class="kwb">$stmt</span><span class="sym">-&gt;</span>execute<span class="sym">(</span>undef<span class="sym">);</span>  <span class="slc"># pass NULL as parameter</span>
+</pre>
+<p> but with some databases this does not work. In <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> terms, the above code results in a call to the <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> API <code>SQLBindParameter</code> with a data pointer of NULL and a indicator of SQL_NULL_DATA. Some <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a>
+ drivers and databases will not select all the rows where the column is 
+NULL when this method is used. As shown above a standard way of 
+selecting a column which is NULL is "where column is null" but you 
+cannot parameterise this. This has been the subject of much discussion 
+and one method put forward is:</p>
+<pre class="perl"><span class="kwc">my</span> <span class="kwb">$test</span> <span class="sym">=</span> undef<span class="sym">;</span>
+<span class="kwb">$sql</span> <span class="sym">=</span> <span class="com">q/select * from table where (col = ? or (col is null and ? = 1))/</span><span class="sym">;</span>
+<span class="kwb">$stmt</span><span class="sym">-&gt;</span>execute<span class="sym">(</span><span class="kwb">$test</span><span class="sym">,</span>defined<span class="sym">(</span><span class="kwb">$test</span><span class="sym">)</span>?<span class="num">0</span><span class="sym">:</span><span class="num">1</span><span class="sym">);</span>
+</pre>
+<h1> <a name="app_a"></a>Appendix A: Resources</h1><ul><li>You can get help with <span class="glossary" title="Practical Extraction and Report Language">Perl</span> DBI from the mailto:dbi-users-subscribe@perl.org mailing list and help on mailto:dbi-users-help@perl.org.</li><li> <a target="_new" href="http://dbi.perl.org/">The DBI home page</a></li><li> <span class="glossary" title="DataBase Interface">DBI</span> Change history - just type <i>"perldoc DBI::Changes"</i></li><li> <a target="_new" href="http://search.cpan.org/">CPAN</a> where you can download <span class="glossary" title="DataBase Interface">DBI</span> and DBD::ODBC.</li><li> <a href="http://www.easysoft.com/">The Easysoft web site</a></li><li> <a href="http://www.easysoft.com/developer/languages/perl/dbi_dbd_odbc.html"> Enabling ODBC support in Perl with Perl DBI and DBD::ODBC</a>.</li><li>Other tutorials in this series:<ul><li> <a href="http://www.easysoft.com/developer/languages/perl/dbd_odbc_tutorial_part_1.html"> DBD::ODBC Tutorial Part 1 - Drivers, Data Sources and Connection</a></li><li> <a href="http://www.easysoft.com/developer/languages/perl/sql_server_unix_tutorial.html"> DBD::ODBC Tutorial Part 3 - Connecting Perl on UNIX to Microsoft SQL Server</a></li><li> <a href="http://www.easysoft.com/developer/languages/perl/tutorial_data_web.html"> Perl DBI - Put Your Data On The Web</a></li></ul></li><li> <a href="http://www.easysoft.com/developer/languages/perl/multiple-active-statements.html">Multiple Active Statements (MAS) and DBD::ODBC</a></li><li> <a href="http://www.easysoft.com/developer/languages/perl/dbi-debugging.html">Debugging Perl DBI</a></li><li> <a href="http://www.easysoft.com/developer/interfaces/odbc/diagnostics_error_status_codes.html">Easysoft Guide to ODBC Diagnostics &amp; Error Status Codes</a>.</li><li> <a target="_new" href="http://www.easysoft.com/developer/interfaces/odbc/linux.html">Linux/UNIX ODBC</a> -- everything you need to know about <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> on Linux and UNIX platforms.</li><li> <a target="_new" href="http://www.easysoft.com/developer/interfaces/odbc/64-bit.html">64-bit ODBC</a> -- everything you need to know about <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> on 64-bit Linux, UNIX and Windows platforms.</li><li>Easysoft <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> drivers: <ul><li><a href="http://www.easysoft.com/products/data_access/odbc_oracle_driver/index.html">Oracle ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc-sql-server-driver/index.html">SQL Server ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc-access-driver/index.html">Access ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_sybase_driver/index.html">Sybase ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_interbase_driver/index.html">InterBase ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_firebird_driver/index.html">Firebird ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_isam_driver/index.html">C/D-ISAM ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_linc_developer_driver/index.html">LINC Developer ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_systemz_driver/index.html">System Z ODBC driver</a></li><li><a href="http://www.easysoft.com/products/data_access/odbc_jdbc_gateway/index.html">ODBC-JDBC Gateway</a> -- providing <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> access to <a class="glossary" title="Java DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/jdbc/index.html">JDBC</a> data sources</li><li><a href="http://www.easysoft.com/products/data_access/odbc_odbc_bridge/index.html">ODBC-ODBC Bridge</a> -- providing <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> access to any remote <a class="glossary" title="Open DataBase Connectivity" href="http://www.easysoft.com/developer/interfaces/odbc/index.html">ODBC</a> data source e.g. MS Access from Linux</li></ul></li></ul> <div class="bannerad"> <a href="http://www.easysoft.com/products/data_access/index.html?advert=odbc&amp;referring_page=Introduction%20to%20retrieving%20data%20from%20your%20database%20-%20Perl%20DBI/DBD::ODBC%20Tutorial%20Part%202&amp;location=footer"> <img src="PERL_dbd_odbc_tutorial_part_2_files/banner-odbc.gif" alt="ODBC Drivers for Oracle, SQL Server, Firebird, ISAM, InterBase, Sybase, MS Access &amp; more." border="0" height="60" width="468"></a></div> <div class="screen"> <div class="feedback"> <h3>Article Feedback</h3> <form method="POST" action="/cgi-bin/feedback.cgi"> <input name="form_id" value="6" type="hidden"> <input name="feedback_url" value="/developer/languages/perl/dbd_odbc_tutorial_part_2.html" type="hidden"> <table class="p" cellpadding="0" cellspacing="0"> <tbody><tr> <td valign="top" width="10"><span class="mandatory-text">*</span></td> <td colspan="3" align="left"> <b>Did this content help you?</b><br> <input name="radio_1" value="Yes" type="radio">Yes<br> <input name="radio_1" value="No" type="radio">No<br> <input name="radio_1" value="Maybe" type="radio">Maybe<br></td></tr> <tr><td colspan="4">&nbsp;</td></tr> <tr> <td valign="top" width="10"><span class="mandatory-text">*</span></td> <td colspan="3" align="left"> <b>Please select one option based on your first choice:</b><br> <input name="radio_2" value="I'm very satisfied" type="radio">I'm very satisfied<br> <input name="radio_2" value="I think it will help, but I haven't tried it yet" type="radio">I think it will help, but I haven't tried it yet<br> <input name="radio_2" value="It is helpful, but I need more information" type="radio">It is helpful, but I need more information<br> <input name="radio_2" value="It is helpful, but hard to understand" type="radio">It is helpful, but hard to understand<br> <input name="radio_2" value="Seemed relevant in search results, but didn't help me" type="radio">Seemed relevant in search results, but didn't help me<br> <input name="radio_2" value="The information is incorrect" type="radio">The information is incorrect<br> <input name="radio_2" value="The page contains one or more broken links" type="radio">The page contains one or more broken links<br></td></tr> <tr><td colspan="4">&nbsp;</td></tr> <tr> <td valign="top" width="10">&nbsp;</td> <td colspan="3" align="left"> <b>Suggest new content or let us know how we can improve this content:</b><br> <textarea name="textarea_3" cols="60" rows="12"></textarea><br></td></tr> <tr><td colspan="4">&nbsp;</td></tr> <tr> <td width="10">&nbsp;</td> <td> <span class="mandatory-text">(* Required Fields)</span>&nbsp;</td> <td valign="top" width="10">&nbsp;</td> <td align="center"> <input name="Submit" value="Submit" type="submit"></td></tr></tbody></table></form></div></div> <p><br></p></td></tr> <tr> <td> <br></td></tr></tbody></table></td></tr></tbody></table> <div class="screen"> <div id="footer" align="center"> <div id="legal"> © 1993 - 2012 Easysoft Limited. All rights reserved.<br> <a class="glossary" title="Oracle Home Page" href="http://www.oracle.com/" target="_blank">Oracle</a> is a registered trademark of <a class="glossary" title="Oracle Home Page" href="http://www.oracle.com/" target="_blank">Oracle</a>
+ Corporation and/or its affiliates. Other trademarks and registered 
+trademarks appearing on easysoft.com are the property of their 
+respective owners.</div> <ul> <li><a href="http://www.easysoft.com/company/index.html">About Easysoft</a></li> <li><a href="http://www.easysoft.com/company/contact_details.html">Contact Us</a></li> <li><a href="http://www.easysoft.com/company/privacy-policy.html">Privacy</a></li> <li><a href="http://www.easysoft.com/company/legal.html">Legal</a></li> <li><a href="http://www.easysoft.com/search_help.html">Search Help</a></li></ul></div></div> <div class="print" align="center"> <center> <hr> © 1993 - 2012 Easysoft Limited. All rights reserved.</center></div> <script type="text/javascript"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-563152-1']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script> </body></html>

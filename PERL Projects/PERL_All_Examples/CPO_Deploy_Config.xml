@@ -1,0 +1,28 @@
+<!--
+<dir>
+	<file>
+		<localsrcdir>applications/prime_optical/cpo_apps/scripts/db_backup_scripts/ctm_backup</localsrcdir>
+		<remotehost>eon-rtp3-1-l</remotehost>
+		<remotehostuser>cporacle</remotehost_user>
+			
+	<file>
+	<file>
+		<localsrcdir>applications/prime_optical/cpo_apps</localsrcdir>
+		<remotehost>eon-rtp3-1-l</remotehost>
+		<remotehostuser>cporacle</remotehostuser>
+	<file>
+<dir>
+
+-->
+<dir>
+    <file>
+	  <LocalSrcDir>applications/prime_optical/cpo_apps/scripts/db_backup_scripts/ctm_backup</LocalSrcDir>
+      <RemoteUser>cporacle</RemoteUser>
+      <RemoteHost>eon-rtp3-1-l</RemoteHost>
+    </file>
+    <file>
+	  <LocalSrcDir>applications/prime_optical/cpo_apps/scripts/db_backup_scripts/ctm_backup</LocalSrcDir>
+      <RemoteUser>cporacle</RemoteUser>
+      <RemoteHost>eon-rtp3-1-2</RemoteHost>
+    </file>
+</dir>

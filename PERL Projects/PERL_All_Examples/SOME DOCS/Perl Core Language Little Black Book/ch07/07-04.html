@@ -1,0 +1,724 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Subroutines</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=07//-->
+<!--PAGES=164-170//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="07-03.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="../ch08/08-01.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<H4 ALIGN="LEFT"><A NAME="Heading15"></A><FONT COLOR="#000077">Calling Subroutines Recursively</FONT></H4>
+<P>You can call subroutines recursively in Perl, which is to say that a subroutine can call itself. The usual recursive subroutine example is to calculate a factorial (for example, <B>5! = 5 * 4 * 3 * 2 * 1</B>), so here we go. In this case, we divide the problem of calculating a factorial into recursive stages; at each stage, we multiply the value passed to us by the result of calculating the factorial of that value minus one. Only when the subroutine is called with a value of one do we return that value without further calculation:</P>
+<!-- CODE //-->
+<PRE>
+sub factorial
+{
+    my $value = shift (@_);
+
+    if ($value == 1) {
+        return $value;
+    } else {
+        return $value * factorial ($value - 1);
+    }
+}
+
+$result = factorial(6);
+print $result;
+
+<I>720</I>
+</PRE>
+<!-- END CODE //-->
+<P>As you can see, this subroutine can call itself recursively&#151;in fact, it has to in order to compute its return value (unless you ask for the factorial of 1).
+</P>
+<H4 ALIGN="LEFT"><A NAME="Heading16"></A><FONT COLOR="#000077">Nesting Subroutines</FONT></H4>
+<P>You can also nest subroutines in Perl, which is to say, you can define subroutines inside subroutines. Here&#146;s an example in which we define a subroutine named <B>outer</B> and then define a subroutine named <B>inner</B> inside that subroutine:</P>
+<!-- CODE //-->
+<PRE>
+sub outer
+{
+    sub inner
+    {
+        print &#147;Inside the inner subroutine.\n&#148;;
+    }
+
+    inner;
+}
+
+<I>Inside the inner subroutine.</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading17"></A><FONT COLOR="#000077">Passing By Reference</FONT></H4>
+<P>Passing arrays or hashes &#147;flattens&#148; their elements into one long list, which is a problem if you want to send two or more distinct arrays or hashes. To preserve their integrity, you can pass references to arrays or hashes instead (see Chapter 8 for more on references).
+</P>
+<P>Here&#146;s an example in which there are two arrays:</P>
+<!-- CODE SNIP //-->
+<PRE>
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Suppose you wanted to write a subroutine, <B>addem</B>, to add arrays like these element-by-element (no matter what the arrays&#146; lengths). To do that, you&#146;d call <B>addem</B> with references to the arrays:</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = addem (\@a, \@b);
+</PRE>
+<!-- END CODE SNIP //-->
+<P>In <B>addem</B>, you&#146;d retrieve the references to the arrays and then loop over the arrays this way (this code will become clearer in the next chapter), returning an array holding the element-by-element sum of the passed arrays:</P>
+<!-- CODE //-->
+<PRE>
+sub addem
+{
+    my ($ref1, $ref2) = @_;
+    for ($loop_index = 0; $loop_index &lt= $#{$ref1};
+        $loop_index&#43;&#43;) {
+        $result[$loop_index] = @{$ref1}[$loop_index] &#43;
+            @{$ref2}[$loop_index];
+    }
+    return @result;
+}
+</PRE>
+<!-- END CODE //-->
+<P>Here&#146;s how we use <B>addem</B> to add the two arrays:</P>
+<!-- CODE SNIP //-->
+<PRE>
+@array = addem (\@a, \@b);
+print join (&#145;, &#146;, @array);
+
+<I>5, 7, 9</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Note that passing by reference also lets you refer directly to the data in the items you pass, which means that you can modify that data from the called subroutine. Scalars are already called by reference in Perl, so you don&#146;t have to explicitly pass references to them to be able to modify their values in a subroutine.
+</P>
+<TABLE WIDTH="100%" BORDER RULES="ROWS"><TR>
+<TH WIDTH="70%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="70%" VALIGN="TOP" ALIGN="LEFT">Creating A Reference
+<TD WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT">175
+</TABLE>
+<H4 ALIGN="LEFT"><A NAME="Heading18"></A><FONT COLOR="#000077">Passing Symbol Table Entries (Typeglobs)</FONT></H4>
+<P>Passing typeglobs used to be the only way of passing by reference in Perl, and it&#146;s still the best way to pass items like file handles. Typeglobs are really symbol table entries, so when you pass a typeglob, you&#146;re passing a reference to all the types of data stored with a particular name. Here&#146;s an example implementing the array-adding subroutine named <B>addem</B> from the previous topic using typeglobs instead of references:</P>
+<!-- CODE //-->
+<PRE>
+@a = (1, 2, 3);
+@b = (4, 5, 6);
+
+sub addem {
+    local(*array1, *array2) = @_;
+    for ($loop_index = 0; $loop_index &lt= $#array1;
+        $loop_index&#43;&#43;) {
+        $result[$loop_index] = @array1[$loop_index] &#43;
+            @array2[$loop_index];
+    }
+    return @result
+}
+
+@result = addem(*a, *b);
+print join(&#147;, &#148;, @result);
+
+<I>5, 7, 9</I>
+</PRE>
+<!-- END CODE //-->
+<P>If you&#146;re passing file handles, you can pass a typeglob like <B>*STDOUT</B>, but typeglob references are better because they&#146;ll still work when pragmas like <B>use strict &#145;refs&#146;</B> are in force. (Pragmas are directives to the compiler; this one checks symbolic references&#151;see Chapter 8 for more information.) Here&#146;s an example in which we pass <B>*STDOUT</B> to a subroutine:</P>
+<!-- CODE SNIP //-->
+<PRE>
+sub printhello {
+    my $handle = shift;
+    print $handle &#147;Hello!\n&#148;;
+}
+printhello(\*STDOUT);
+
+<I>Hello! </I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading19"></A><FONT COLOR="#000077">Checking Return Context With wantarray</FONT></H4>
+<P>Subroutines can return scalar or list values, which means they may be called from either type of context. If you want to handle both contexts, you need some way of knowing what kind of value to return, and you can do that with the <B>wantarray</B> function.</P>
+<P>The <B>wantarray</B> function returns true if the return value of your subroutine will be interpreted in list context, false otherwise. Here&#146;s an example using <B>wantarray</B> in which we replace all &#147;x&#148;s with &#147;y&#148;s in strings passed to a subroutine named <B>swapxy</B>; if the return context is a list context, we return an array, otherwise we return a scalar value:</P>
+<!-- CODE SNIP //-->
+<PRE>
+sub swapxy {
+    my @data = @_;
+    for (@data) {
+        s/x/y/g;
+    }
+    return wantarray ? @data : $data[0];
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Here&#146;s how to use <B>swapxy</B>, in which we call that subroutine with a list and get a list back:</P>
+<!-- CODE //-->
+<PRE>
+$a = &#147;xyz&#148;;
+$b = &#147;xxx&#148;;
+($a, $b) = swapxy($a, $b);
+
+print &#147;$a\n&#148;;
+print &#147;$b\n&#148;;
+
+<I>yyz</I>
+<I>yyy</I>
+</PRE>
+<!-- END CODE //-->
+<H4 ALIGN="LEFT"><A NAME="Heading20"></A><FONT COLOR="#000077">Creating Inline Functions</FONT></H4>
+<P>If your function has a prototype of <B>()</B>, that function may be <I>inlined</I> by the Perl compiler. An inlined function is optimized by Perl for extra speed, but such functions are very restricted and must consist of either a constant or a lexically scoped scalar (with no other references). In addition, the function must not be referenced with <B>&amp</B> or <B>do</B>, because those calls are never inlined.</P>
+<P>For example, these functions would be inlined (the Perl <B>exp</B> function returns <B>e</B>&#151;the natural logarithm base&#151;raised to the power of the passed value; note that <B>exp 1</B> gives a better value of <B>e</B> than the constant value in the first subroutine):</P>
+<!-- CODE SNIP //-->
+<PRE>
+sub e () {2.71828}
+sub e () {exp 1}
+</PRE>
+<!-- END CODE SNIP //-->
+<H4 ALIGN="LEFT"><A NAME="Heading21"></A><FONT COLOR="#000077">Overriding Built-In Functions And Using CORE</FONT></H4>
+<P>When you override a subroutine, you give it a new definition. You can override subroutines, including the functions built into Perl, but you can only override a subroutine if it&#146;s imported from a module (just predeclaring a subroutine isn&#146;t enough here).
+</P>
+<P>Note, however, that you can use the <B>subs</B> pragma (a pragma is a directive to the Perl compiler) to predeclare subroutines using the import syntax, and you can use these names to override built-in functions. Here&#146;s an example in which we override the Perl <B>exit </B>function, making it ask if the user really wants to exit:</P>
+<!-- CODE //-->
+<PRE>
+use subs &#145;exit&#146;;
+sub exit
+{
+    print &#147;Do you really want to exit?&#148;;
+    $answer = &lt&gt;
+    if ($answer =~ /^y/i) {CORE::exit;}
+}
+while (1) {
+    exit;
+}
+</PRE>
+<!-- END CODE //-->
+<P>Note that to actually exit the program if the user really wants to do so, we use the pseudopackage CORE this way: CORE::exit (you qualify a symbol name with a package name using :: in Perl). The CORE pseudopackage will always hold the original built-in functions, and if you override one of those functions, you can still reach it using CORE.
+</P>
+<H4 ALIGN="LEFT"><A NAME="Heading22"></A><FONT COLOR="#000077">Creating Anonymous Subroutines</FONT></H4>
+<P>Perl lets you create anonymous (that is, unnamed) subroutines this way, in which we create a reference to the subroutine (see the next chapter for more on references):
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$coderef = sub {print &#147;Hello!\n&#148;;};
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Note that you need a semicolon to end this statement, which you wouldn&#146;t need at the end of a standard subroutine definition. You can call this subroutine, using <B>&amp</B> to indicate that you&#146;re calling a subroutine and enclosing the reference in braces:</P>
+<!-- CODE SNIP //-->
+<PRE>
+&amp{ $coderef };
+
+<I>Hello!</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="70%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="70%" VALIGN="TOP" ALIGN="LEFT">Creating A Reference
+<TD WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT">175
+</TABLE>
+<H4 ALIGN="LEFT"><A NAME="Heading23"></A><FONT COLOR="#000077">Creating Subroutine Dispatch Tables</FONT></H4>
+<P>A subroutine dispatch table holds references to subroutines, and you can specify what subroutine you want to call by index or by key, which is useful when you have a data set in which items need to be handled by more than one subroutine. For example, say we had two subroutines to convert temperatures from centigrade to Fahrenheit and the reverse:
+</P>
+<!-- CODE //-->
+<PRE>
+sub ctof          #Centigrade to Fahrenheit
+{
+   $value = shift(@_);
+   return 9 * $value / 5 &#43; 32;
+}
+
+sub ftoc          #Fahrenheit to centigrade
+{
+   $value = shift(@_);
+   return 5 * ($value - 32) / 9;
+}
+</PRE>
+<!-- END CODE //-->
+<P>To put them into a dispatch table, we store references to these subroutines (see the next chapter for more on references) like this:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+$tempconvert[0] = \&ampftoc;
+$tempconvert[1] = \&ampctof;
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Now you can select what subroutine you call with an index, like this:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+print &#147;Zero centigrade is &#148; . &amp{$tempconvert[1]}(0) .
+    &#147; Fahrenheit.\n&#148;;
+
+<I>Zero centigrade is 32 Fahrenheit.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>You can also pass arguments to subroutines called this way by placing those arguments in parentheses following the subroutine reference.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>
+</P>
+<TABLE WIDTH="100%" BORDER RULES="ROWS"><TR>
+<TH WIDTH="70%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="70%" VALIGN="TOP" ALIGN="LEFT">Creating A Reference
+<TD WIDTH="30%" VALIGN="TOP" ALIGN="RIGHT">175
+</TABLE>
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="07-03.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="../ch08/08-01.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

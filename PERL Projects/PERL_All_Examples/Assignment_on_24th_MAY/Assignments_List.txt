@@ -1,0 +1,18 @@
+Assignment given on : 24th May,2012
+
+1) Create a package namead as "Test" and write subroutine to sort the hash contents ?
+Hash cotent would be something like :
+%hash = ("128k"=>"128k","256k"=>"256k","512K"=>"512K");
+
+2) Write a perl script to comsume the above hash sorting subroutine  ?
+Note: hash keys should be passed to the subroutine and subroutine should return sorted value of hash as array .
+
+3) Write a subroutine to pass 2 arrays to another subroutine ?
+
+4) What is Hash reference ? How do we create a hash reference ?
+
+5) Wirte a subroutine to add values into hash on runtime ?
+
+6) Wite a program to copy the keys of a hash into arr1 and values in the arr2 ?
+
+

@@ -1,0 +1,20 @@
+Assigment given on 28th May 2012;
+_____________________________________
+
+PERL DIB::
+-------------
+
+1) Create an SQLite database on your machine:
+2) Create a table named test in the baove SQLite database?
+   table structure: Test_ID - Primary Kay,
+                    Test_Name - Not null,
+                    Test_date - Not null,
+                    Test_desc - null.
+3) Write a script to insert the data into the table Test?
+4) write subroutine for the Insert,Update and Delete operation ?
+5) Write a subroutine to select the above table contents?
+6) Write a script to find the number of occuerence of char 's' in the string 'mississippi'?
+7) Write a regular expression to convert string 'Sumit KUMAR' in sentence case?
+8) Write a regex to replace the all digits with null in the string? string is :"May 28th 2012".
+9) How do we escape all special characters in a string? needs to be done before the strign matched to regex?
+10) Wite a query to find the number of records in the Test table and display this as output on the UI?

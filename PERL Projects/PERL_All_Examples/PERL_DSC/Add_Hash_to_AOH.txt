@@ -1,0 +1,33 @@
+#!perl -w
+use strict;
+use Data::Dumper;
+
+
+
+my @AoH = (
+        {
+            Lead     => "fred",
+            Friend   => "barney",
+        },
+        {
+            Lead     => "george",
+            Wife     => "jane",
+            Son      => "elroy",
+        },
+        {
+            Lead     => "homer",
+            Wife     => "marge",
+            Son      => "bart",
+        }
+  );
+  
+  $AoH[0]{Daughter} = "Louis";
+  
+   if (exists $AoH[2]{Lead}) {
+                       my $onramp_usr_type = $AoH[2]{Lead};
+      print "LEAD is  $onramp_usr_type";
+
+  }
+  print Dumper \@AoH;
+  
+  

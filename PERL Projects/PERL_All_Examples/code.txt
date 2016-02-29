@@ -1,0 +1,66 @@
+sub rekey_token{
+    my ($self,%args)=@_;
+    my $cgi=new CGI;
+
+    my $userid=$cgi->param('EMAIL_ALIAS');
+
+    my $params_hash={};
+
+    if(!($self->validate_user_id($userid))){
+
+        $params_hash = {'ARRAY' => 1, 'STATUS' => 'fail'};
+        my ($resp_code, $xml) = $self->_response($params_hash, ['error::400::Invalid Email Alias!!']);
+        return ($resp_code, $xml);
+    } else {
+        my ($status,$msg)=$self->SUPER::rekey_token({EMAIL_ALIAS=>$userid, ACTION_NAME=>'RekeyToken'});
+
+        if($status eq 'ok'){
+            $params_hash={'ARRAY'=>1,'STATUS'=>$status,'STATUS_CODE'=>200};
+            my ($resp_code, $xml) = $self->_response($params_hash, [$msg]);
+            return ($resp_code, $xml);
+        } else {
+            $params_hash = {'ARRAY' => 1, 'STATUS' => $status};
+            my ($resp_code, $xml) = $self->_response($params_hash, [$msg]);
+            return ($resp_code, $xml);
+        }
+    }
+}
+sub validate_user_id{
+    my $userid=shift;
+
+    $userid =~ s/^\s+|\s+$//g;
+
+    eval {
+        my $emp = EMAN::Service::Employee->new();
+        $emp->{EMAIL_ALIAS} = $userid;
+        $emp->select();
+    };
+
+    if($@){
+        return 0;
+    }
+    return 1;
+
+}
+
+
+
+
+--------------------------------------------------------------
+code to print out from into a file :
+
+ 1)use Data::Dumper;
+        open FH,"> /tmp/dump.txt" ;
+        print FH Dumper $rs[0];
+		
+2)
+use Data::Dumper;
+        open FH,"> /tmp/dump.txt" ;
+        print FH Dumper $msg;
+3)
+use Data::Dumper;
+        open FH,"> /tmp/dump.txt" ;
+        print FH Dumper $egm_util->{USER_MEMBERS};
+
+
+

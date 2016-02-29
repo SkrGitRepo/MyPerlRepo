@@ -1,0 +1,777 @@
+<HTML>
+
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Introduction</TITLE>
+
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+
+<!-- Empty Reference Subhead -->
+
+
+
+<!--ISBN=1576104265//-->
+
+<!--TITLE=Perl Core Language Little Black Book//-->
+
+<!--AUTHOR=Steven Holzner//-->
+
+<!--PUBLISHER=The Coriolis Group//-->
+
+<!--CHAPTER=Introduction//-->
+
+<!--PAGES=025-030//-->
+
+<!--UNASSIGNED1//-->
+
+<!--UNASSIGNED2//-->
+
+
+
+<CENTER>
+
+<TABLE BORDER>
+
+<TR>
+
+<TD><A HREF="ewtoc.html">Previous</A></TD>
+
+<TD><A HREF="ewtoc.html">Table of Contents</A></TD>
+
+<TD><A HREF="about_author.html">Next</A></TD>
+
+</TR>
+
+</TABLE>
+
+</CENTER>
+
+<P><BR></P>
+
+<H2><A NAME="Heading1"></A><FONT COLOR="#000077">Introduction</FONT></H2>
+
+<P>This book is designed to give you all that you need to become a Perl programmer, and that&#146;s saying a lot. Perl is no ordinary programming language&#151;it inspires devotion, passion, exaltation, and eccentricity, not to mention exasperation and frustration. It&#146;s more than a programming language&#151;it&#146;s a cause, the stuff of programmer poets and fanatics. Perl may be complex and arcane at times, it may be even be confusing and inconsistent, but to a true devotee, there&#146;s no other way to go. You&#146;ll see what I mean as you read this book.
+
+</P>
+
+<P>In its 12 year reign, the Practical Extraction and Reporting Language (also called, often by the same people, the Pathologically Eclectic Rubbish Lister) has become the object of much affection. Remarkable numbers of people devote remarkable numbers of volunteer hours to using, improving, and disseminating it. I started working with Perl years before I thought of writing a book on it. Maybe the Perl way of doing things will turn you into a fanatic, too.</P>
+
+<H3><A NAME="Heading2"></A><FONT COLOR="#000077">What&#146;s In This Book</FONT></H3>
+
+<P>This book gives you not only the full Perl syntax, but also a realistic snapshot of Perl and how it&#146;s used today. For example, you&#146;ll find Perl just about anywhere you look on the Internet, so there&#146;s a lot of real-world CGI coverage here. Another popular modern topic is the connection between Perl and Tcl/Tk, which lets you display windows, buttons, menus, and more using Perl, and that&#146;s another topic in this book. There are other real-world topics, like connecting Perl to databases, to Windows OLE automation servers, to other processes, and so on, and they&#146;re here too. All in all, this book is designed to give you a good picture of what&#146;s going on in Perl today.
+
+</P>
+
+<P>There are also many additions to Perl 5 that you&#146;ll see in this book, such as writing more readable Perl code, <B>BEGIN</B> and <B>END</B> blocks in packages, POSIX compliance, object-oriented programming, arbitrarily nested data structures, lexical scoping, enhanced use of modules, and other topics. Version 5 was a big change for Perl, and it&#146;s the version this book was written on.</P>
+
+<P>This book is divided into separate, easily accessible topics&#151;nearly 500 of them&#151;each of which addresses a separate programming issue. Here are some of those topics:</P>
+
+<DL>
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl 5 syntax: statements and declarations
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Running Perl scripts interactively
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Text I/O
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating scalar variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Scalar and list contexts
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating arrays and hashes
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Loops and conditionals
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Typeglobs and symbol tables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl operators
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Regular expressions and string handling
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating subroutines
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Lexically scoped variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Temporary variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Persistent (static) variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Recursive subroutines
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Anonymous arrays, hashes, and subroutines
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl references
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Symbolic references
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Persistent scope closures
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Function templates
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl special variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl&#146;s built-in functions
+
+<DD><B>&#149;</B>&nbsp;&nbsp;POSIX functions
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl formats
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Interprocess communication
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Win32 OLE automation
+
+<DD><B>&#149;</B>&nbsp;&nbsp;File handling
+
+<DD><B>&#149;</B>&nbsp;&nbsp;DBM database files
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Locking files
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl directory operators
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Benchmark tests
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Locale-sensitive operations
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Safe code compartments
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl/Tk: Using the Tk toolkit
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Complex records
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Arrays of arrays, hashes of hashes, arrays of hashes, and hashes of arrays
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Linked lists and ring buffers
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl packages
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Package constructors and destructors
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Splitting a package across file boundaries
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl modules
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Exporting symbols from modules
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Autoloading module subroutines
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl classes
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Class constructors
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perl objects
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Class methods
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Instance variables and class variables
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Class inheritance
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Multiple inheritance
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Tying scalars, arrays, and hashes
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Trapping runtime errors
+
+<DD><B>&#149;</B>&nbsp;&nbsp;The Perl Debugger
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Perlscript
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Common Gateway Interface (CGI) programming
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating and using HTML controls from CGI
+
+<DD><B>&#149;</B>&nbsp;&nbsp;CGI security
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Tainting and untainting data
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Giving a CGI script more privileges
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating a Web counter
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating a guest book
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Emailing from a CGI script
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating a multiuser chat application
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Multiuser security issues
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Handling denial of service attacks
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Clearing refreshed HTML controls
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Creating cookies
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Storing data in Web pages between calls to a script
+
+</DL>
+
+<P>There are one or two conventions that I&#146;ll use in this book that you should be aware of. When a particular line of code needs to be pointed out, I&#146;ll shade it this way:
+
+</P>
+
+<!-- CODE SNIP //-->
+
+<PRE>
+
+$text = &#147;Hello!\n&#148;;
+
+print $text;
+
+</PRE>
+
+<!-- END CODE SNIP //-->
+
+<P>And to set the output of a script apart from the script itself, I&#146;ll set it in lightface italics:
+
+</P>
+
+<!-- CODE SNIP //-->
+
+<PRE>
+
+$text = &#147;Hello!\n&#148;;
+
+print $text;
+
+
+
+Hello
+
+</PRE>
+
+<!-- END CODE SNIP //-->
+
+<H3><A NAME="Heading3"></A><FONT COLOR="#000077">What You&#146;ll Need</FONT></H3>
+
+<P>I use Perl version 5.005 in this book. Perl is free, all you have to do is to download it and install it&#151;see the topic &#147;Getting And Installing Perl&#148; in Chapter 1. If you&#146;re on a multiuser system, your system may already have Perl installed; to check, try this command at the command-line prompt, which will give you the Perl version:
+
+</P>
+
+<!-- CODE SNIP //-->
+
+<PRE>
+
+perl -v
+
+</PRE>
+
+<!-- END CODE SNIP //-->
+
+<I><BLOCKQUOTE>
+
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>Two more things when it comes to running Perl itself&#151;I recommend that you use the <B>-w</B> command-line switch so that Perl will display warnings as needed when you run your scripts (Perl may make this the default one day), and also put the compiler directive <B>use strict</B> in your scripts so that Perl requires variables and other symbols to be declared. Doing these two things can save you a surprising amount of debugging time.</I>
+
+</FONT><HR>
+
+</BLOCKQUOTE>
+
+<P>You&#146;ll also need some way of creating Perl scripts. Such scripts are just plain text files filled with Perl statements and declarations. To create a Perl script, you should have an editor program that can save files in plain text format. See the topic &#147;Writing Perl Scripts&#148; in Chapter 1 for more information. <P>One thing you won&#146;t need is a deep knowledge of Perl&#146;s original operating system, Unix. Although many Perl books seem to take it for granted that you&#146;re a Unix programmer, that&#146;s not the case here. Perl has moved beyond Unix, and it&#146;s time Perl books recognize that fact.</P>
+
+<H3><A NAME="Heading4"></A><FONT COLOR="#000077">Other Resources</FONT></H3>
+
+<P>There are other Perl resources that can be of assistance with Perl. Perl comes with a lot of useful documentation. On systems like Windows, that documentation is stored in linked HTML pages. On multi-user systems, you can usually access that documentation through system commands (such as the Unix <B>man</B> command).</P>
+
+<P>There are also a number of Usenet groups for Perl programmers:</P>
+
+<DL>
+
+<DD><B>&#149;</B>&nbsp;&nbsp;<I>comp.lang.perl.announce</I>&#151;A low-traffic group.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;<I>comp.lang.perl.misc</I>&#151;A high-traffic site that also posts a Perl FAQ.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;<I>comp.lang.perl.modules</I>&#151;All about creating modules and reusing your own or someone else&#146;s code.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;<I>comp.lang.perl.tk</I>&#151;About the connection between Perl and the Tcl language&#146;s Tk toolkit. The Tk toolkit supports many visual controls like buttons, menus, and so on that you can use with Perl, and it&#146;s become pretty popular.
+
+</DL>
+
+<P>If you&#146;re interested in CGI programming, take a look at this group:
+
+</P>
+
+<DL>
+
+<DD><B>&#149;</B>&nbsp;&nbsp;<I>comp.infosystems.www.authoring.cgi</I>&#151;It doesn&#146;t have Perl in the name, but it&#146;s a good place to talk with others about Perl CGI programming.
+
+</DL>
+
+<P>There are also many, many Web pages out there on Perl (a random Web search turns up a mere 1,527,903 pages mentioning Perl):
+
+</P>
+
+<DL>
+
+<DD><B>&#149;</B>&nbsp;&nbsp;The Perl homepage is <A HREF="http://www.perl.com" target="resource window">www.perl.com</A> and you can find source code and Perl ports for various operating systems, documentation, modules, bug reports, and a Perl frequently asked questions list there. (The FAQ is at <A HREF="http://www.perl.com/perl/faq" target="resource window">www.perl.com/perl/faq</A>.)
+
+<DD><B>&#149;</B>&nbsp;&nbsp;To get Perl, Perl modules, Perl extensions, and tons of other Perl things, look at the Comprehensive Perl Archive Network, CPAN, at <A HREF="http://www.cpan.org" target="resource window">www.cpan.org</A> or at <A HREF="http://www.perl.com/cpan-local/cpan.html" target="resource window">www.perl.com/CPAN-local/CPAN.html</A>. This is the huge, all-in-one source for just about anything having to do with Perl. If you browse through CPAN, you&#146;re sure to see lots of code you want, from Perl language extensions to image handling, from Internet modules to database interfaces.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;The Perl Institute at <A HREF="http://www.perl.org" target="resource window">www.perl.org</A> is a non-profit organization dedicated, in its own words, &#147;to keeping Perl available, usable, and free for all.&#148; The Institute is a mainstay of the Perl community, providing a great deal of communication between Perl devotees.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;The Perl language page is at <A HREF="http://www.perl.com/perl/" target="resource window">www.perl.com/perl/</A> (which takes you to language.perl.com), and it includes Perl overviews, news, resource lists, and software. It also includes a list of Perl mailing lists.
+
+<DD><B>&#149;</B>&nbsp;&nbsp;Many other sites having to do with special Perl interests like security, CGI programming, and more&#151;just search the Web if you want to be overwhelmed.
+
+</DL>
+
+<P>There&#146;s also the Perl journal, a magazine sent out four times a year. For more information, take a look at <A HREF="http://orwant.www.media.mit.edu/the_perl_journal/" target="resource window">orwant.www.media.mit.edu/the_perl_journal/</A>.</P>
+
+<P>And that&#146;s all the introduction needed&#151;now it&#146;s time to get into Perl, starting with Chapter 1.</P><P><BR></P>
+
+<CENTER>
+
+<TABLE BORDER>
+
+<TR>
+
+<TD><A HREF="ewtoc.html">Previous</A></TD>
+
+<TD><A HREF="ewtoc.html">Table of Contents</A></TD>
+
+<TD><A HREF="about_author.html">Next</A></TD>
+
+</TR>
+
+</TABLE>
+
+</CENTER>
+
+
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+
+
+

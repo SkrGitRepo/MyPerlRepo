@@ -1,0 +1,20 @@
+Memcached Installation procedure:
+
+1) Check the version of linux installed on the system: cat /etc/redhat-release
+2) Check the details of the version of linux: uname -a
+3) Install the rpm package from Internet: sudo rpm -Uhv http://apt.sw.be/redhat/el4/en/i386/rpmforge/RPMS/rpmforge-release-0.3.6-1.el4.rf.i386.rpm
+4) After installing the package run the command: yum install memcached
+5) Once the memcahced is installed, start the memcache daemon process by giving following command: sudo /etc/init.d/memcached start
+6) Check the memcached configuration by the command: nano -w /etc/sysconfig/memcached
+7) Check if the memcached is working or not by following command: echo stats | nc localhost 11211
+
+
+
+
+---------------------------------------------------------------------
+
+Installing a external package in my VM Linux box
+--------------------------------------------------------------
+1) $ mkdir packages
+2) $ cd packages
+3) /packages$  

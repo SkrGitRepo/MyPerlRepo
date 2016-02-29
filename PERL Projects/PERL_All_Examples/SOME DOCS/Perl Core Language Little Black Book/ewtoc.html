@@ -1,0 +1,1132 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Table of Contents</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=0//-->
+<!--PAGES=0//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<DL>
+<FONT SIZE="4"><B>
+<DD><A HREF="index.html">Introduction</A>
+<DD><A HREF="about_author.html">About the Author</A>
+</B></FONT>
+<BR>
+<BR><DD><A HREF="ch01/01-01.html"><FONT SIZE="4"><B>Part I&#151;Perl Syntax</B></FONT></A>
+<DL>
+<DD><A HREF="ch01/01-01.html#Heading1"><FONT SIZE="4"><B>Chapter 1&#151;Essential Perl</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch01/01-01.html#Heading2">First Things First</A>
+<DL>
+<DD><A HREF="ch01/01-01.html#Heading3">Getting And Installing Perl</A>
+<DD><A HREF="ch01/01-02.html#Heading4">Writing Perl Scripts</A>
+<DD><A HREF="ch01/01-02.html#Heading5">Making Sure Your Script Can Find Perl</A>
+<DD><A HREF="ch01/01-03.html#Heading6">Writing Perl Code: Statements And Declarations</A>
+<DD><A HREF="ch01/01-03.html#Heading7">Running Perl Scripts</A>
+<DD><A HREF="ch01/01-03.html#Heading8">Running Perl Scripts Interactively</A>
+<DD><A HREF="ch01/01-04.html#Heading9">Using Command Line Switches</A>
+<DD><A HREF="ch01/01-04.html#Heading10">Using Command Line Switches</A>
+<DD><A HREF="ch01/01-05.html#Heading11">Using The -w Switch For Warnings</A>
+<DD><A HREF="ch01/01-05.html#Heading12">Handling Text Input And Output With Standard File Handles</A>
+<DD><A HREF="ch01/01-05.html#Heading13">Displaying Text</A>
+<DD><A HREF="ch01/01-05.html#Heading14">Displaying Line Numbers And Script File Names</A>
+<DD><A HREF="ch01/01-05.html#Heading15">Printing Text A Number Of Times</A>
+<DD><A HREF="ch01/01-05.html#Heading16">Basic Text Formatting</A>
+<DD><A HREF="ch01/01-06.html#Heading17">Displaying Unformatted Text: Perl Here Documents</A>
+<DD><A HREF="ch01/01-06.html#Heading18">Commenting Your Code</A>
+<DD><A HREF="ch01/01-06.html#Heading19">Reading Typed Input</A>
+<DD><A HREF="ch01/01-06.html#Heading20">Using The Default Variable $_</A>
+<DD><A HREF="ch01/01-06.html#Heading21">Cleaning Up Typed Input</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch02/02-01.html#Heading1"><FONT SIZE="4"><B>Chapter 2&#151;Scalar Variables And Lists</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch02/02-01.html#Heading2">Scalar Variables</A>
+<DD><A HREF="ch02/02-01.html#Heading3">Lists</A>
+<DL>
+<DD><A HREF="ch02/02-01.html#Heading4">What&#146;s A Scalar Variable?</A>
+<DD><A HREF="ch02/02-01.html#Heading5">Naming Scalar Variables</A>
+<DD><A HREF="ch02/02-02.html#Heading6">Handling Scalar Assignments</A>
+<DD><A HREF="ch02/02-02.html#Heading7">What&#146;s An lvalue?</A>
+<DD><A HREF="ch02/02-02.html#Heading8">Using Numbers In Scalar Variables</A>
+<DD><A HREF="ch02/02-02.html#Heading9">Working With The Undefined Value: undef</A>
+<DD><A HREF="ch02/02-02.html#Heading10">Declaring A Constant</A>
+<DD><A HREF="ch02/02-02.html#Heading11">Handling Truth Values In Perl</A>
+<DD><A HREF="ch02/02-02.html#Heading12">Converting Between Octal, Decimal, And Hexadecimal</A>
+<DD><A HREF="ch02/02-03.html#Heading13">Rounding Numbers</A>
+<DD><A HREF="ch02/02-03.html#Heading14">Using Strings In Scalar Variables</A>
+<DD><A HREF="ch02/02-03.html#Heading15">Using String Interpolation</A>
+<DD><A HREF="ch02/02-03.html#Heading16">Handling Difficult Interpolations</A>
+<DD><A HREF="ch02/02-04.html#Heading17">Handling Quotes And Barewords</A>
+<DD><A HREF="ch02/02-04.html#Heading18">What&#146;s A List?</A>
+<DD><A HREF="ch02/02-04.html#Heading19">Referring To List Elements By Index</A>
+<DD><A HREF="ch02/02-04.html#Heading20">Assigning Lists To Other Lists</A>
+<DD><A HREF="ch02/02-04.html#Heading21">Mapping A List</A>
+<DD><A HREF="ch02/02-05.html#Heading22">Joining A List Into A String</A>
+<DD><A HREF="ch02/02-05.html#Heading23">Splitting A String Into A List</A>
+<DD><A HREF="ch02/02-05.html#Heading24">Sorting Lists</A>
+<DD><A HREF="ch02/02-05.html#Heading25">Reversing A List</A>
+<DD><A HREF="ch02/02-05.html#Heading26">Selecting Elements From A List</A>
+<DD><A HREF="ch02/02-05.html#Heading27">Understanding Scalar And List Contexts</A>
+<DD><A HREF="ch02/02-05.html#Heading28">Forcing Scalar Context</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch03/03-01.html#Heading1"><FONT SIZE="4"><B>Chapter 3&#151;Arrays And Hashes</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch03/03-01.html#Heading2">Arrays</A>
+<DD><A HREF="ch03/03-01.html#Heading3">Hashes</A>
+<DD><A HREF="ch03/03-01.html#Heading4">Typeglobs</A>
+<DL>
+<DD><A HREF="ch03/03-01.html#Heading5">Creating Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading6">Using Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading7">Pushing And Popping Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading8">Shifting And Unshifting Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading9">Finding The Length Of Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading10">Growing Or Shrinking Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading11">Merging Two Arrays</A>
+<DD><A HREF="ch03/03-02.html#Heading12">Getting Array Slices</A>
+<DD><A HREF="ch03/03-02.html#Heading13">Looping Over Arrays</A>
+<DD><A HREF="ch03/03-03.html#Heading14">Printing Arrays</A>
+<DD><A HREF="ch03/03-03.html#Heading15">Splicing Arrays</A>
+<DD><A HREF="ch03/03-03.html#Heading16">Reversing Arrays</A>
+<DD><A HREF="ch03/03-03.html#Heading17">Sorting Arrays</A>
+<DD><A HREF="ch03/03-03.html#Heading18">Creating Hashes</A>
+<DD><A HREF="ch03/03-04.html#Heading19">Using Hashes</A>
+<DD><A HREF="ch03/03-04.html#Heading20">Adding Elements To Hashes</A>
+<DD><A HREF="ch03/03-04.html#Heading21">Checking If Hash Elements Exist</A>
+<DD><A HREF="ch03/03-04.html#Heading22">Deleting Hash Elements</A>
+<DD><A HREF="ch03/03-04.html#Heading23">Looping Over Hashes</A>
+<DD><A HREF="ch03/03-04.html#Heading24">Printing Hashes</A>
+<DD><A HREF="ch03/03-05.html#Heading25">Sorting Hashes</A>
+<DD><A HREF="ch03/03-05.html#Heading26">Merging Two Hashes</A>
+<DD><A HREF="ch03/03-05.html#Heading27">Using Hashes And Arrays In List Assignments</A>
+<DD><A HREF="ch03/03-05.html#Heading28">Using Typeglobs</A>
+<DD><A HREF="ch03/03-05.html#Heading29">Comparing Typeglobs And Symbol Table Entries</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch04/04-01.html#Heading1"><FONT SIZE="4"><B>Chapter 4&#151;Operators And Precedence</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch04/04-01.html#Heading2">Operator Precedence</A>
+<DL>
+<DD><A HREF="ch04/04-02.html#Heading3">Highest Precedence: Terms And Leftward List Operators</A>
+<DD><A HREF="ch04/04-02.html#Heading4">Using The Arrow Operator</A>
+<DD><A HREF="ch04/04-02.html#Heading5">Handling Autoincrement And Autodecrement</A>
+<DD><A HREF="ch04/04-02.html#Heading6">Handling Exponentiation</A>
+<DD><A HREF="ch04/04-02.html#Heading7">Using Symbolic Unary Operators</A>
+<DD><A HREF="ch04/04-02.html#Heading8">Using Binding Operators</A>
+<DD><A HREF="ch04/04-03.html#Heading9">Handling Multiplication And Division</A>
+<DD><A HREF="ch04/04-03.html#Heading10">Handling Addition, Subtraction, And Concatenation</A>
+<DD><A HREF="ch04/04-03.html#Heading11">Using The Shift Operators</A>
+<DD><A HREF="ch04/04-03.html#Heading12">Using Named Unary Operators</A>
+<DD><A HREF="ch04/04-03.html#Heading13">Working With File Test Operators</A>
+<DD><A HREF="ch04/04-03.html#Heading14">Using Relational Operators</A>
+<DD><A HREF="ch04/04-04.html#Heading15">Using Equality Operators</A>
+<DD><A HREF="ch04/04-04.html#Heading16">Anding Bitwise Values</A>
+<DD><A HREF="ch04/04-04.html#Heading17">Oring Bitwise Values</A>
+<DD><A HREF="ch04/04-04.html#Heading18">Exclusive Oring Bitwise Values</A>
+<DD><A HREF="ch04/04-04.html#Heading19">Using &#147;C-Style&#148; Logical And</A>
+<DD><A HREF="ch04/04-04.html#Heading20">Using &#147;C-Style&#148; Logical Or</A>
+<DD><A HREF="ch04/04-05.html#Heading21">Using The Range Operator</A>
+<DD><A HREF="ch04/04-05.html#Heading22">Using The Conditional Operator</A>
+<DD><A HREF="ch04/04-05.html#Heading23">Handling Assignments</A>
+<DD><A HREF="ch04/04-05.html#Heading24">Using The Comma Operator</A>
+<DD><A HREF="ch04/04-05.html#Heading25">Using Rightward List Operators</A>
+<DD><A HREF="ch04/04-05.html#Heading26">Using Logical not</A>
+<DD><A HREF="ch04/04-05.html#Heading27">Using Logical and</A>
+<DD><A HREF="ch04/04-05.html#Heading28">Using Logical or</A>
+<DD><A HREF="ch04/04-05.html#Heading29">Using Logical xor</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch05/05-01.html#Heading1"><FONT SIZE="4"><B>Chapter 5&#151;Conditionals And Loops</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch05/05-01.html#Heading2">Conditional Statements</A>
+<DD><A HREF="ch05/05-01.html#Heading3">Loop Statements</A>
+<DL>
+<DD><A HREF="ch05/05-01.html#Heading4">Using The if Statement</A>
+<DD><A HREF="ch05/05-01.html#Heading5">Using The unless Statement</A>
+<DD><A HREF="ch05/05-02.html#Heading6">Looping Over Elements With for</A>
+<DD><A HREF="ch05/05-02.html#Heading7">Looping Over Elements With foreach</A>
+<DD><A HREF="ch05/05-02.html#Heading8">Looping Over Elements With while</A>
+<DD><A HREF="ch05/05-02.html#Heading9">Looping Over Elements With until</A>
+<DD><A HREF="ch05/05-03.html#Heading10">Modifying Statements With if, unless, until, And while</A>
+<DD><A HREF="ch05/05-03.html#Heading11">Creating A do while Loop</A>
+<DD><A HREF="ch05/05-03.html#Heading12">Skipping To The Next Loop Iteration With next</A>
+<DD><A HREF="ch05/05-03.html#Heading13">Ending A Loop With The last Command</A>
+<DD><A HREF="ch05/05-03.html#Heading14">Redoing Iterations With The redo Loop Command</A>
+<DD><A HREF="ch05/05-04.html#Heading15">Creating A switch Statement</A>
+<DD><A HREF="ch05/05-04.html#Heading16">Using goto</A>
+<DD><A HREF="ch05/05-04.html#Heading17">Executing Code With The eval Function</A>
+<DD><A HREF="ch05/05-04.html#Heading18">Ending A Program With The exit Statement</A>
+<DD><A HREF="ch05/05-04.html#Heading19">Using The die Statement</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch06/06-01.html#Heading1"><FONT SIZE="4"><B>Chapter 6&#151;Regular Expressions</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch06/06-01.html#Heading2">Using Regular Expressions</A>
+<DL>
+<DD><A HREF="ch06/06-01.html#Heading3">Creating Regular Expressions</A>
+<DD><A HREF="ch06/06-02.html#Heading4">Using Characters In Regular Expressions</A>
+<DD><A HREF="ch06/06-02.html#Heading5">Using Character Classes In Regular Expressions</A>
+<DD><A HREF="ch06/06-02.html#Heading6">Using Alternative Match Patterns In Regular Expressions</A>
+<DD><A HREF="ch06/06-02.html#Heading7">Using Quantifiers In Regular Expressions</A>
+<DD><A HREF="ch06/06-02.html#Heading8">Quantifier &#147;Greediness&#148;</A>
+<DD><A HREF="ch06/06-03.html#Heading9">Using Assertions In Regular Expressions</A>
+<DD><A HREF="ch06/06-03.html#Heading10">Using Regular Expression Backreferences To Refer To Previous Matches</A>
+<DD><A HREF="ch06/06-03.html#Heading11">Using Regular Expression Extensions</A>
+<DD><A HREF="ch06/06-03.html#Heading12">Using Modifiers With m// And s///</A>
+<DD><A HREF="ch06/06-03.html#Heading13">Translating Strings With tr///</A>
+<DD><A HREF="ch06/06-03.html#Heading14">Using Modifiers With tr///</A>
+<DD><A HREF="ch06/06-03.html#Heading15">Matching Words</A>
+<DD><A HREF="ch06/06-04.html#Heading16">Matching The Beginning Of A Line</A>
+<DD><A HREF="ch06/06-04.html#Heading17">Matching The End Of A Line</A>
+<DD><A HREF="ch06/06-04.html#Heading18">Checking For Numbers</A>
+<DD><A HREF="ch06/06-04.html#Heading19">Checking For Letters</A>
+<DD><A HREF="ch06/06-04.html#Heading20">Finding Multiple Matches</A>
+<DD><A HREF="ch06/06-04.html#Heading21">Using Case-Insensitive Matching</A>
+<DD><A HREF="ch06/06-04.html#Heading22">Extracting A Substring</A>
+<DD><A HREF="ch06/06-04.html#Heading23">Using Function Calls And Perl Expressions In Regular Expressions</A>
+<DD><A HREF="ch06/06-04.html#Heading24">Finding The nth Match</A>
+<DD><A HREF="ch06/06-04.html#Heading25">Making Quantifiers Less Greedy</A>
+<DD><A HREF="ch06/06-04.html#Heading26">Removing Leading And Trailing White Space</A>
+<DD><A HREF="ch06/06-04.html#Heading27">Using Assertions To Look Ahead And Behind</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch07/07-01.html#Heading1"><FONT SIZE="4"><B>Chapter 7&#151;Subroutines</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch07/07-01.html#Heading2">Working With Subroutines</A>
+<DL>
+<DD><A HREF="ch07/07-01.html#Heading3">Declaring Subroutines</A>
+<DD><A HREF="ch07/07-02.html#Heading4">Using Prototypes</A>
+<DD><A HREF="ch07/07-02.html#Heading5">Defining Subroutines</A>
+<DD><A HREF="ch07/07-02.html#Heading6">Calling Subroutines</A>
+<DD><A HREF="ch07/07-02.html#Heading7">Reading Arguments Passed To Subroutines</A>
+<DD><A HREF="ch07/07-02.html#Heading8">Using A Variable Number Of Arguments</A>
+<DD><A HREF="ch07/07-02.html#Heading9">Using Default Argument Values</A>
+<DD><A HREF="ch07/07-03.html#Heading10">Returning Values From Subroutines (Functions)</A>
+<DD><A HREF="ch07/07-03.html#Heading11">Setting Scope With my</A>
+<DD><A HREF="ch07/07-03.html#Heading12">Requiring Lexically Scoped Variables</A>
+<DD><A HREF="ch07/07-03.html#Heading13">Creating Temporary Variables With local</A>
+<DD><A HREF="ch07/07-03.html#Heading14">Persistent (Static) Variables</A>
+<DD><A HREF="ch07/07-04.html#Heading15">Calling Subroutines Recursively</A>
+<DD><A HREF="ch07/07-04.html#Heading16">Nesting Subroutines</A>
+<DD><A HREF="ch07/07-04.html#Heading17">Passing By Reference</A>
+<DD><A HREF="ch07/07-04.html#Heading18">Passing Symbol Table Entries (Typeglobs)</A>
+<DD><A HREF="ch07/07-04.html#Heading19">Checking Return Context With wantarray</A>
+<DD><A HREF="ch07/07-04.html#Heading20">Creating Inline Functions</A>
+<DD><A HREF="ch07/07-04.html#Heading21">Overriding Built-In Functions And Using CORE</A>
+<DD><A HREF="ch07/07-04.html#Heading22">Creating Anonymous Subroutines</A>
+<DD><A HREF="ch07/07-04.html#Heading23">Creating Subroutine Dispatch Tables</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch08/08-01.html#Heading1"><FONT SIZE="4"><B>Chapter 8&#151;Perl References</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch08/08-01.html#Heading2">Hard References</A>
+<DD><A HREF="ch08/08-01.html#Heading3">Symbolic References</A>
+<DD><A HREF="ch08/08-01.html#Heading4">The Arrow Operator</A>
+<DD><A HREF="ch08/08-01.html#Heading5">Anonymous Arrays, Hashes, And Subroutines</A>
+<DL>
+<DD><A HREF="ch08/08-02.html#Heading6">Creating A Reference</A>
+<DD><A HREF="ch08/08-02.html#Heading7">Creating References To Anonymous Arrays</A>
+<DD><A HREF="ch08/08-02.html#Heading8">Creating References To Anonymous Hashes</A>
+<DD><A HREF="ch08/08-02.html#Heading9">Creating References To Anonymous Subroutines</A>
+<DD><A HREF="ch08/08-02.html#Heading10">Getting References Using The Symbol Table</A>
+<DD><A HREF="ch08/08-03.html#Heading11">Dereferencing References</A>
+<DD><A HREF="ch08/08-03.html#Heading12">Dereferencing With The Arrow Operator</A>
+<DD><A HREF="ch08/08-03.html#Heading13">Omitting The Arrow Operator</A>
+<DD><A HREF="ch08/08-03.html#Heading14">Determining The Type Of A Reference With The ref Operator</A>
+<DD><A HREF="ch08/08-04.html#Heading15">Creating Symbolic References</A>
+<DD><A HREF="ch08/08-04.html#Heading16">Disallowing Symbolic References</A>
+<DD><A HREF="ch08/08-04.html#Heading17">Using Array References As Hash References</A>
+<DD><A HREF="ch08/08-04.html#Heading18">Creating Persistent Scope Closures In Perl</A>
+<DD><A HREF="ch08/08-04.html#Heading19">Creating Functions From Function Templates</A>
+</DL>
+</DL>
+</DL>
+</B></FONT>
+<BR><DD><A HREF="ch09/09-01.html"><FONT SIZE="4"><B>Part II&#151;Built-In Resources</B></FONT></A>
+<DL>
+<DD><A HREF="ch09/09-01.html#Heading1"><FONT SIZE="4"><B>Chapter 9&#151;Built-In Variables</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch09/09-01.html#Heading2">English Versions Of The Built-In Variables</A>
+<DD><A HREF="ch09/09-02.html#Heading3">Setting The Built-In Variables For Specific File Handles</A>
+<DL>
+<DD><A HREF="ch09/09-02.html#Heading4">$&#146; Postmatch String</A>
+<DD><A HREF="ch09/09-02.html#Heading5">$- Number Of Lines Left On The Page</A>
+<DD><A HREF="ch09/09-02.html#Heading6">$! Current Error</A>
+<DD><A HREF="ch09/09-02.html#Heading7">$&#148; Output Field Separator For Interpolated Array Values</A>
+<DD><A HREF="ch09/09-02.html#Heading8">$# Output Format For Printed Numbers</A>
+<DD><A HREF="ch09/09-02.html#Heading9">$$ Perl Process Number</A>
+<DD><A HREF="ch09/09-03.html#Heading10">$% Current Output Page</A>
+<DD><A HREF="ch09/09-03.html#Heading11">$&amp Last Match</A>
+<DD><A HREF="ch09/09-03.html#Heading12">$( Real GID</A>
+<DD><A HREF="ch09/09-03.html#Heading13">$) Effective GID</A>
+<DD><A HREF="ch09/09-03.html#Heading14">$* Multiline Matching</A>
+<DD><A HREF="ch09/09-03.html#Heading15">$, Output Field Separator</A>
+<DD><A HREF="ch09/09-03.html#Heading16">$. Current Input Line Number</A>
+<DD><A HREF="ch09/09-03.html#Heading17">$/ Input Record Separator</A>
+<DD><A HREF="ch09/09-03.html#Heading18">$: String Break Characters</A>
+<DD><A HREF="ch09/09-03.html#Heading19">$; Subscript Separator</A>
+<DD><A HREF="ch09/09-03.html#Heading20">$? Status Of Last Pipe Close, Backtick Command, Or System Call</A>
+<DD><A HREF="ch09/09-03.html#Heading21">$@ Error From Last eval</A>
+<DD><A HREF="ch09/09-03.html#Heading22">$[ Array Base</A>
+<DD><A HREF="ch09/09-03.html#Heading23">$\ Output Record Separator</A>
+<DD><A HREF="ch09/09-03.html#Heading24">$] Perl Version</A>
+<DD><A HREF="ch09/09-03.html#Heading25">$^ Current Top-Of-Page Format</A>
+<DD><A HREF="ch09/09-03.html#Heading26">$^A Write Accumulator</A>
+<DD><A HREF="ch09/09-03.html#Heading27">$^D Current Debugging Flags</A>
+<DD><A HREF="ch09/09-03.html#Heading28">$^E OS-Specific Error Information</A>
+<DD><A HREF="ch09/09-03.html#Heading29">$^F Maximum System File Descriptor</A>
+<DD><A HREF="ch09/09-03.html#Heading30">$^H Current Syntax Checks</A>
+<DD><A HREF="ch09/09-03.html#Heading31">$^I Current Inplace-Edit Value</A>
+<DD><A HREF="ch09/09-03.html#Heading32">$^L Output Form Feed</A>
+<DD><A HREF="ch09/09-03.html#Heading33">$^M Emergency Memory Buffer</A>
+<DD><A HREF="ch09/09-03.html#Heading34">$^O Operating System Name</A>
+<DD><A HREF="ch09/09-03.html#Heading35">$^P Debugging Support</A>
+<DD><A HREF="ch09/09-04.html#Heading36">$^R Result Of Last Regular Expression Assertion</A>
+<DD><A HREF="ch09/09-04.html#Heading37">$^S State Of The Interpreter</A>
+<DD><A HREF="ch09/09-04.html#Heading38">$^T Time At Which Script Began Running</A>
+<DD><A HREF="ch09/09-04.html#Heading39">$^W Current Value Of The Warning Switch</A>
+<DD><A HREF="ch09/09-04.html#Heading40">$^X Executable Name</A>
+<DD><A HREF="ch09/09-04.html#Heading41">$_ Default Variable</A>
+<DD><A HREF="ch09/09-04.html#Heading42">$&#146; Prematch String</A>
+<DD><A HREF="ch09/09-04.html#Heading43">$| Output Autoflush</A>
+<DD><A HREF="ch09/09-04.html#Heading44">$~ Name Of The Current Report Format</A>
+<DD><A HREF="ch09/09-04.html#Heading45">$&#43; Last Parentheses Match</A>
+<DD><A HREF="ch09/09-04.html#Heading46">$&lt Real UID</A>
+<DD><A HREF="ch09/09-04.html#Heading47">$= Current Page Length</A>
+<DD><A HREF="ch09/09-04.html#Heading48">$&gt Effective UID</A>
+<DD><A HREF="ch09/09-04.html#Heading49">$0 Program Name</A>
+<DD><A HREF="ch09/09-04.html#Heading50">$ARGV Name Of Current File</A>
+<DD><A HREF="ch09/09-04.html#Heading51">$n Pattern Match n</A>
+<DD><A HREF="ch09/09-04.html#Heading52">%ENV Environment Values</A>
+<DD><A HREF="ch09/09-04.html#Heading53">%INC Included Files</A>
+<DD><A HREF="ch09/09-04.html#Heading54">%SIG Signal Handlers</A>
+<DD><A HREF="ch09/09-04.html#Heading55">@_ Subroutine Arguments</A>
+<DD><A HREF="ch09/09-04.html#Heading56">@ARGV Command Line Arguments</A>
+<DD><A HREF="ch09/09-04.html#Heading57">@INC Location Of Scripts To Evaluate</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch10/10-01.html#Heading1"><FONT SIZE="4"><B>Chapter 10&#151;Built-In Functions: Data Processing</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch10/10-01.html#Heading2">Built-In Functions</A>
+<DL>
+<DD><A HREF="ch10/10-02.html#Heading3">abs Absolute Value</A>
+<DD><A HREF="ch10/10-02.html#Heading4">atan2 Arctangent</A>
+<DD><A HREF="ch10/10-02.html#Heading5">chomp Remove Line Endings</A>
+<DD><A HREF="ch10/10-02.html#Heading6">chop Remove Last Character</A>
+<DD><A HREF="ch10/10-02.html#Heading7">chr Character From Code</A>
+<DD><A HREF="ch10/10-02.html#Heading8">cos Cosine</A>
+<DD><A HREF="ch10/10-02.html#Heading9">each Hash Key And Value Pairs</A>
+<DD><A HREF="ch10/10-02.html#Heading10">eval Evaluate Perl Code</A>
+<DD><A HREF="ch10/10-02.html#Heading11">exists Check Hash Key</A>
+<DD><A HREF="ch10/10-02.html#Heading12">exp Raise To The Power Of <I>e</I></A>
+<DD><A HREF="ch10/10-02.html#Heading13">hex Convert From Hexadecimal</A>
+<DD><A HREF="ch10/10-02.html#Heading14">index Position Of Substring</A>
+<DD><A HREF="ch10/10-02.html#Heading15">int Truncate To Integer</A>
+<DD><A HREF="ch10/10-02.html#Heading16">join Join List Into A String</A>
+<DD><A HREF="ch10/10-02.html#Heading17">keys Hash Keys</A>
+<DD><A HREF="ch10/10-02.html#Heading18">lc Lowercase</A>
+<DD><A HREF="ch10/10-02.html#Heading19">lcfirst Lowercase First Character</A>
+<DD><A HREF="ch10/10-03.html#Heading20">length String Length</A>
+<DD><A HREF="ch10/10-03.html#Heading21">log Natural Logarithm</A>
+<DD><A HREF="ch10/10-03.html#Heading22">map Evaluate Code For Each Element</A>
+<DD><A HREF="ch10/10-03.html#Heading23">oct Convert From Octal</A>
+<DD><A HREF="ch10/10-03.html#Heading24">ord ASCII Value</A>
+<DD><A HREF="ch10/10-03.html#Heading25">pack Pack Values</A>
+<DD><A HREF="ch10/10-03.html#Heading26">pop Pop Array Value</A>
+<DD><A HREF="ch10/10-03.html#Heading27">POSIX Functions</A>
+<DD><A HREF="ch10/10-03.html#Heading28">push Push Array Value</A>
+<DD><A HREF="ch10/10-03.html#Heading29">rand Random Number</A>
+<DD><A HREF="ch10/10-03.html#Heading30">reverse Reverse List</A>
+<DD><A HREF="ch10/10-03.html#Heading31">rindex Reverse Index</A>
+<DD><A HREF="ch10/10-04.html#Heading32">scalar Force Scalar Context</A>
+<DD><A HREF="ch10/10-04.html#Heading33">shift Shift Value From Array</A>
+<DD><A HREF="ch10/10-04.html#Heading34">sin Sine</A>
+<DD><A HREF="ch10/10-04.html#Heading35">sort Sort List</A>
+<DD><A HREF="ch10/10-04.html#Heading36">splice Replace Subarray Elements</A>
+<DD><A HREF="ch10/10-04.html#Heading37">split Split A String Into An Array Of Strings</A>
+<DD><A HREF="ch10/10-04.html#Heading38">sprintf Format String</A>
+<DD><A HREF="ch10/10-05.html#Heading39">sqrt Square Root</A>
+<DD><A HREF="ch10/10-05.html#Heading40">srand Set Random Number Seed</A>
+<DD><A HREF="ch10/10-05.html#Heading41">substr Substring</A>
+<DD><A HREF="ch10/10-05.html#Heading42">time Seconds Since January 1, 1970</A>
+<DD><A HREF="ch10/10-05.html#Heading43">uc Uppercase</A>
+<DD><A HREF="ch10/10-05.html#Heading44">ucfirst Uppercase First Character</A>
+<DD><A HREF="ch10/10-05.html#Heading45">unpack Unpack Values</A>
+<DD><A HREF="ch10/10-05.html#Heading46">unshift Shift Values Onto Array</A>
+<DD><A HREF="ch10/10-05.html#Heading47">values Hash Values</A>
+<DD><A HREF="ch10/10-05.html#Heading48">vec Vector Of Unsigned Integers</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch11/11-01.html#Heading1"><FONT SIZE="4"><B>Chapter 11&#151;Built-In Functions: I/O And Interprocess Communication</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch11/11-01.html#Heading2">Perl Formats</A>
+<DL>
+<DD><A HREF="ch11/11-01.html#Heading3">print Print List Data</A>
+<DD><A HREF="ch11/11-01.html#Heading4">printf Print Formatted List Data</A>
+<DD><A HREF="ch11/11-02.html#Heading5">Reading Input With &lt;&gt;</A>
+<DD><A HREF="ch11/11-02.html#Heading6">getc Get A Character</A>
+<DD><A HREF="ch11/11-02.html#Heading7">write Write A Formatted Record</A>
+<DD><A HREF="ch11/11-02.html#Heading8">Formats: Left-Justifying Text</A>
+<DD><A HREF="ch11/11-02.html#Heading9">Formats: Right-Justifying Text</A>
+<DD><A HREF="ch11/11-02.html#Heading10">Formats: Centering Text</A>
+<DD><A HREF="ch11/11-02.html#Heading11">Formats: Printing Numbers</A>
+<DD><A HREF="ch11/11-02.html#Heading12">Formats: Formatted Multiline Output</A>
+<DD><A HREF="ch11/11-02.html#Heading13">Formats: Formatted Multiline Output With Text Slices</A>
+<DD><A HREF="ch11/11-02.html#Heading14">Formats: Unformatted Multiline Output</A>
+<DD><A HREF="ch11/11-02.html#Heading15">Formats: Top-Of-Form Output</A>
+<DD><A HREF="ch11/11-02.html#Heading16">Formats: Using Format Variables</A>
+<DD><A HREF="ch11/11-03.html#Heading17">warn Display A Warning</A>
+<DD><A HREF="ch11/11-03.html#Heading18">IPC: exec Executing A System Call</A>
+<DD><A HREF="ch11/11-03.html#Heading19">IPC: system Forking And Running A System Command</A>
+<DD><A HREF="ch11/11-03.html#Heading20">IPC: Reading Data From Another Program</A>
+<DD><A HREF="ch11/11-03.html#Heading21">IPC: Sending Data To Another Program</A>
+<DD><A HREF="ch11/11-03.html#Heading22">IPC: Writing To A Child Process</A>
+<DD><A HREF="ch11/11-03.html#Heading23">IPC: Writing To A Parent Process</A>
+<DD><A HREF="ch11/11-04.html#Heading24">IPC: Sending A Signal To Another Process</A>
+<DD><A HREF="ch11/11-04.html#Heading25">IPC: Using Sockets</A>
+<DD><A HREF="ch11/11-04.html#Heading26">IPC: Win32 OLE Automation</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch12/12-01.html#Heading1"><FONT SIZE="4"><B>Chapter 12&#151;Built-In Functions: File Handling</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch12/12-01.html#Heading2">All About File Handling</A>
+<DL>
+<DD><A HREF="ch12/12-01.html#Heading3">open Open A File</A>
+<DD><A HREF="ch12/12-02.html#Heading4">close Close A File</A>
+<DD><A HREF="ch12/12-02.html#Heading5">print Print To A File</A>
+<DD><A HREF="ch12/12-02.html#Heading6">write Write To A File</A>
+<DD><A HREF="ch12/12-02.html#Heading7">binmode Set Binary Mode</A>
+<DD><A HREF="ch12/12-02.html#Heading8">Setting Output Channel Buffering</A>
+<DD><A HREF="ch12/12-02.html#Heading9">Reading Files Passed From The Command Line</A>
+<DD><A HREF="ch12/12-02.html#Heading10">Reading From A File Handle</A>
+<DD><A HREF="ch12/12-02.html#Heading11">read Read Input</A>
+<DD><A HREF="ch12/12-03.html#Heading12">readline Read A Line Of Data</A>
+<DD><A HREF="ch12/12-03.html#Heading13">getc Get A Character</A>
+<DD><A HREF="ch12/12-03.html#Heading14">seek Set The Current Position In A File</A>
+<DD><A HREF="ch12/12-03.html#Heading15">tell Get The Current Position In A File</A>
+<DD><A HREF="ch12/12-03.html#Heading16">stat File Status</A>
+<DD><A HREF="ch12/12-04.html#Heading17">POSIX File Functions</A>
+<DD><A HREF="ch12/12-04.html#Heading18">select Setting The Default Output File Handle</A>
+<DD><A HREF="ch12/12-04.html#Heading19">eof Test For End Of File</A>
+<DD><A HREF="ch12/12-04.html#Heading20">Writing A DBM Database File</A>
+<DD><A HREF="ch12/12-04.html#Heading21">Reading A DBM Database File</A>
+<DD><A HREF="ch12/12-04.html#Heading22">flock Lock File</A>
+<DD><A HREF="ch12/12-04.html#Heading23"></A>
+<DD><A HREF="ch12/12-04.html#Heading24">chmod Change File Permission</A>
+<DD><A HREF="ch12/12-05.html#Heading25">glob Get Matching Files</A>
+<DD><A HREF="ch12/12-05.html#Heading26">rename Rename A File</A>
+<DD><A HREF="ch12/12-05.html#Heading27">unlink Delete Files</A>
+<DD><A HREF="ch12/12-05.html#Heading28">opendir Open A Directory</A>
+<DD><A HREF="ch12/12-05.html#Heading29">closedir Close A Directory</A>
+<DD><A HREF="ch12/12-05.html#Heading30">readdir Read Directory Entry</A>
+<DD><A HREF="ch12/12-05.html#Heading31">seekdir Set Current Position In A Directory</A>
+<DD><A HREF="ch12/12-05.html#Heading32">telldir Directory Position</A>
+<DD><A HREF="ch12/12-05.html#Heading33">rewinddir Set Directory Position To Beginning</A>
+<DD><A HREF="ch12/12-05.html#Heading34">chdir Change Working Directory</A>
+<DD><A HREF="ch12/12-05.html#Heading35">mkdir Make A Directory</A>
+<DD><A HREF="ch12/12-05.html#Heading36">rmdir Remove A Directory</A>
+</DL>
+</DL>
+</DL>
+</B></FONT>
+<BR><DD><A HREF="ch13/13-01.html"><FONT SIZE="4"><B>Part III&#151;Perl Programming</B></FONT></A>
+<DL>
+<DD><A HREF="ch13/13-01.html#Heading1"><FONT SIZE="4"><B>Chapter 13&#151;Built-In Modules</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch13/13-01.html#Heading2">Using Perl Modules</A>
+<DL>
+<DD><A HREF="ch13/13-03.html#Heading3">Term::Cap Work With The Terminal</A>
+<DD><A HREF="ch13/13-03.html#Heading4">Math: Complex And Big Numbers</A>
+<DD><A HREF="ch13/13-03.html#Heading5">POSIX: Portable Operating System Interface</A>
+<DD><A HREF="ch13/13-04.html#Heading6">Benchmark: Benchmark Tests</A>
+<DD><A HREF="ch13/13-04.html#Heading7">Time: Times And Time Conversions</A>
+<DD><A HREF="ch13/13-04.html#Heading8">Carp: Report Errors From Caller&#146;s Perspective</A>
+<DD><A HREF="ch13/13-04.html#Heading9">locale: Enable Locale-Sensitive Operations</A>
+<DD><A HREF="ch13/13-04.html#Heading10">File: File Operations</A>
+<DD><A HREF="ch13/13-04.html#Heading11">Net: Internet Access</A>
+<DD><A HREF="ch13/13-04.html#Heading12">Safe: Safe Code Compartments</A>
+<DD><A HREF="ch13/13-04.html#Heading13">Tk: The Tk Toolkit</A>
+<DD><A HREF="ch13/13-04.html#Heading14">Tk: Button And Text Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading15">Tk: Radiobutton And Checkbutton Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading16">Tk: Listbox Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading17">Tk: Scale Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading18">Tk: Canvas Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading19">Tk: Menu Widgets</A>
+<DD><A HREF="ch13/13-05.html#Heading20">Tk: Dialog Box Widgets</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch14/14-01.html#Heading1"><FONT SIZE="4"><B>Chapter 14&#151;Data Structures</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch14/14-01.html#Heading2">A Good Idea: use strict vars</A>
+<DL>
+<DD><A HREF="ch14/14-01.html#Heading3">Complex Records: Storing References And Other Elements</A>
+<DD><A HREF="ch14/14-02.html#Heading4">Declaring Arrays Of Arrays</A>
+<DD><A HREF="ch14/14-02.html#Heading5">Creating Arrays Of Arrays On The Fly</A>
+<DD><A HREF="ch14/14-02.html#Heading6">Accessing Arrays Of Arrays</A>
+<DD><A HREF="ch14/14-02.html#Heading7">Declaring Hashes Of Hashes</A>
+<DD><A HREF="ch14/14-02.html#Heading8">Creating Hashes Of Hashes On The Fly</A>
+<DD><A HREF="ch14/14-02.html#Heading9">Accessing Hashes Of Hashes</A>
+<DD><A HREF="ch14/14-02.html#Heading10">Declaring Arrays Of Hashes</A>
+<DD><A HREF="ch14/14-02.html#Heading11">Creating Arrays Of Hashes On The Fly</A>
+<DD><A HREF="ch14/14-03.html#Heading12">Accessing Arrays Of Hashes</A>
+<DD><A HREF="ch14/14-03.html#Heading13">Declaring Hashes Of Arrays</A>
+<DD><A HREF="ch14/14-03.html#Heading14">Creating Hashes Of Arrays On The Fly</A>
+<DD><A HREF="ch14/14-03.html#Heading15">Accessing Hashes Of Arrays</A>
+<DD><A HREF="ch14/14-03.html#Heading16">Linked Lists And Ring Buffers</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch15/15-01.html#Heading1"><FONT SIZE="4"><B>Chapter 15&#151;Creating Packages And Modules</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch15/15-01.html#Heading2">Packages</A>
+<DD><A HREF="ch15/15-01.html#Heading3">Modules</A>
+<DL>
+<DD><A HREF="ch15/15-02.html#Heading4">Creating A Package</A>
+<DD><A HREF="ch15/15-02.html#Heading5">Creating A Package Constructor: BEGIN</A>
+<DD><A HREF="ch15/15-02.html#Heading6">Creating A Package Destructor: END</A>
+<DD><A HREF="ch15/15-02.html#Heading7">Determining The Current Package</A>
+<DD><A HREF="ch15/15-02.html#Heading8">Splitting A Package Across File Boundaries</A>
+<DD><A HREF="ch15/15-03.html#Heading9">Creating Modules</A>
+<DD><A HREF="ch15/15-03.html#Heading10">Exporting Symbols From Modules By Default</A>
+<DD><A HREF="ch15/15-03.html#Heading11">OKing Symbols To Export From Modules</A>
+<DD><A HREF="ch15/15-03.html#Heading12">Preventing Symbol Importation</A>
+<DD><A HREF="ch15/15-03.html#Heading13">Preventing Symbol Exportation</A>
+<DD><A HREF="ch15/15-03.html#Heading14">Exporting Without The import Method</A>
+<DD><A HREF="ch15/15-04.html#Heading15">Creating Nested Submodules</A>
+<DD><A HREF="ch15/15-04.html#Heading16">Checking Module Version Numbers</A>
+<DD><A HREF="ch15/15-04.html#Heading17">Autoloading Subroutines In Modules</A>
+<DD><A HREF="ch15/15-04.html#Heading18">Using AutoLoader And SelfLoader</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch16/16-01.html#Heading1"><FONT SIZE="4"><B>Chapter 16&#151;Creating Classes And Objects</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch16/16-01.html#Heading2">Classes</A>
+<DD><A HREF="ch16/16-01.html#Heading3">Objects</A>
+<DD><A HREF="ch16/16-01.html#Heading4">Methods</A>
+<DD><A HREF="ch16/16-02.html#Heading5">Inheritance</A>
+<DL>
+<DD><A HREF="ch16/16-02.html#Heading6">Creating A Class</A>
+<DD><A HREF="ch16/16-02.html#Heading7">Creating A Constructor</A>
+<DD><A HREF="ch16/16-02.html#Heading8">Creating An Object</A>
+<DD><A HREF="ch16/16-02.html#Heading9">Creating A Class Method</A>
+<DD><A HREF="ch16/16-02.html#Heading10">Creating An Instance Method</A>
+<DD><A HREF="ch16/16-02.html#Heading11">Invoking A Method</A>
+<DD><A HREF="ch16/16-02.html#Heading12">Creating An Instance Variable</A>
+<DD><A HREF="ch16/16-02.html#Heading13">Creating Private Methods And Variables</A>
+<DD><A HREF="ch16/16-02.html#Heading14">Creating A Class Variable</A>
+<DD><A HREF="ch16/16-03.html#Heading15">Creating A Destructor</A>
+<DD><A HREF="ch16/16-03.html#Heading16">Implementing Class Inheritance</A>
+<DD><A HREF="ch16/16-03.html#Heading17">Inheriting Constructors</A>
+<DD><A HREF="ch16/16-03.html#Heading18">Inheriting Instance Variables</A>
+<DD><A HREF="ch16/16-03.html#Heading19">Multiple Inheritance</A>
+<DD><A HREF="ch16/16-04.html#Heading20">Overriding Base Class Methods</A>
+<DD><A HREF="ch16/16-04.html#Heading21">Tying Scalars</A>
+<DD><A HREF="ch16/16-04.html#Heading22">Tying Arrays</A>
+<DD><A HREF="ch16/16-04.html#Heading23">Tying Hashes</A>
+<DD><A HREF="ch16/16-04.html#Heading24">Using The Perl UNIVERSAL Class</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch17/17-01.html#Heading1"><FONT SIZE="4"><B>Chapter 17&#151;Perl Debugging And Style Guide</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch17/17-01.html#Heading2">A Sample Debugging Session</A>
+<DL>
+<DD><A HREF="ch17/17-01.html#Heading3">Trapping Runtime Errors</A>
+<DD><A HREF="ch17/17-02.html#Heading4">Starting The Debugger</A>
+<DD><A HREF="ch17/17-02.html#Heading5">What Debugger Commands Are Available</A>
+<DD><A HREF="ch17/17-03.html#Heading6">Listing Your Code</A>
+<DD><A HREF="ch17/17-03.html#Heading7">Single Stepping</A>
+<DD><A HREF="ch17/17-03.html#Heading8">Single Stepping Over Subroutine Calls</A>
+<DD><A HREF="ch17/17-03.html#Heading9">Setting Breakpoints</A>
+<DD><A HREF="ch17/17-03.html#Heading10">Deleting Breakpoints</A>
+<DD><A HREF="ch17/17-03.html#Heading11">Continuing To Breakpoint</A>
+<DD><A HREF="ch17/17-03.html#Heading12">Printing An Expression</A>
+<DD><A HREF="ch17/17-03.html#Heading13">Evaluating An Expression</A>
+<DD><A HREF="ch17/17-03.html#Heading14">Changing Values In Variables</A>
+<DD><A HREF="ch17/17-03.html#Heading15">Setting Global Watches</A>
+<DD><A HREF="ch17/17-03.html#Heading16">Setting Debugger Actions</A>
+<DD><A HREF="ch17/17-03.html#Heading17">Quitting The Debugger</A>
+<DD><A HREF="ch17/17-03.html#Heading18">Perl Style Guide</A>
+</DL>
+</DL>
+</DL>
+</B></FONT>
+<BR><DD><A HREF="ch18/18-01.html"><FONT SIZE="4"><B>Part IV&#151;CGI Programming</B></FONT></A>
+<DL>
+<DD><A HREF="ch18/18-01.html#Heading1"><FONT SIZE="4"><B>Chapter 18&#151;CGI Programming</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch18/18-01.html#Heading2">Using CGI.pm</A>
+<DD><A HREF="ch18/18-02.html#Heading3">Creating And Using HTML Controls</A>
+<DL>
+<DD><A HREF="ch18/18-03.html#Heading4">Using PerlScript</A>
+<DD><A HREF="ch18/18-03.html#Heading5">Starting An HTML Document In CGI</A>
+<DD><A HREF="ch18/18-03.html#Heading6">Creating HTML Heads</A>
+<DD><A HREF="ch18/18-03.html#Heading7">Centering HTML Elements</A>
+<DD><A HREF="ch18/18-03.html#Heading8">Creating A Bulleted List</A>
+<DD><A HREF="ch18/18-04.html#Heading9">Creating A Hyperlink</A>
+<DD><A HREF="ch18/18-04.html#Heading10">Creating Horizontal Rules</A>
+<DD><A HREF="ch18/18-04.html#Heading11">Creating An HTML Form</A>
+<DD><A HREF="ch18/18-04.html#Heading12">Working With Text Fields</A>
+<DD><A HREF="ch18/18-04.html#Heading13">Reading Data From HTML Controls</A>
+<DD><A HREF="ch18/18-04.html#Heading14">Working With Text Areas</A>
+<DD><A HREF="ch18/18-04.html#Heading15">Working With Checkboxes</A>
+<DD><A HREF="ch18/18-04.html#Heading16">Working With Scrolling Lists</A>
+<DD><A HREF="ch18/18-05.html#Heading17">Working With Radio Buttons</A>
+<DD><A HREF="ch18/18-05.html#Heading18">Working With Pop-Up Menus</A>
+<DD><A HREF="ch18/18-05.html#Heading19">Working With Hidden Data Fields</A>
+<DD><A HREF="ch18/18-05.html#Heading20">Creating Submit And Reset Buttons</A>
+<DD><A HREF="ch18/18-05.html#Heading21">Ending An HTML Form</A>
+<DD><A HREF="ch18/18-05.html#Heading22">Ending An HTML Document</A>
+<DD><A HREF="ch18/18-05.html#Heading23">Function-Based CGI Programming</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch19/19-01.html#Heading1"><FONT SIZE="4"><B>Chapter 19&#151;CGI Programming With cgi-lib.pl</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch19/19-01.html#Heading2">Using cgi-lib.pl</A>
+<DL>
+<DD><A HREF="ch19/19-02.html#Heading3">What Subroutines Does cgi-lib.pl Include?</A>
+<DD><A HREF="ch19/19-02.html#Heading4">Starting An HTML Document</A>
+<DD><A HREF="ch19/19-02.html#Heading5">Creating HTML Heads</A>
+<DD><A HREF="ch19/19-03.html#Heading6">Centering HTML Elements</A>
+<DD><A HREF="ch19/19-03.html#Heading7">Creating A Bulleted List</A>
+<DD><A HREF="ch19/19-03.html#Heading8">Creating A Hyperlink</A>
+<DD><A HREF="ch19/19-03.html#Heading9">Creating Horizontal Rules</A>
+<DD><A HREF="ch19/19-03.html#Heading10">Creating An HTML Form</A>
+<DD><A HREF="ch19/19-03.html#Heading11">Working With Text Fields</A>
+<DD><A HREF="ch19/19-03.html#Heading12">Reading Data From HTML Controls</A>
+<DD><A HREF="ch19/19-03.html#Heading13">Working With Text Areas</A>
+<DD><A HREF="ch19/19-03.html#Heading14">Working With Checkboxes</A>
+<DD><A HREF="ch19/19-03.html#Heading15">Working With Scrolling Lists</A>
+<DD><A HREF="ch19/19-04.html#Heading16">Working With Radio Buttons</A>
+<DD><A HREF="ch19/19-04.html#Heading17">Working With Pop-Up Menus</A>
+<DD><A HREF="ch19/19-04.html#Heading18">Working With Hidden Data Fields</A>
+<DD><A HREF="ch19/19-04.html#Heading19">Creating Submit And Reset Buttons</A>
+<DD><A HREF="ch19/19-04.html#Heading20">Ending An HTML Form</A>
+<DD><A HREF="ch19/19-04.html#Heading21">Ending An HTML Document</A>
+<DD><A HREF="ch19/19-04.html#Heading22">Displaying All Variables</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch20/20-01.html#Heading1"><FONT SIZE="4"><B>Chapter 20&#151;CGI: Web Counters, Guest Books, Emailers, And Secure Scripts</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch20/20-01.html#Heading2">CGI Security</A>
+<DL>
+<DD><A HREF="ch20/20-01.html#Heading3">Taking Security Seriously</A>
+<DD><A HREF="ch20/20-01.html#Heading4">Working With Tainted Data</A>
+<DD><A HREF="ch20/20-02.html#Heading5">Untainting Data</A>
+<DD><A HREF="ch20/20-02.html#Heading6">Giving A CGI Script More Privileges In Unix</A>
+<DD><A HREF="ch20/20-02.html#Heading7">Creating A Web Counter</A>
+<DD><A HREF="ch20/20-02.html#Heading8">Creating A Guest Book</A>
+<DD><A HREF="ch20/20-03.html#Heading9">Emailing From A CGI Script</A>
+</DL>
+</DL>
+</B></FONT>
+<DD><A HREF="ch21/21-01.html#Heading1"><FONT SIZE="4"><B>Chapter 21&#151;CGI: Multiuser Chat, Cookies, And Games</B></FONT></A>
+<FONT SIZE="3"><B>
+<DL>
+<DD><A HREF="ch21/21-01.html#Heading2">Chat Applications</A>
+<DD><A HREF="ch21/21-01.html#Heading3">Cookies</A>
+<DD><A HREF="ch21/21-01.html#Heading4">A Game</A>
+<DD><A HREF="ch21/21-01.html#Heading5">Creating A Multiuser Chat Application</A>
+<DL>
+<DD><A HREF="ch21/21-01.html#Heading6">Multiuser Security Issues</A>
+<DD><A HREF="ch21/21-02.html#Heading7">Handling Denial Of Service Attacks</A>
+<DD><A HREF="ch21/21-02.html#Heading8">Chatting From A Web Browser</A>
+<DD><A HREF="ch21/21-02.html#Heading9">Setting An HTML Page&#146;s Refresh Rate</A>
+<DD><A HREF="ch21/21-02.html#Heading10">Clearing Refreshed HTML Controls</A>
+</DL>
+<DD><A HREF="ch21/21-03.html#Heading11">Writing And Reading Cookies</A>
+<DL>
+<DD><A HREF="ch21/21-03.html#Heading12">Using Cookies</A>
+<DD><A HREF="ch21/21-03.html#Heading13">How To Write A Cookie</A>
+<DD><A HREF="ch21/21-03.html#Heading14">How To Read A Cookie</A>
+</DL>
+<DD><A HREF="ch21/21-04.html#Heading15">Creating A Game</A>
+<DL>
+<DD><A HREF="ch21/21-04.html#Heading16">Storing Data In Web Pages Between Calls To A Script</A>
+<DD><A HREF="ch21/21-04.html#Heading17">Customizing This Game</A>
+</DL>
+</DL>
+</DL>
+</DL>
+<B></FONT>
+<FONT SIZE="4"><B>
+<DD><A HREF="book-index.html">Index</A>
+</B></FONT>
+</DL>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+

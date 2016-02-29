@@ -1,0 +1,371 @@
+@media all {
+  div.print{display:none;}
+  div.screen{display:inline}
+  
+  body{font-family:Arial, Helvetica, sans-serif; font-size:small; color:#000; background:transparent;}
+  th{ font-family:Arial, Helvetica, sans-serif; font-size:small; color:#000; background:transparent; }
+  td{ font-family:Arial, Helvetica, sans-serif; font-size:small; color:#000; background:transparent; }
+  
+  p, li, table.tabular th, table.tabular td { font-family:Verdana, Arial, Helvetica, sans-serif;}
+  
+  p, li { line-height: 1.4;}
+  
+  p a, li a, td a {text-decoration:none;}
+  
+  p a:hover,  ul a:hover {text-decoration:underline;}
+  
+  h1, h2, h3, h4, h5, h6{ color:#003366; margin-top:30px; margin-bottom:10px; margin-right:10px; background:transparent; }
+  h1{ font-size:160%; margin-left:0px; }
+  h2{ font-size:140%; margin-left:5px; }
+  h3{ font-size:120%; margin-left:10px; }
+  h4{ font-size:100%; margin-left:15px; }
+  h5{	font-size:90%;  margin-left:20px; }
+  h6{ font-size:80%;  margin-left:25px; }
+  
+  h1.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  h2.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  h3.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  h4.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  h5.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  h6.reverse{ color:#fff; background:#003366; padding:2px 5px; }
+  
+  span.glossary { color:#036; background: transparent; }
+  
+  span.grey{ color:#9f9f9f; background:#fff; padding:2px 5px; }
+  span.red { color:red; background:#fff; }
+  
+  p, pre{ margin: 10px 10px 10px 30px; }
+  p{ font-size:small; }
+  
+  table.p { margin: 10px 10px 10px 30px;}
+  
+  pre{ color:#003366; background:#eeeeee; padding: 10px 10px 10px 10px; font-size: small;}
+  code, tt { font-size: small; } 
+  
+  address, blockquote{ margin: 10px 10px 10px 40px; }
+  
+  a{ color:#003366; background:transparent; }
+  a.nounderline { color:#003366; text-decoration:none; background:transparent; }
+  a:hover{ color:#ff0000; background:transparent; }
+  
+  h1 a, h2 a, h3 a {text-decoration:none;}
+  
+  .toc a {text-decoration:underline;}
+  
+  ul, ol{ margin-left:26px; padding-left:26px; }
+  
+  ol.roman{ list-style-type: lower-alpha; }
+  
+  li ul, li ol{ margin-left:10px; padding-left:10px; }
+  li p{ margin-left:0px; padding-left:0px; }
+  
+  li pre{ margin-left:0px; }
+  
+  hr{ color:#036; }
+  
+  blockquote{ font-style:italic; }
+  
+  abbr{ text-decoration:underline; }
+  span.abbr{ text-decoration:underline; }
+  
+  strong{font-size: 110%}
+  
+  td.menu{ 
+    color: #000;
+    height:30px; 
+    background: url(images/button_bak.gif) transparent repeat-x bottom; }
+  
+  table.invoiceto {margin: 10px 10px 10px 30px; }
+  table.invoiceto th{text-align:left; font-weight:bold; font-size:90%; }
+  table.invoiceto td{text-align:left; font-size:80%; }
+  
+  table.shipto {margin: 10px 10px 10px 30px; }
+  table.shipto th{text-align:left; font-weight:bold; font-size:90%; }
+  table.shipto td{text-align:left; font-size:80%; }
+  
+  table.cart th{ background:#003366; color: #FFF; font-size: 80%; }
+  table.cart td{ font-size: 80%; }
+  table.cart colgroup.l{ text-align:left; background:#ccf; color:#000; }
+  table.cart colgroup.r{ font-weight:bold; text-align:right; background:#ccf; color:#000; }
+  table.cart td.n{ background:#fff; color:#000; }
+  
+  table.download { margin-left:10px; border:1px solid #e0e0e0;}
+  table.download th{ background:#888888; color: #ffffff; }
+  table.download colgroup.l{ text-align:left; background:#ccf; color:#000; }
+  table.download colgroup.r{ font-weight:bold; text-align:right; background:#ccf; color:#000; }
+  table.download td.n{ background:#fff; color:#000; }
+  table.download td { white-space: nowrap; }
+  
+  table.kb { background: #f5f5f5; border:1px solid #555; color:#000; }
+  
+  table.footer{ width:100%; }
+  table.footer td{ 
+    color: #000;
+    height:30px; 
+    background: url(images/button_bak.gif) gray repeat-x bottom; }
+  
+  span.search-prev-next{ color:#bbb; font-weight:bold; background:transparent;}
+  span.search-num-pages{ color:#036; background:transparent; }
+  p.search-msg{ margin-left:2px; }
+  
+  p.search-msg b { font-size: 105%; }
+  
+  div.feedback { background: #f5f5f5; border:1px solid #555555; color: #000; }
+  
+  div.documentation .caution-box-tag{ font-size:180%; width:10%; text-align:center;}
+  div.documentation .body-text{ width:90%;}
+  div.documentation .toc{ margin: 3px 0px 3px 0px; }
+  div.documentation .caution{ 
+    width:95%; 
+    margin: 3px 0px 3px 30px; 
+    background:#eeeeee; 
+    border:1px solid #036; 
+    color: #000; }
+  div.documentation .numbered1{ margin-left:35px; }
+  div.documentation .numbered{ margin-left:50px; }
+  div.documentation .bullet-indent{ margin-left:50px; }
+  div.documentation pre{ margin-left:0px; }
+  
+  span.com, span.str    { color:#ac2020;  background:transparent; }
+  span.dstr, span.esc   { color:#bd8d8b;  background:transparent; }
+  span.slc    { color:#bd8d8b; font-style:italic;  background:transparent; }
+  span.dir, span.num, span.sym    { color:#000000;  background:transparent; }
+  span.line   { color:#555;  background:transparent; }
+  span.kwa    { color:#9c20ee; font-weight:bold;  background:transparent; }
+  span.kwb    { color:#208920;  background:transparent; }
+  span.kwc    { color:#00f;  background:transparent; }
+  
+  #footer{  background: #F4F4F4; border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 5px; font-size: 90%; clear: both; margin: 0px 0px 0px 0px; color: #000; }
+  #footer a { color: #333; background: #F4F4F4; }
+  #footer a:hover { color: #FF0000; background: #F4F4F4;}
+  #footer ul { list-style: none; margin: 5px 0px 5px 0px; padding: 0px; }
+  #footer li { display: inline; padding: 0px 10px 10px 0px; margin: 0px 0px 0px 0px; }
+  
+  table.tabular{margin-left:30px; width:90%;}
+  table.tabular th{vertical-align:top; background:#003366; color:#FFFFFF; padding:3px;}
+  table.tabular td{vertical-align:top; background:#eeeeee; padding:3px; color:#000; }
+  table.tabular p, table.tabular ul { margin: 10px 0 10px 0}
+  table.tabular li { margin: 0 0 0 10px}
+  
+  table.tabular pre {  margin: 10px 0 10px 0; padding: 10px 0 10px 0}
+  
+  span.admin legend{font-size:14px; font-weight:bold; color:#036; background: #FFF; }
+  span.admin fieldset{border:1px solid #003366;}
+  span.admin input.button{color:#036; background: #FFF;}
+  
+  span.solution-diagram table.solution-key-table, span.solution-diagram table.solution{margin-left:30px;}
+  span.solution-diagram table.solution-key-table{border:1px solid #555555; background:#f5f5f5; color:#000; }
+  span.solution-diagram table.block{border:2px solid #555555; background:#f5f5f5; width:100%; color:#000; }
+  span.solution-diagram td{font-size:10px;}
+  span.solution-diagram td.application, span.solution-diagram td.interface, span.solution-diagram td.language, span.solution-diagram td.component, span.solution-diagram td.database, span.solution-diagram td.thirdparty{width:60px; height:100px; border:1px solid #aaaaaa; text-align:center; font-size:11px;}
+  span.solution-diagram .application, span.solution-diagram .interface, span.solution-diagram .language, span.solution-diagram .thirdparty, span.solution-diagram .component, span.solution-diagram .database{border:1px solid #aaaaaa;}
+  span.solution-diagram .application{background:#99FFCC; color:#000; }
+  span.solution-diagram .interface{background:#99FFCC; color:#000; }
+  span.solution-diagram .language{background:#99FFCC; color:#000; }
+  span.solution-diagram .thirdparty{background:#FFCCFF; color:#000; }
+  span.solution-diagram .component{background:#66CCFF; color:#000; }
+  span.solution-diagram .database{background:#FFFFCC; color:#000; }
+  span.solution-diagram td.connector-int{height:100px; text-align:center; font-size:10px; color:#333333; background:#fff; }
+  span.solution-diagram td.connector-ext{height:100px; text-align:center; font-size:10px; color:#333333; background:#fff; }
+  span.solution-diagram td.platform{text-align:center; font-size:12px; color:#333333; background:#fff; }
+  
+  
+  table.side-menu, #col1, #col2 { border:1px solid #555; background:#f5f5f5; color:#000; }
+  table.side-menu th{ font-size:100%; background:#036; color:#fff; text-align:center; font-weight:bold; padding:2px 5px; }
+  table.side-menu td.nohover{ padding:2px 15px; background:#f5f5f5; color: #000; }
+  table.side-menu td.hover  { padding:2px 15px; background:#C8DFED; color: #000; }
+  
+  .mandatory-field {background:#C8DFED; color:#000; }
+  .mandatory-text {color:#f00; background:transparent; }
+  
+  .vertical-divider {border-left: 1px solid #000; }
+  
+  div.quotations tr.bg0{background:#f5f5f5; color:#000; }
+  div.quotations tr.bg1{background:#d5d5d5; color:#000; }
+  div.quotations th{background:#036; color:#fff;}
+  div.quotations td{color:#000; background:#fff; }
+  
+  input.check{height:12px;width:12px;margin:5px 5px 2px 3px;}
+  
+  div.bannerad {margin: 15px 0 15px 0;}
+  
+  #promo p
+  {
+    font-weight:bold;
+    font-size: large;
+    text-align: center;
+    
+  }
+  
+  #legal {font-size: x-small;}
+  
+  #conformance
+  {
+    margin: 30px auto auto auto;
+    text-align: right;
+  }
+  
+  #conformance img {border: 0;}
+  
+  #downloadbtn, div.downloadbtn {
+    background-color: transparent;
+    color: #036;
+    font-weight: bold;
+    text-align: center;
+  }
+   
+  #downloadbtn p, div.downloadbtn p {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    margin-left: 0;
+    padding: 7px;
+    padding-left: 0;
+  }
+   
+  #downloadbtn a, div.downloadbtn a {
+    background-color: #036;
+    border: 2px solid #ccc;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #000;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  div.btncontainer {
+    height: 56px;
+    margin: 0 auto;
+    width: 352px;
+  }
+
+  div.btncontainer div.downloadbtn {
+    float: left;
+    height: 56px;
+  }
+
+  div.btncontainer a {
+    display: block;
+    width: 142px;
+  }
+
+  div.clearfloats {
+    clear: both;
+  }
+  
+  #linkgroup h1 {
+    font-size:90%;
+    margin: 20px 10px 10px 20px;
+  }
+  
+  #linkgroup h2 {
+    font-size:90%;
+    margin: 10px 10px 0 30px;
+  }
+  
+  #productlinkgroup h1 {
+    font-size:105%;
+    margin: 5px 10px 10px 20px;
+  }
+  
+  #productlinkgroup h2 {
+    font-size:105%;
+    margin: 5px 10px 0 30px;
+  }
+  
+  #linkgroup p, #productlinkgroup p { margin: 0 10px 10px 30px; }
+  
+  #linkgroup a, #productlinkgroup { text-decoration: none; }
+  
+  #container {
+    float: left;
+    width: 100%;
+  }
+  
+  #body {
+    float: left;
+    width: 70%;
+  }
+  
+  #sidebar {
+    float: left;
+    width: 30%;
+    margin: 30px auto auto auto;
+  }
+  
+  #sidebar h2 {
+    margin: 5px 5px 5px 5px;
+    font-size: 110%;
+    background-color: #036;
+    color: #fff;
+    padding: 5px 2px 5px 2px;
+    text-align: center;
+  }
+  
+  #sidebar p { 
+    margin: 5px 5px 5px 5px;
+    font-size:90%;
+    padding: 5px 2px 5px 5px;
+    border-top: 1px solid #036;
+    border-bottom: 1px solid #000;
+  }
+  
+  #sidebar a {
+    font-weight: bold;
+  }
+  
+  #sidebar i {
+    background-color: transparent;
+    color: #ffe031;
+    font-style: normal;
+    text-transform: uppercase;
+  }
+  
+  #whatsnew {
+    text-align: center;
+  }
+  
+  #contentonly h1 {
+    margin-top: 0;
+  }
+  
+  #contentonly p, #contentonly ul {
+    margin-left: 15px;
+  }
+  
+  #il8n-menu img {
+   padding-right: 3px;
+  }
+
+  div.addthis_toolbox {
+   margin-top: 15px;
+  }
+
+}
+
+@media print {
+  div.print{display:inline; float:none; }
+  div.screen, td.screen{display:none}
+  
+  body, th, td { font-size:10pt; }
+  
+  h1, h2, h3, h4, h5, h6{ color:#000; }
+  h1{ font-size:16pt; }
+  h2{ font-size:14pt; }
+  h3{ font-size:12pt; }
+  h4{ font-size:10pt; }
+  h5{ font-size:9pt; }
+  h6{ font-size:8pt; }
+  
+  a, abbr{ color:#000; text-decoration:none; }
+  
+  acronym, a.acronym{ border-bottom:0px; }
+  
+  pre { color:#000; font-size:10pt; font-family:Courier;}
+  
+  table.tabular{margin-left:30px; width:90%;}
+  
+  table.tabular th, table.tabular td{vertical-align:top; border: 1px solid #000}
+
+}
+  

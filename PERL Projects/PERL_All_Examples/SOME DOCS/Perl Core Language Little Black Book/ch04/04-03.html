@@ -1,0 +1,708 @@
+<HTML>
+<HEAD>
+<META name=vsisbn content="1576104265">
+<META name=vstitle content="Perl Core Language Little Black Book">
+<META name=vsauthor content="Steven Holzner">
+<META name=vspublisher content="The Coriolis Group">
+<META name=vspubdate content="03/01/99">
+<META name=vscategory content="Web and Software Development: Open Source Development: Languages: Perl,Web and Software Development: Programming, Scripting, and Markup Languages: Perl">
+
+
+
+
+
+<TITLE>Perl Core Language Little Black Book:Operators And Precedence</TITLE>
+
+<!-- HEADER -->
+
+<STYLE type="text/css"> 
+ <!--
+ A:hover  {
+ 	color : Red;
+ }
+ -->
+</STYLE>
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script>
+<!--
+function displayWindow(url, width, height) {
+         var Win = window.open(url,"displayWindow",'width=' + width +',height=' + height + ',resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</script>
+<SCRIPT>
+<!--
+function popUp(url) {
+        var Win = window.open(url,"displayWindow",'width=400,height=300,resizable=1,scrollbars=yes');
+	if (Win) {
+		Win.focus();
+	}
+}
+//-->
+</SCRIPT>
+
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var axel = Math.random() + "";
+var ord = axel * 1000000000000000000 + "?";
+
+//This part of script alleviates a Netscape document.write bug
+<!-- 
+NS4 = document.layers;
+if (NS4) {
+origWidth = innerWidth;
+origHeight = innerHeight;
+}
+function reDo() {
+if (innerWidth != origWidth || innerHeight != origHeight) 
+location.reload();
+}
+if (NS4) onresize = reDo;
+//-->
+</SCRIPT> 
+</HEAD>
+
+<body background="/images/back.jpg" bgcolor="#FFFFFF" link="#003399" alink="#FF0000" vlink="#003399" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0>
+
+<table bgcolor="#003366" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td height="95">
+		&nbsp;&nbsp;<a href="http://www.earthweb.com" target="resource window"><img src="/images/ew_logo.jpg" width="82" height="58" alt="EarthWeb" border="0"></a>&nbsp;&nbsp;&nbsp;</td>
+		<td height=95">
+		<table width="100%">
+			<tr valign="top">
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev1;sz=468x60;ord=' + ord + '" border=0 height="60" width="468"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer1" visibility="hidden" width=468 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<NOLAYER>');
+document.write('<IFRAME SRC="http://ad.doubleclick.net/adi/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width="160" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no">');
+document.write('<A HREF="http://ad.doubleclick.net/jump/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" target="_top"><IMG SRC="http://ad.doubleclick.net/ad/itk.earthweb.dart/b_soft_dev;abr=!ie;a=b_soft_dev4;sz=160x60;ord=' + ord + '" border=0 height="60" width="160"></A>');
+document.write('</IFRAME>');
+document.write('</NOLAYER>');
+document.write('<ILAYER id="layer4" visibility="hidden" width=160 height=60></ILAYER>');
+//-->
+</SCRIPT>
+			</td>
+			<td bgcolor="#003366" nowrap><a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html"><img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a></td>
+			</tr></table><br></td>
+	</tr>
+		
+<!-- 	<tr>
+		<td height="1" colspan="3" bgcolor="#003366"><img src="/images/dotclear.gif" border=0 alt=""></td>
+	</tr> -->
+</table>
+
+<!-- END HEADER -->
+
+
+<!-- BEGIN SUB HEADER -->
+
+<table bgcolor="#003366" cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<!-- ITK TOPNAV -->
+	
+	<tr>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_off.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/accountinfo.gif" alt="Account Info" border="0"></a><!--<a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe.gif" alt="Subscribe" border="0"></a>--><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	
+<!-- END of ITK TOPNAV -->
+
+<!-- ITK LOGO and newsletter sign up -->
+
+</table>
+	
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+	<tr>
+		<td align="left" valign="top" nowrap><img src="/images/itk_logo_sm.jpg" alt="" border="0"></td>
+		<td align="right"><font face="verdana, sans-serif" size="1">
+
+<script language="JavaScript">
+<!-- 
+
+var days = new Array(8);
+days[1] = "Sunday";
+days[2] = "Monday";
+days[3] = "Tuesday";
+days[4] = "Wednesday";
+days[5] = "Thursday";
+days[6] = "Friday";
+days[7] = "Saturday";
+
+var months = new Array(13);
+months[1] = "January";
+months[2] = "February";
+months[3] = "March";
+months[4] = "April";
+months[5] = "May";
+months[6] = "June";
+months[7] = "July";
+months[8] = "August";
+months[9] = "September";
+months[10] = "October";
+months[11] = "November";
+months[12] = "December";
+
+var dateObj = new Date()
+var wday = days[dateObj.getDay() + 1]
+var lmonth = months[dateObj.getMonth() + 1]
+var date = dateObj.getDate()
+var fyear = dateObj.getYear()
+if (fyear <1000) fyear += 1900;
+document.write(wday + ", " + lmonth + " " + date + ", " + fyear)
+                
+//-->
+</script>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+<br><br>
+
+
+		 </td>
+	</tr>
+	</table>
+
+<!-- END ITK LOGO and newsletter sign up-->
+	
+<!-- begin of ITK left NAV -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+<!-- BEGIN LEFT NAVBAR -->
+
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	
+		<tr>
+		<td width="145" valign="top" align="left" rowspan=8>
+		
+	<!-- KEYWORD SEARCH -->	
+<script language="JavaScript1.2">
+<!--
+function checkForQuery(fm) {
+  /* get the query value */
+  var i = escape(fm.query.value);
+  if (i == "") {
+      alert('Please enter a search word or phrase');
+      return false;
+  }                  /* query is blank, dont run the .jsp file */
+  else return true;  /* execute the .jsp file */
+}
+//-->
+</script>
+	
+	
+	<form name="keyword" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewkwk2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/keyword_searcha.gif" vspace="5" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vsisbn vspublisher vspubdate">		
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+		<table width="145" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="145">&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="" checked><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">All ITKnowledge</FONT><br>
+&nbsp;&nbsp;<INPUT type="radio" name="scope" value="sourcecode"><FONT face="arial, helvetica" size="1" color="#ffffff" size="1">Source Code</FONT><br>
+			<font face="arial, helvetica" size="2">
+			<img src="/images/dotclear.gif" width="1" height="5" alt="" border="0"><br>
+			
+			&nbsp;&nbsp;<a href="/search/search-tips.html"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Search Tips</font></a><br>
+			&nbsp;&nbsp;<a href="/search/"><img src="/images/arrows_blue.gif" alt="" border="0"><font size="1" color="#ffffff">Advanced Search</font></a><br>
+			
+			</font>
+			
+		</td>
+		<td width="5"><img src="/images/dotclear.gif" width=5 height=10 hspace="5" alt="" border="0"></td>
+		</tr>
+		</table>
+	</form>
+		
+		
+<!-- BROWSE BY TOPIC -->
+		
+
+<form name="meta" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewmetak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<img src="/images/publication_searcha.gif" width="145" alt="" border="0">
+<INPUT type="hidden" name="collection" value="allbooks_p2">
+<INPUT type="hidden" name="altcoll" value="corpitk_p2">
+<INPUT type="hidden" name="topics" value="itk_www">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="vspubdate desc score desc">
+<INPUT name=fields type=hidden value="vdkvgwkey score vstitle vsauthor vspublisher vspubdate">
+<INPUT name=imageprefix type=hidden value="http://www.itknowledge.com">
+<INPUT name=ssiFolder type=hidden value="itk">
+		
+<table width="145" border="0" cellpadding="0" cellspacing="0">
+	
+			<tr>
+			<td valign="top">
+			&nbsp;&nbsp;<input type="text" name="query" value="" size="11">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle><br><font face="arial, helvetica" size="2">
+			&nbsp;&nbsp;<SELECT NAME="metatags" style="font-size: 12; font-family: sans-serif;" size="1">
+			<option value="vstitle" SELECTED>Title
+			<option value="vsauthor">Author
+			<option value="vspublisher">Publisher
+			<option value="vsisbn">ISBN			
+			</SELECT><br><br></font>
+			</td>
+			</tr>
+</table>
+</form>
+
+<form action="" name="catlist">	
+<table width="145" border="0" cellpadding="0" cellspacing="0">				
+			<tr>
+			<td valign="top">
+			<img src="/images/jump_topica.gif" width="145" alt="" border="0">
+			</td>
+			</tr>
+			<tr>
+			<td width="145">
+				
+	        	<font face="Arial,helvetica" size="1">
+				&nbsp;&nbsp;<SELECT NAME="cat" onChange='top.location.href=this.options[selectedIndex].value;' style="font-size: 10; font-family: sans-serif;">
+                        <option value="" selected>Please Select
+                        <option value="">-----------
+						<option value="/reference/dir.1-busman.html">Business &amp; IT Mgmt
+						<option value="/reference/dir.2-certification.html">Certification &amp; Training                       
+						<option value="/reference/dir.3-databaseanderp.html">Database &amp; ERP
+                        <option value="/reference/dir.4-desktopapps.html">Desktop Apps
+                        <option value="/reference/dir.5-desktoppubanddesign.html">Graphic Design
+                        <option value="/reference/dir.6-generalinternet.html">General Internet
+                        <option value="/reference/dir.7-hardwareandos.html">Hardware &amp; OS
+                        <option value="/reference/dir.8-ibmredbooks.html">IBM RedBooks
+                        <option value="/reference/dir.9-networktelcom.html">Network &amp; Telecom
+						<option value="/reference/dir.10-websoftwaredev.html">Web &amp; Software Dev
+                        <option value="">-----------
+
+                        <option value="/reference/dir.archive1.html">Public Archive               
+                        </SELECT>
+			</font>
+			
+		</td>
+		</tr>
+	</table>
+	</form>
+	
+<!-- LEFT NAV SEARCH END -->
+
+	</td>
+		
+
+<!-- END LEFT NAVBAR -->
+
+
+<!-- END LEFT NAVBAR -->
+	
+	<td width="15"><img src="/images/dotclear.gif" width="15" alt="" border="0"></td>
+
+<!-- end of ITK left NAV -->
+
+<!-- begin main content -->
+	
+	<td width="100%" valign="top" align="left">
+		<br>
+
+<!-- END SUB HEADER -->
+<!-- Created by dB Page Builder.  http://www.pchelponline.com/bluestem -->
+
+<!--Begin Content Column -->
+
+<TABLE border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td width=75 valign=top>
+<img src="/images/sm_covers/1576104265.gif" width=60 height=73 alt="Perl Core Language Little Black Book" border="1">
+</td>
+<td align="left">
+    <font face="arial, helvetica" size="-1" color="#336633"><b>Perl Core Language Little Black Book</b></font>
+    <br>
+    <font face="arial, helvetica" size="-1"><i>by Steven Holzner</i>
+    <br>
+    The Coriolis Group
+    <br>
+    <b>ISBN:</b>&nbsp;1576104265<b>&nbsp;&nbsp;&nbsp;Pub Date:</b>&nbsp;03/01/99</font>&nbsp;&nbsp;<A HREF="http://www.digitalguru.com/dgstore/product.asp?isbn=1576104265&ac%5Fid=28" TARGET="anotherwindows"><img src="/images/buyit.gif" width=64 height=23 hspace="5" align="middle" alt="Buy It" border="0"></a><a href="/PSUser/EWBookMarks.html?url=http://www.itknowledge.com/reference/standard/1576104265/ewtoc.html&isbn=1576104265"><img src="/images/bookmarkit.gif" border=0 align="middle" alt="Bookmark It" width=97 height=23></a>
+</td>
+</tr>
+</table>
+<P>
+<FORM name= "search2" method="POST" action="http://ewsearch.earthweb.com:80/jsp/k2search/ewintrak2search_p2.jsp" onSubmit=" return checkForQuery(this); ">
+<INPUT type="hidden" name="collection" value="corpitk_p2">
+<INPUT type="hidden" name="altcoll" value="allbooks_p2">
+<INPUT type="hidden" name="hl" value="off">
+<INPUT name="sortspec" type=hidden value="score desc">
+<INPUT name="fields" type=hidden value="vdkvgwkey score vstitle vsisbn vsauthor vspublisher vspubdate">
+<INPUT name="imageprefix" type=hidden value="http://www.itknowledge.com">
+<INPUT name="ssiFolder" type=hidden value="itk">
+<INPUT name="topics" type=hidden value="itk_www">
+<INPUT type="hidden" name="bookid" value="t_1576104265">
+<font face="arial, helvetica" size=2><b>Search this book:</b></font><br>
+<INPUT NAME="query" size=25 VALUE="">&nbsp;<input type="image" width=28 height=23 border=0 value="Go" name="Go" src="/images/go.gif" align=absmiddle>
+
+</form>
+
+
+<!-- Empty Reference Subhead -->
+
+<!--ISBN=1576104265//-->
+<!--TITLE=Perl Core Language Little Black Book//-->
+<!--AUTHOR=Steven Holzner//-->
+<!--PUBLISHER=The Coriolis Group//-->
+<!--CHAPTER=04//-->
+<!--PAGES=089-093//-->
+<!--UNASSIGNED1//-->
+<!--UNASSIGNED2//-->
+
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="04-02.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="04-04.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+<P><BR></P>
+<H4><A NAME="Heading9"></A><FONT COLOR="#000077">Handling Multiplication And Division</FONT></H4>
+<P>The multiplication operator, <B>*</B>, multiplies two numbers:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2 * 4;
+
+<I>8</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The division operator, <B>/</B>, divides two numbers:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 16 / 3;
+
+<I>5.33333333333333</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The modulus operator, <B>%</B>, returns the modulus of two numbers:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 16 % 3;
+
+<I>1</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The repetition operator, <B>x</B>, lets you repeat an action. In a scalar context, <B>x</B> returns a string made up of the left operand repeated the number of times specified by the right operand. In list context it repeats the list as long as the left operand is a list in parentheses. For example, here&#146;s how we can print a string of 30 hyphens:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print &#145;-&#146; x 30;
+
+------------------------------
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading10"></A><FONT COLOR="#000077">Handling Addition, Subtraction, And Concatenation</FONT></H4>
+<P>The addition operator, <B>&#43;</B>, returns the sum of two numbers:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2 &#43; 2;
+
+<I>4</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Binary <B>-</B> subtracts two numbers and returns the difference:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 4 - 2;
+
+<I>2</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>Binary <B>.</B> concatenates two strings, like this:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print &#147;Hello &#148; . &#147;there.&#148;;
+
+<I>Hello there.</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading11"></A><FONT COLOR="#000077">Using The Shift Operators</FONT></H4>
+<P>The left shift operator, <B>&lt&lt</B>, returns its left argument shifted left by the number of bits specified in the right argument. For example:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2 &lt&lt 10;
+
+<I>2048</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<P>The right shift operator, <B>&gt&gt</B>, returns its left argument shifted to the right by the number of bits specified by the right argument. For example:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print 2048 &gt&gt 3;
+
+<I>256</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading12"></A><FONT COLOR="#000077">Using Named Unary Operators</FONT></H4>
+<P>Perl calls functions like <B>sqrt</B>, <B>defined</B>, <B>eval</B>, <B>return</B>, <B>chdir</B>, <B>rmdir</B>, <B>oct</B>, <B>hex</B>, <B>undef</B>, <B>exists</B>, and others that take one scalar argument (not a list) <I>named unary operators</I> when you don&#146;t enclose that argument in parentheses. Here&#146;s an example using the square root operator, <B>sqrt</B>:</P>
+<!-- CODE SNIP //-->
+<PRE>
+print sqrt 4;
+
+<I>2</I>
+</PRE>
+<!-- END CODE SNIP //-->
+<H4><A NAME="Heading13"></A><FONT COLOR="#000077">Working With File Test Operators</FONT></H4>
+<P>Perl supports a large number of file test operators that give you a great deal of information about files and file handles (see Chapter 12 for more about handling files in Perl). Here&#146;s how to use the file test operators where X stands for the file test operator you&#146;re interested in:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+-X <I>FILEHANDLE</I>
+-X <I>EXPR</I>
+-X
+</PRE>
+<!-- END CODE SNIP //-->
+<P><B>-X</B> is one of the choices listed in Table 4.2. When the argument is omitted, the file test operators test <B>$_</B> (except for <B>-t</B>, which tests <B>STDIN</B> by default). The file test operators are shown in Table 4.2. You&#146;re probably not familiar with all the information in the table unless you&#146;re familiar with Unix; for example, UID and GID refer to Unix user IDs and group IDs.</P>
+<CAPTION><B><I>Table 4.2 File test operators.</I></B>
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="35%" VALIGN="TOP" ALIGN="LEFT">Operator
+<TH WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Returned Infomation About The File
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-A</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Time since file was last accessed
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-B</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a binary file
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-b</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a block special file
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-c</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a character special file
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-C</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Time since last inode change
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-d</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a directory
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-e</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">File exists
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-f</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a plain file
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-g</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Has setgid bit set
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-k</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Has sticky bit set
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-l</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a symbolic link
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-M</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Age of file in days when script started
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-o</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Owned by effective uid
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-O</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Owned by real uid
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-p</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a named pipe
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-r</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Readable by effective uid/gid
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-R</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Readable by real uid/gid
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-s</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Has nonzero size (this operator returns the file size).
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-S</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a socket.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-t</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is a file handle opened to a terminal?
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-T</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Is the file a text file?
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-u</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Has setuid bit set.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-w</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Writeable by effective uid/gid.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-W</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Writeable by real uid/gid.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-x</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Executable by effective uid/gid.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-X</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Executable by real uid/gid.
+<TR>
+<TD WIDTH="35%" VALIGN="TOP" ALIGN="LEFT"><B>-z</B>
+<TD WIDTH="65%" VALIGN="TOP" ALIGN="LEFT">Has zero size.
+</TABLE>
+<P>These are some examples using the file handle <B>STDIN</B> (notice that these operators return 1 for true):</P>
+<!-- CODE //-->
+<PRE>
+print -e STDIN;        #Does STDIN exist?
+
+<I>1</I>
+
+print -t STDIN;        #Is it tied to a terminal?
+
+<I>1</I>
+
+print -z STDIN;        #Does it have zero size?
+
+<I>1</I>
+</PRE>
+<!-- END CODE //-->
+<TABLE WIDTH="100%" BORDER RULES="ROWS">
+<TR>
+<TH WIDTH="80%" VALIGN="TOP" ALIGN="LEFT"><I>Related solution:</I>
+<TH WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT"><I>Found on page:</I>
+<TR>
+<TD WIDTH="80%" VALIGN="TOP" ALIGN="LEFT">stat File Status
+<TD WIDTH="20%" VALIGN="TOP" ALIGN="RIGHT">274
+</TABLE>
+<H4><A NAME="Heading14"></A><FONT COLOR="#000077">Using Relational Operators</FONT></H4>
+<P>Relational operators are binary operators that perform comparisons, returning 1 for true and the empty string for false. The relational operators, like greater than or equal to and less than or equal to, are listed in Table 4.3. Notice that one set of operators is used for numeric comparisons and another for string comparisons.
+</P>
+<I><BLOCKQUOTE>
+<P><FONT SIZE="-1"><HR><B>TIP:&nbsp;&nbsp;</B>Notice that the greater than or equal to operator is <B>&gt=</B>, not <B>=&gt</B>, which is the comma synonym operator.</I>
+</FONT><HR>
+</BLOCKQUOTE>
+<P>Here&#146;s an example of a numerical check of a user&#146;s input with an error message being displayed when that input is greater than 100:
+</P>
+<!-- CODE SNIP //-->
+<PRE>
+while (&lt&gt) {
+    if ($_ &gt 100) {
+        print &#147;Too big!\n&#148;;
+    }
+}
+</PRE>
+<!-- END CODE SNIP //-->
+<P>You can also use the logical operators like <B>&amp&amp</B> and <B>||</B>, or their low precedence cousins, the <B>and</B> operator and the <B>or</B> operator, to connect logical clauses together. In this example, user input is required to be a letter between k and m:</P>
+<!-- CODE //-->
+<PRE>
+print &#147;Please enter letters from k to m\n&#148;;
+while (&lt&gt) {
+    chop;
+    if ($_ lt &#146;k&#146; or $_ gt &#146;m&#146;) {
+        print &#147;Please enter letters from k to m\n&#148;;
+    } else {
+        print &#147;Thank you - let&#146;s have another!\n&#148;;
+    }
+}
+</PRE>
+<!-- END CODE //-->
+<P><BR></P>
+<CENTER>
+<TABLE BORDER>
+<TR>
+<TD><A HREF="04-02.html">Previous</A></TD>
+<TD><A HREF="../ewtoc.html">Table of Contents</A></TD>
+<TD><A HREF="04-04.html">Next</A></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<hr width="90%" size="1" noshade>
+<div align="center">
+<font face="Verdana,sans-serif" size="1">Copyright &copy; <a href="/reference/tcg00001.html">The Coriolis Group, Inc.</a></font>
+</div>
+<!-- all of the reference materials (books) have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- BEGIN SUB FOOTER -->
+	<br>
+	<img src="/images/dotclear.gif" width="5" height="7" border="0">
+	</TD>
+    </TR>
+	</TABLE>
+	
+	<table width="100%" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width="160"><img src="/images/bot_curve.jpg" width="160" alt="" border="0"></td>
+		<td align="left" valign="top" nowrap><a href="/index2.html"><img src="/images/top_tabs/home_bot.gif" alt="Home" border="0"></a><a href="/pick-account.html"><img src="/images/top_tabs/account_info_bot.gif" alt="Account Info" border="0"></a><a href="/PSUser/usrreg.htm?AdminAction=InitAdd&Locale=en&URI=/"><img src="/images/top_tabs/subscribe_bot.gif" alt="Subscribe" border="0"></a><a href="/PSUser/psuserauth.htm?cmd=login&URI=/"><img src="/images/top_tabs/login_bot.gif" alt="Login" border="0"></a><a href="/search/"><img src="/images/top_tabs/search_bot.gif" alt="Search" border="0"></a><a href="/PSUser/EWIPOMain.html"><img src="/images/top_tabs/my_itknowledge_bot.gif" alt="My ITKnowledge" border="0"></a><a href="/faq/faq.html"><img src="/images/top_tabs/faq_bot.gif" alt="FAQ" border="0"></a><a href="/sitemap.html"><img src="/images/top_tabs/sitemap_bot.gif" alt="Sitemap" border="0"></a><a href="/contactus.html"><img src="/images/top_tabs/contact_us_bot.gif" alt="Contact Us" border="0"></a></td> 
+	</tr>
+	</table>
+		
+	<table width="100%" bgcolor="#003366" border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td align="left" width=145><img src="/images/clear_pixel.gif" width=145 height="1" alt="" border="0"></td>
+				
+<!-- END SUB FOOTER -->
+
+<!-- all of the books have the footer and subfoot reveresed -->
+<!-- reference_subfoot = footer -->
+<!-- reference_footer = subfoot -->
+
+<!-- FOOTER -->
+			
+<td align="left" bgcolor="#003366">
+<table border="0" cellspacing="10" cellpadding="5">
+<tr>
+<td align="center">
+<font face="arial, helvetica" size="1" color="#cccccc"><b><a href="/products.html"><font color="#0099CC">Products</font></a>&nbsp;|&nbsp; <a href="/contactus.html"><font color="#0099CC">Contact Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|about_us-jhtml.72.0.-.0.jhtml" target="resource window"><font color="#0099CC">About Us</font></a>&nbsp;|&nbsp; <a href="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">Privacy</font></a> &nbsp;|&nbsp; <a href="http://www.itmarketer.com/" target="resource window"><font color="#0099CC">Ad Info</font></a> &nbsp;|&nbsp; <a href="/index2.html"><font color="#0099CC">Home</font></a></b>
+<br><br>Use of this site is subject to certain <a href="/agreement.html"><font color="#0099CC">Terms &amp; Conditions</font></a>, <a href="/copyright.html"><font color="#0099CC">Copyright &copy; 1996-2000 EarthWeb Inc.</font></a> All rights reserved.  Reproduction in whole or in part in any form or medium without express written <a href="http://www.earthweb.com/dlink.corp|permissions-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">permission</font></a> of EarthWeb is prohibited. Read EarthWeb's <A HREF="http://www.earthweb.com/dlink.corp|privacy-jhtml.72.0.-.-.jhtml" target="resource window"><font color="#0099CC">privacy</font></A> statement.</font><br><br>
+</td>
+</tr>
+</table>
+
+<!-- netranger link to stop spiders -->
+
+<a href="ITKN1a2b3c4d5e6f7g8h9idefcon4.html">
+<img src="/images/dotclear.gif" border="0" height="1" width="1" align="left"></a>
+</td>
+		</tr>
+</table>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev1;sz=468x60;ord=' + ord + '" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev4;sz=160x60;ord=' + ord + '" width=160 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=160; visibility=\'show\';"></LAYER>');
+document.write('<LAYER SRC="http://ad.doubleclick.net/adl/itk.earthweb.dart/b_soft_dev;a=b_soft_dev3;sz=125x125;ord=' + ord + '" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=125;clip.width=125; visibility=\'show\';"></LAYER>');
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
+
+<!-- END FOOTER -->
+
